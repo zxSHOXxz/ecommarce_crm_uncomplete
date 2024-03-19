@@ -1,0 +1,55 @@
+<?xml version="1.0"?>
+<ListOrder>
+ <Order1>
+  <id>12</id>
+  <customer_name>FATIMA EID ALMLAHI</customer_name>
+  <total_amount>1945</total_amount>
+  <status>pending</status>
+  <productNum1>Amr || 5</productNum1>
+  <productNum2>product || 5</productNum2>
+ </Order1>
+ <Order2>
+  <id>11</id>
+  <customer_name>FATIMA EID ALMLAHI</customer_name>
+  <total_amount>2135</total_amount>
+  <status>pending</status>
+  <productNum1>Amr || 6</productNum1>
+  <productNum2>product || 5</productNum2>
+ </Order2>
+ <Order3>
+  <id>8</id>
+  <customer_name>FATIMA EID ALMLAHI</customer_name>
+  <total_amount>2940</total_amount>
+  <status>waiting</status>
+  <productNum1>product || 10</productNum1>
+  <productNum2>Amr || 5</productNum2>
+ </Order3>
+ <Order4>
+  <id>14</id>
+  <customer_name>FATIMA EID ALMLAHI</customer_name>
+  <total_amount>1990</total_amount>
+  <status>pending</status>
+  <productNum1>product || 10</productNum1>
+ </Order4>
+ <Order5>
+  <id>20</id>
+  <customer_name>FATIMA EID ALMLAHI</customer_name>
+  <total_amount>190</total_amount>
+  <status>pending</status>
+  <productNum1>Amr || 1</productNum1>
+ </Order5>
+ <Order6>
+  <id>35</id>
+  <customer_name>FATIMA EID ALMLAHI</customer_name>
+  <total_amount>760</total_amount>
+  <status>pending</status>
+  <productNum1>Amr || 4</productNum1>
+ </Order6>
+ <Order7>
+  <id>36</id>
+  <customer_name>FATIMA EID ALMLAHI</customer_name>
+  <total_amount>190</total_amount>
+  <status>pending</status>
+  <productNum1>Amr || 1</productNum1>
+ </Order7>
+</ListOrder>
