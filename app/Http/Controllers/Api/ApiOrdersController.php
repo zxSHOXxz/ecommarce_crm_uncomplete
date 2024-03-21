@@ -17,6 +17,7 @@ class ApiOrdersController extends Controller
     public function __construct()
     {
         $this->middleware('auth:api');
+        $this->middleware('can:orders-create', ['only' => ['store']]);
     }
 
     public function payment_verify(Request $request)

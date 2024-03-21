@@ -8,6 +8,15 @@ use Illuminate\Http\Request;
 
 class BackendCategoryController extends Controller
 {
+
+    public function __construct()
+    {
+        $this->middleware('can:categories-create', ['only' => ['create','store']]);
+        $this->middleware('can:categories-read',   ['only' => ['show', 'index']]);
+        $this->middleware('can:categories-update',   ['only' => ['edit','update']]);
+        $this->middleware('can:categories-delete',   ['only' => ['delete']]);
+    }
+
     /**
      * Display a listing of the resource.
      *

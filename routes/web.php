@@ -32,6 +32,8 @@ Route::prefix('admin')->middleware(['auth:web,customer', 'ActiveAccount'])->grou
 });
 Route::get('orders/export/', [BackendOrderController::class, 'export'])->name('export');
 Route::get('orders/export_xml/', [BackendOrderController::class, 'xml'])->name('export_xml');
+Route::post('/uploadXml', [BackendOrderController::class, 'uploadFileXml'])->name('uploadXml.file');
+
 Route::prefix('admin')->middleware(['auth:web,customer', 'ActiveAccount'])->name('admin.')->group(function () {
 
     Route::get('/home', [BackendAdminController::class, 'index'])->name('index');

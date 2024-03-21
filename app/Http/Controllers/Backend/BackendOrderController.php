@@ -22,21 +22,46 @@ class BackendOrderController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+
+    public function __construct()
+    {
+         $this->middleware('can:orders-create', ['only' => ['create','store','uploadFileXml']]);
+         $this->middleware('can:orders-read',   ['only' => ['show', 'index','export','xml']]);
+         $this->middleware('can:orders-update',   ['only' => ['edit','update']]);
+         $this->middleware('can:orders-delete',   ['only' => ['delete']]);
+    }
+
+
     public function index()
     {
         $orders = Order::paginate(15);
         return view('admin.orders.index', compact('orders'));
     }
 
+    public function uploadFileXml(Request $request)
+    {
+        if ($request->hasFile('xml_file')) {
+            $file = $request->file('xml_file');
+            $xmlData = file_get_contents($file);
+            $xml = simplexml_load_string($xmlData);
+            foreach ($xml->children() as $order) {
+                $orderId = $order->id;
+                $customerName = $order->customer_name;
+                $totalAmount = $order->total_amount;
+                $status = $order->status;
+            }
+
+            return "File uploaded successfully!";
+        }
+        return "No file uploaded!";
+    }
 
     public function export()
     {
         return Excel::download(new OrdersExport, 'orders.csv');
     }
 
-
     public function xml()
-
     {
         $sales = Order::all();
         try {

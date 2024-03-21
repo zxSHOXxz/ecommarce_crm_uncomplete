@@ -12,6 +12,6 @@
 */
 
 return [
-    'next'     => 'التالي &raquo;',
-    'previous' => '&laquo; السابق',
+    'previous' => '&laquo; Previous',
+    'next' => 'Next &raquo;',
 ];

@@ -20,21 +20,6 @@ class PermissionsSeeder extends Seeder
      */
     public function run()
     {
-        $roles_structure = Config::get('permission.roles_structure');
-        $permissions_map = collect(config('permission.permissions_map'));
-        app()[PermissionRegistrar::class]->forgetCachedPermissions();
-        foreach ($roles_structure as $role_name => $role_value) {
-            $this->command->info('Creating Role ' . strtoupper($role_name));
-            $role = Role::firstOrCreate(['name' => $role_name, 'display_name' => $role_name]);
-            foreach ($role_value as $module => $permission_content) {
-                foreach (explode(',', $permission_content) as $p => $perm) {
-                    $this->command->info('Adding Permission ' . $module . '-' . $permissions_map[$perm] . ' For Module ' . $module);
-
-                    $permission = Permission::firstOrCreate(['name' => $module . '-' . $permissions_map[$perm], 'table' => $module]);
-                    $role->givePermissionTo($permission);
-                }
-            }
-        }
         $roles_customer_structure = Config::get('permission.roles_customer_structure');
         $permissions_map = collect(config('permission.permissions_map'));
         app()[PermissionRegistrar::class]->forgetCachedPermissions();
@@ -46,6 +31,22 @@ class PermissionsSeeder extends Seeder
                     $this->command->info('Adding Permission ' . $module . '-' . $permissions_map[$perm] . ' For Module ' . $module);
 
                     $permission = Permission::firstOrCreate(['name' => $module . '-' . $permissions_map[$perm], 'table' => $module, 'guard_name' => 'customer']);
+                    $role->givePermissionTo($permission);
+                }
+            }
+        }
+
+        $roles_structure = Config::get('permission.roles_structure');
+        $permissions_map = collect(config('permission.permissions_map'));
+        app()[PermissionRegistrar::class]->forgetCachedPermissions();
+        foreach ($roles_structure as $role_name => $role_value) {
+            $this->command->info('Creating Role ' . strtoupper($role_name));
+            $role = Role::firstOrCreate(['name' => $role_name, 'display_name' => $role_name, 'guard_name' => 'web']);
+            foreach ($role_value as $module => $permission_content) {
+                foreach (explode(',', $permission_content) as $p => $perm) {
+                    $this->command->info('Adding Permission ' . $module . '-' . $permissions_map[$perm] . ' For Module ' . $module);
+
+                    $permission = Permission::firstOrCreate(['name' => $module . '-' . $permissions_map[$perm], 'table' => $module, 'guard_name' => 'web']);
                     $role->givePermissionTo($permission);
                 }
             }

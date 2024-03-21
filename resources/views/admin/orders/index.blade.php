@@ -22,6 +22,12 @@
                         <a href="{{ route('export_xml') }}">
                             <span class="btn btn-secondary mx-1"><i class="fa-solid fa-file-xml p-1"></i>Export XML</span>
                         </a>
+                        <h1>Upload XML File</h1>
+                        <form action="{{ route('uploadXml.file') }}" method="POST" enctype="multipart/form-data">
+                            @csrf
+                            <input type="file" name="xml_file">
+                            <button type="submit">Upload</button>
+                        </form>
                     </div>
                 </div>
                 <div class="col-12 divider" style="min-height: 2px;"></div>

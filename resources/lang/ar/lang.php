@@ -1,30 +1,22 @@
-<?php 
+<?php
 
 
 return [
 
-	//login
-	"email"=>"البريد الالكتروني",
-	"password"=>"كلمة المرور",
-	"remember_me"=>"تذكرني",
-	"forget_your_password"=>"هل نسيت كلمة المرور ؟",
-	"login"=>"تسجيل الدخول",
+    //login
+    "email" => "email",
+    "password" => "password",
+    "remember_me" => "remember me",
+    "forget_your_password" => "Are you forget password",
+    "login" => "sign in",
 
-	// register
-	"register"=>"تسجيل",
-	"name"=>"الإسم",
-	"confirm_password"=>"تأكيد كلمة المرور",
-	"Verify Your Email Address"=>"تفعيل بريدك الإلكتروني",
-	"A fresh verification link has been sent to your email address."=>"تم ارسال رابط تفعيل جديد إلى بريدك الالكتروني المسجل",
-	"Before proceeding, please check your email for a verification link."=>"قبل المتابعة برجاء فحص رابط التفعيل في  البريد الخاص بك.",
-	"If you did not receive the email"=>"إذا لم تتلقى بريد تفعيل",
-	"click here to request another"=>"إضغط هنا لإرسال رابط آخر بديل",
-	
-
-
-
-
-
-
-
+    // register
+    "register" => "sign uo",
+    "name" => "name",
+    "confirm_password" => "confirm password",
+    "Verify Your Email Address" => "Verify Your Email Address",
+    "A fresh verification link has been sent to your email address." => "A fresh verification link has been sent to your email address.",
+    "Before proceeding, please check your email for a verification link." => "Before proceeding, please check your email for a verification link.",
+    "If you did not receive the email" => "If you did not receive the email",
+    "click here to request another" => "click here to request another",
 ];

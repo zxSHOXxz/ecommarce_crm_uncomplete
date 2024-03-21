@@ -10,6 +10,16 @@ use Illuminate\Http\Request;
 
 class BackendProductController extends Controller
 {
+
+    public function __construct()
+    {
+        $this->middleware('can:products-create', ['only' => ['create','store']]);
+        $this->middleware('can:products-read',   ['only' => ['show', 'index']]);
+        $this->middleware('can:products-update',   ['only' => ['edit','update']]);
+        $this->middleware('can:products-delete',   ['only' => ['delete']]);
+    }
+
+
     /**
      * Display a listing of the resource.
      *
