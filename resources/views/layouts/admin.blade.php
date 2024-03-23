@@ -511,31 +511,31 @@
                         <ul class="dropdown-menu shadow border-0" aria-labelledby="dropdownMenuButton1"
                             style="top: -3px;">
                             <li><a class="dropdown-item font-1" href="/" target="_blank"><span
-                                        class="fal fa-desktop font-1"></span> عرض الموقع</a></li>
+                                        class="fal fa-desktop font-1"></span> VIEW WIBSITE</a></li>
                             <li><a class="dropdown-item font-1" href="{{ route('admin.profile.index') }}"><span
-                                        class="fal fa-user font-1"></span> ملفي الشخصي</a></li>
+                                        class="fal fa-user font-1"></span> MY PROFILE</a></li>
 
                             <li><a class="dropdown-item font-1" href="{{ route('admin.profile.edit') }}"><span
-                                        class="fal fa-edit font-1"></span> تعديل ملفي الشخصي</a></li>
+                                        class="fal fa-edit font-1"></span> EDIT MY PROFILE</a></li>
 
 
 
 
                             @can('hub-files-read')
                                 <li><a class="dropdown-item font-1" href="{{ route('admin.files.index') }}"><span
-                                            class="fal fa-file font-1"></span> الملفات</a></li>
+                                            class="fal fa-file font-1"></span> FILES</a></li>
                             @endcan
 
 
                             @can('traffics-read')
                                 <li><a class="dropdown-item font-1" href="{{ route('admin.traffics.index') }}"><span
-                                            class="fal fa-traffic-light font-1"></span> الترافيك</a></li>
+                                            class="fal fa-traffic-light font-1"></span> TRAFFICS</a></li>
                             @endcan
 
                             @can('error-reports-read')
                                 <li><a class="dropdown-item font-1"
                                         href="{{ route('admin.traffics.error-reports') }}"><span
-                                            class="fal fa-bug font-1"></span> تقارير الأخطاء</a></li>
+                                            class="fal fa-bug font-1"></span> ERROR REPORTS</a></li>
                             @endcan
 
 
@@ -546,7 +546,7 @@
                             </li>
                             <li><a class="dropdown-item font-1" href="#"
                                     onclick="document.getElementById('logout-form').submit();"><span
-                                        class="fal fa-sign-out-alt font-1"></span> تسجيل خروج</a></li>
+                                        class="fal fa-sign-out-alt font-1"></span> LOGOUT</a></li>
                         </ul>
 
                     </div>
