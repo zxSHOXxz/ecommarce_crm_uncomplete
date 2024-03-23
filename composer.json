@@ -22,6 +22,7 @@
         "league/flysystem-aws-s3-v3": "^3.0",
         "livewire/livewire": "^2.7",
         "maatwebsite/excel": "^3.1",
+        "mcamara/laravel-localization": "^2.0",
         "mews/purifier": "^3.3",
         "nafezly/payments": "dev-master",
         "nesbot/carbon": "^2.54",
