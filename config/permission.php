@@ -189,10 +189,10 @@ return [
             'profile' => 'r,u',
             'orders' => 'c,r,u,d',
             'products' => 'c,r,u,d',
+            'customers' => 'c,r,u,d',
         ],
         'admin' => [
-            'users' => 'c,r,u,d',
-            'admin-analytics' => 'r',
+            'customers' => 'c,r,u,d',
             'notifications' => 'c,r,u,d',
             'categories' => 'c,r,u,d',
             'contacts' => 'c,r,u,d',

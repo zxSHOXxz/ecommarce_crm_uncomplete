@@ -12,15 +12,11 @@ class DatabaseSeeder extends Seeder
      * @return void
      */
     public function run()
-    { 
+    {
         $this->call([
-            TagSeeder::class,
             UsersSeeder::class,
             SettingsSeeder::class,
-            PagesSeeder::class,
-            MenusSeeder::class,
             PermissionsSeeder::class,
-            ContentSeeder::class,
             AttachSuperAdminPermissions::class
         ]);
     }

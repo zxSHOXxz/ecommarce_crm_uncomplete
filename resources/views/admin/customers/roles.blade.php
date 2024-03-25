@@ -10,7 +10,7 @@
 
                     <div class="col-12 px-0">
                         <div class="col-12 px-3 py-3">
-                            <span class="fas fa-info-circle"></span> صلاحيات المستخدم
+                            <span class="fas fa-info-circle"></span> {{ __('admin.userPermissions') }}
                         </div>
                         <div class="col-12 divider" style="min-height: 2px;"></div>
                     </div>
@@ -18,7 +18,7 @@
 
                         <div class="col-12 p-2">
                             <div class="col-12">
-                                الصلاحية
+                                {{ __('admin.permission') }}
                             </div>
                             <div class="col-12 pt-3">
                                 <select class="form-control select2-select" name="roles[]" multiple>
@@ -27,20 +27,15 @@
                                             @if (isset($customer)) @if ($customer->hasRole($role->name)) selected @endif
                                         @elseif (isset($client))
                                             @if ($client->hasRole($role->name)) selected @endif @endif
-                                            >{{ $role->name }}</option>
+                                            >{{ __($role->name) }}</option>
                                     @endforeach
                                 </select>
                             </div>
                         </div>
-
-
-
                     </div>
-
                 </div>
-
                 <div class="col-12 p-3">
-                    <button class="btn btn-success" id="submitEvaluation">حفظ</button>
+                    <button class="btn btn-success" id="submitEvaluation">{{ __('admin.save') }}</button>
                 </div>
             </form>
         </div>

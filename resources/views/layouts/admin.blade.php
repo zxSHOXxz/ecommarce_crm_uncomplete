@@ -246,7 +246,7 @@
                         class="d-inline-block">
                 </a>
                 <div class="col-12 px-0 mt-2 text-center" style="color: #232323;">
-                    Hello {{ auth()->user()->name }}
+                    {{ __('admin.hello') }} {{ auth()->user()->name }}
                 </div>
             </div>
             <div class="col-12 px-0">
@@ -261,7 +261,7 @@
                                 <span class="fal fa-home font-2"> </span>
                             </div>
                             <div style="width: calc(100% - 50px)" class="px-2 item-container-title">
-                                Home
+                                {{ __('admin.home') }}
                             </div>
                         </div>
                     </a>
@@ -274,7 +274,7 @@
                                     <span class="fal fa-key font-2"> </span>
                                 </div>
                                 <div style="width: calc(100% - 50px)" class="px-2 item-container-title">
-                                    Permissions
+                                    {{ __('admin.permissions') }}
                                 </div>
                             </div>
                         </a>
@@ -286,7 +286,7 @@
                                     <span class="fal fa-user font-2"> </span>
                                 </div>
                                 <div style="width: calc(100% - 50px)" class="px-2 item-container-title">
-                                    Admin
+                                    {{ __('admin.admin') }}
                                 </div>
                             </div>
                         </a>
@@ -314,18 +314,18 @@
                                     <span class="fal fa-users font-2"> </span>
                                 </div>
                                 <div style="width: calc(100% - 50px)" class="px-2 item-container-title has-sub-menu">
-                                    Customers
+                                    {{ __('admin.customers') }}
                                 </div>
                             </div>
                             <div class="col-12 px-0">
                                 <ul class="sub-item font-1" style="list-style:none;">
                                     <li><a href="{{ route('admin.customers.index') }}" style="font-size: 16px;"><span
                                                 class="fal fa-eye px-2" style="width: 28px;font-size: 15px;"></span>
-                                            Show Customers
+                                            {{ __('admin.showCustomers') }}
                                         </a></li>
                                     <li><a href="{{ route('admin.customers.create') }}" style="font-size: 16px;"><span
                                                 class="fal fa-plus px-2" style="width: 28px;font-size: 15px;"></span>
-                                            Add Customers
+                                            {{ __('admin.addCustomers') }}
                                         </a></li>
                                 </ul>
                             </div>
@@ -339,7 +339,7 @@
                                     <span class="fal fa-tags font-2"> </span>
                                 </div>
                                 <div style="width: calc(100% - 50px)" class="px-2 item-container-title has-sub-menu">
-                                    Categories
+                                    {{ __('admin.categories') }}
                                 </div>
                             </div>
                             <div class="col-12 px-0">
@@ -347,12 +347,12 @@
                                     <li><a href="{{ route('admin.categories.index') }}"
                                             style="font-size: 16px;"><span class="fal fa-eye px-2"
                                                 style="width: 28px;font-size: 15px;"></span>
-                                            Show Category
+                                            {{ __('admin.showCategory') }}
                                         </a></li>
                                     <li><a href="{{ route('admin.categories.create') }}"
                                             style="font-size: 16px;"><span class="fal fa-plus px-2"
                                                 style="width: 28px;font-size: 15px;"></span>
-                                            Add Category
+                                            {{ __('admin.addCategory') }}
                                         </a></li>
                                 </ul>
                             </div>
@@ -365,18 +365,18 @@
                                     <i class="fa-solid fa-cart-flatbed-boxes"></i>
                                 </div>
                                 <div style="width: calc(100% - 50px)" class="px-2 item-container-title has-sub-menu">
-                                    Products
+                                    {{ __('admin.products') }}
                                 </div>
                             </div>
                             <div class="col-12 px-0">
                                 <ul class="sub-item font-1" style="list-style:none;">
                                     <li><a href="{{ route('admin.products.index') }}" style="font-size: 16px;"><span
                                                 class="fal fa-eye px-2" style="width: 28px;font-size: 15px;"></span>
-                                            Show Products
+                                            {{ __('admin.showProducts') }}
                                         </a></li>
                                     <li><a href="{{ route('admin.products.create') }}" style="font-size: 16px;"><span
                                                 class="fal fa-plus px-2" style="width: 28px;font-size: 15px;"></span>
-                                            Add Products
+                                            {{ __('admin.addProducts') }}
                                         </a></li>
                                 </ul>
                             </div>
@@ -390,18 +390,18 @@
                                     <span class="fa-solid fa-cart-arrow-down"></span>
                                 </div>
                                 <div style="width: calc(100% - 50px)" class="px-2 item-container-title has-sub-menu">
-                                    Orders
+                                    {{ __('admin.orders') }}
                                 </div>
                             </div>
                             <div class="col-12 px-0">
                                 <ul class="sub-item font-1" style="list-style:none;">
                                     <li><a href="{{ route('admin.orders.index') }}" style="font-size: 16px;"><span
                                                 class="fal fa-eye px-2" style="width: 28px;font-size: 15px;"></span>
-                                            Show Orders
+                                            {{ __('admin.showOrders') }}
                                         </a></li>
                                     <li><a href="{{ route('admin.orders.create') }}" style="font-size: 16px;"><span
                                                 class="fal fa-plus px-2" style="width: 28px;font-size: 15px;"></span>
-                                            Create Offline Orders
+                                            {{ __('admin.createOfflineOrders') }}
                                         </a></li>
                                 </ul>
                             </div>
@@ -415,7 +415,7 @@
                                     <span class="fal fa-phone font-2"> </span>
                                 </div>
                                 <div style="width: calc(100% - 50px)" class="px-2 item-container-title">
-                                    Contacts
+                                    {{ __('admin.contacts') }}
                                     @php
                                         $contacts_count = \App\Models\Contact::where('status', 'PENDING')->count();
                                     @endphp
@@ -437,7 +437,7 @@
                                     <span class="fal fa-wrench font-2"> </span>
                                 </div>
                                 <div style="width: calc(100% - 50px)" class="px-2 item-container-title">
-                                    Settings
+                                    {{ __('admin.settings') }}
                                 </div>
                             </div>
                         </a>
@@ -449,7 +449,7 @@
                                 <span class="fal fa-sign-out-alt font-2"> </span>
                             </div>
                             <div style="width: calc(100% - 50px)" class="px-2 item-container-title">
-                                Logout
+                                {{ __('admin.logout') }}
                             </div>
                         </div>
                     </a>
@@ -478,10 +478,10 @@
                                 style="color: var(--color-2);transform: rotate(15deg)"></span>
                             <span
                                 style="position: absolute;min-width: 25px;min-height: 25px;
-                            @if ($unreadNotifications != 0) display: inline-block;
-                            @else
-                            display: none; @endif
-                            right: 0px;top: 0px;border-radius: 20px;background: #c00;color:#fff;font-size: 14px;"
+                                                                @if ($unreadNotifications != 0) display: inline-block;
+                                                                @else
+                                                                display: none; @endif
+                                                                right: 0px;top: 0px;border-radius: 20px;background: #c00;color:#fff;font-size: 14px;"
                                 class="text-center"
                                 id="dropdown-notifications-icon">{{ $unreadNotifications }}</span>
 
@@ -494,7 +494,7 @@
                             <div class="col-12 d-flex border-top">
                                 <a href="{{ route('admin.notifications.index') }}" class="d-block py-2 px-3 ">
                                     <div class="col-12 align-items-center">
-                                        <span class="fal fa-bells"></span> Show All Notifications
+                                        <span class="fal fa-bells"></span> {{ __('admin.showAllNotifications') }}
                                     </div>
                                 </a>
                             </div>
@@ -511,38 +511,45 @@
                         <ul class="dropdown-menu shadow border-0" aria-labelledby="dropdownMenuButton1"
                             style="top: -3px;">
                             <li><a class="dropdown-item font-1" href="/" target="_blank"><span
-                                        class="fal fa-desktop font-1"></span> VIEW WIBSITE</a></li>
+                                        class="fal fa-desktop font-1"></span> {{ __('admin.viewWebsite') }}</a></li>
                             <li><a class="dropdown-item font-1" href="{{ route('admin.profile.index') }}"><span
-                                        class="fal fa-user font-1"></span> MY PROFILE</a></li>
+                                        class="fal fa-user font-1"></span> {{ __('admin.myProfile') }}</a></li>
 
                             <li><a class="dropdown-item font-1" href="{{ route('admin.profile.edit') }}"><span
-                                        class="fal fa-edit font-1"></span> EDIT MY PROFILE</a></li>
+                                        class="fal fa-edit font-1"></span> {{ __('admin.editMyProfile') }}</a></li>
 
 
 
 
                             @can('hub-files-read')
                                 <li><a class="dropdown-item font-1" href="{{ route('admin.files.index') }}"><span
-                                            class="fal fa-file font-1"></span> FILES</a></li>
+                                            class="fal fa-file font-1"></span> {{ __('admin.files') }}</a></li>
                             @endcan
 
 
                             @can('traffics-read')
                                 <li><a class="dropdown-item font-1" href="{{ route('admin.traffics.index') }}"><span
-                                            class="fal fa-traffic-light font-1"></span> TRAFFICS</a></li>
+                                            class="fal fa-traffic-light font-1"></span> {{ __('admin.traffics') }}</a>
+                                </li>
                             @endcan
 
                             @can('error-reports-read')
                                 <li><a class="dropdown-item font-1"
                                         href="{{ route('admin.traffics.error-reports') }}"><span
-                                            class="fal fa-bug font-1"></span> ERROR REPORTS</a></li>
+                                            class="fal fa-bug font-1"></span> {{ __('admin.errorReports') }}</a></li>
                             @endcan
 
                             @foreach (LaravelLocalization::getSupportedLocales() as $localeCode => $properties)
                                 <li>
                                     <a class="dropdown-item font-1" rel="alternate" hreflang="{{ $localeCode }}"
                                         href="{{ LaravelLocalization::getLocalizedURL($localeCode, null, [], true) }}">
-                                        <span class="fal fa-globe font-1"></span>
+                                        @if ($localeCode == 'en')
+                                            <img src="{{ asset('flags/1x1/gb-eng.svg') }}" alt=""
+                                                style="width: 15px;">
+                                        @else
+                                            <img src="{{ asset('flags/1x1/it.svg') }}" alt=""
+                                                style="width: 15px;">
+                                        @endif
                                         {{ Str::upper($properties['native']) }}
                                     </a>
                                 </li>
@@ -556,7 +563,7 @@
                             </li>
                             <li><a class="dropdown-item font-1" href="#"
                                     onclick="document.getElementById('logout-form').submit();"><span
-                                        class="fal fa-sign-out-alt font-1"></span> LOGOUT</a></li>
+                                        class="fal fa-sign-out-alt font-1"></span> {{ __('admin.logout') }}</a></li>
                         </ul>
 
                     </div>

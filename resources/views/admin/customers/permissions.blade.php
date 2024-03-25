@@ -10,7 +10,7 @@
 
                     <div class="col-12 px-0">
                         <div class="col-12 px-3 py-3">
-                            <span class="fas fa-info-circle"></span> صلاحيات المستخدم
+                            <span class="fas fa-info-circle"></span> {{ __('admin.userPermissions') }}
                         </div>
                         <div class="col-12 divider" style="min-height: 2px;"></div>
                     </div>
@@ -19,11 +19,11 @@
                         <table class="table table-hover" style="width:400px">
                             <thead>
                                 <tr style="">
-                                    <th>الجدول</th>
-                                    <th style="width: 56px;">اضافة</th>
-                                    <th style="width: 56px;">عرض</th>
-                                    <th style="width: 56px;">تعديل</th>
-                                    <th style="width: 56px;">حذف</th>
+                                    <th>{{ __('admin.table') }}</th>
+                                    <th style="width: 56px;">{{ __('admin.add') }}</th>
+                                    <th style="width: 56px;">{{ __('admin.view') }}</th>
+                                    <th style="width: 56px;">{{ __('admin.edit') }}</th>
+                                    <th style="width: 56px;">{{ __('admin.delete') }}</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -35,14 +35,10 @@
                                         )->get();
                                     @endphp
                                     <tr>
-
-
-
                                         <td>{{ $permission->table }}</td>
 
                                         @if ($sub_permissions->where('name', $permission->table . '-create')->first())
                                             <td style="width: 56px;">
-
                                                 <div class="form-check form-switch">
                                                     <input class="form-check-input" type="checkbox"
                                                         id="{{ $permission->table . '-create' }}"
@@ -57,7 +53,6 @@
                                         @endif
                                         @if ($sub_permissions->where('name', $permission->table . '-read')->first())
                                             <td style="width: 56px;">
-
                                                 <div class="form-check form-switch">
                                                     <input class="form-check-input" type="checkbox"
                                                         id="{{ $permission->table . '-read' }}"
@@ -72,7 +67,6 @@
                                         @endif
                                         @if ($sub_permissions->where('name', $permission->table . '-update')->first())
                                             <td style="width: 56px;">
-
                                                 <div class="form-check form-switch">
                                                     <input class="form-check-input" type="checkbox"
                                                         id="{{ $permission->table . '-update' }}"
@@ -87,7 +81,6 @@
                                         @endif
                                         @if ($sub_permissions->where('name', $permission->table . '-delete')->first())
                                             <td style="width: 56px;">
-
                                                 <div class="form-check form-switch">
                                                     <input class="form-check-input" type="checkbox"
                                                         id="{{ $permission->table . '-delete' }}"
@@ -110,7 +103,7 @@
                 </div>
 
                 <div class="col-12 p-3">
-                    <button class="btn btn-success" id="submitEvaluation">حفظ</button>
+                    <button class="btn btn-success" id="submitEvaluation">{{ __('admin.save') }}</button>
                 </div>
             </form>
         </div>

@@ -271,7 +271,7 @@ label.error{
         text-shadow: none;
 }
 .fileuploader-popup-button[data-action="cancel"]:after{
-    content:'إغلاق';
+    content:'cancel';
     font-size: 13px!important
 }
 .fileuploader-popup-footer{
@@ -282,7 +282,7 @@ label.error{
         font-size: 0px!important
 }
 .fileuploader-popup .fileuploader-popup-tools button[data-action="remove"]:after{
-       content:' حذف';
+       content:' remove';
     font-size: 13px!important
 } 
 *[class^="fileuploader-icon-"]{

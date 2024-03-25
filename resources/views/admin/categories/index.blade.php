@@ -6,14 +6,14 @@
             <div class="col-12 px-0">
                 <div class="col-12 p-0 row">
                     <div class="col-12 col-lg-4 py-3 px-3">
-                        <span class="fas fa-tags"></span> Categories
+                        <span class="fas fa-tags"></span> {{ __('admin.categories') }}
                     </div>
                     <div class="col-12 col-lg-4 p-0">
                     </div>
                     <div class="col-12 col-lg-4 p-2 text-lg-end d-flex justify-content-end">
                         @can('categories-create')
                             <a href="{{ route('admin.categories.create') }}">
-                                <span class="btn btn-primary"><span class="fas fa-plus"></span> Add Category </span>
+                                <span class="btn btn-primary"><span class="fas fa-plus"></span> {{ __('admin.createCategory') }} </span>
                             </a>
                         @endcan
                     </div>
@@ -24,7 +24,7 @@
             <div class="col-12 py-2 px-2 row">
                 <div class="col-12 col-lg-4 p-2">
                     <form method="GET">
-                        <input type="text" name="q" class="form-control" placeholder="search ... "
+                        <input type="text" name="q" class="form-control" placeholder="{{ __('admin.search') }} ... "
                             value="{{ request()->get('q') }}">
                     </form>
                 </div>
@@ -37,9 +37,9 @@
                         <thead>
                             <tr>
                                 <th>#</th>
-                                <th>Image</th>
-                                <th>Name</th>
-                                <th>Control</th>
+                                <th>{{ __('admin.image') }}</th>
+                                <th>{{ __('admin.name') }}</th>
+                                <th>{{ __('admin.control') }}</th>
                             </tr>
                         </thead>
 
@@ -55,7 +55,7 @@
                                         @can('categories-update')
                                             <a href="{{ route('admin.categories.edit', $category) }}">
                                                 <span class="btn  btn-outline-success btn-sm font-1 mx-1">
-                                                    <span class="fas fa-wrench "></span> control
+                                                    <span class="fas fa-wrench "></span> {{ __('admin.control') }}
                                                 </span>
                                             </a>
                                         @endcan
@@ -63,8 +63,8 @@
                                             <form method="POST" action="{{ route('admin.categories.destroy', $category) }}"
                                                 class="d-inline-block">@csrf @method('DELETE')
                                                 <button class="btn  btn-outline-danger btn-sm font-1 mx-1"
-                                                    onclick="var result = confirm('Do you need delete it ?! ');if(result){}else{event.preventDefault()}">
-                                                    <span class="fas fa-trash "></span> delete
+                                                    onclick="var result = confirm('{{ __('admin.confirmDelete') }}');if(result){}else{event.preventDefault()}">
+                                                    <span class="fas fa-trash "></span> {{ __('admin.delete') }}
                                                 </button>
                                             </form>
                                         @endcan

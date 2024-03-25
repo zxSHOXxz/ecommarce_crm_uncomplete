@@ -3,9 +3,9 @@
     <div class="col-12 p-3">
         <!-- breadcrumb -->
         <x-bread-crumb :breads="[
-            ['url' => url('/admin'), 'title' => 'DASHBOARD', 'isactive' => false],
-            ['url' => route('admin.customers.index'), 'title' => 'Customers', 'isactive' => false],
-            ['url' => '#', 'title' => 'Add Customers', 'isactive' => true],
+            ['url' => url('/admin'), 'title' => __('admin.dashboard'), 'isactive' => false],
+            ['url' => route('admin.customers.index'), 'title' => __('admin.customers'), 'isactive' => false],
+            ['url' => '#', 'title' => __('admin.addCustomers'), 'isactive' => true],
         ]">
         </x-bread-crumb>
         <!-- /breadcrumb -->
@@ -19,7 +19,7 @@
                 <div class="col-12 col-lg-8 p-0 main-box">
                     <div class="col-12 px-0">
                         <div class="col-12 px-3 py-3">
-                            <span class="fas fa-info-circle"></span> Create New Customer
+                            <span class="fas fa-info-circle"></span> {{ __('admin.createNewCustomer') }}
                         </div>
                         <div class="col-12 divider" style="min-height: 2px;"></div>
                     </div>
@@ -28,7 +28,7 @@
 
                         <div class="col-12 col-lg-6 p-2">
                             <div class="col-12">
-                                Name
+                                {{ __('admin.name') }}
                             </div>
                             <div class="col-12 pt-3">
                                 <input type="text" name="name" required minlength="3" maxlength="190"
@@ -38,7 +38,7 @@
 
                         <div class="col-12 col-lg-6 p-2">
                             <div class="col-12">
-                                email
+                                {{ __('admin.email') }}
                             </div>
                             <div class="col-12 pt-3">
                                 <input type="email" name="email" class="form-control" value="{{ old('email') }}">
@@ -46,7 +46,7 @@
                         </div>
                         <div class="col-12 col-lg-6 p-2">
                             <div class="col-12">
-                                password
+                                {{ __('admin.password') }}
                             </div>
                             <div class="col-12 pt-3">
                                 <input type="password" name="password" class="form-control" required minlength="8">
@@ -55,7 +55,7 @@
 
                         <div class="col-12 col-lg-6 p-2">
                             <div class="col-12">
-                                Image
+                                {{ __('admin.image') }}
                             </div>
                             <div class="col-12 pt-3">
                                 <input type="file" name="avatar" class="form-control" accept="image/*">
@@ -64,7 +64,7 @@
 
                         <div class="col-12 col-lg-6 p-2">
                             <div class="col-12">
-                                Phone
+                                {{ __('admin.phone') }}
                             </div>
                             <div class="col-12 pt-3">
                                 <input type="text" name="phone" maxlength="190" class="form-control"
@@ -74,7 +74,7 @@
                         @if (auth()->user()->can('user-roles-update'))
                             <div class="col-12 col-lg-6 p-2">
                                 <div class="col-12">
-                                    Permission
+                                    {{ __('admin.permission') }}
                                 </div>
                                 <div class="col-12 pt-3">
                                     <select class="form-control select2-select" name="roles[]" multiple required>
@@ -87,18 +87,20 @@
                         @endif
                         <div class="col-12 col-lg-6 p-2">
                             <div class="col-12">
-                                Customer type
+                                {{ __('admin.customerType') }}
                             </div>
                             <div class="col-12 pt-3">
                                 <select class="form-control" name="customer_type">
-                                    <option @if (old('customer_type') == 'b2c') selected @endif value="b2c">B2C</option>
-                                    <option @if (old('customer_type') == 'b2b') selected @endif value="b2b">B2B</option>
+                                    <option @if (old('customer_type') == 'b2c') selected @endif value="b2c">
+                                        {{ __('admin.b2c') }}</option>
+                                    <option @if (old('customer_type') == 'b2b') selected @endif value="b2b">
+                                        {{ __('admin.b2b') }}</option>
                                 </select>
                             </div>
                         </div>
                         <div class="col-12 col-lg-6 p-2 b2b d-none">
                             <div class="col-12">
-                                Company name
+                                {{ __('admin.companyName') }}
                             </div>
                             <div class="col-12 pt-3">
                                 <input type="text" name="company_name" maxlength="190" class="form-control"
@@ -107,7 +109,7 @@
                         </div>
                         <div class="col-12 col-lg-6 p-2 b2b d-none">
                             <div class="col-12">
-                                Company address
+                                {{ __('admin.companyAddress') }}
                             </div>
                             <div class="col-12 pt-3">
                                 <input type="text" name="company_address" maxlength="190" class="form-control"
@@ -116,7 +118,7 @@
                         </div>
                         <div class="col-12 col-lg-6 p-2 b2b d-none">
                             <div class="col-12">
-                                Company country
+                                {{ __('admin.companyCountry') }}
                             </div>
                             <div class="col-12 pt-3">
                                 <input type="text" name="company_country" maxlength="190" class="form-control"
@@ -125,7 +127,7 @@
                         </div>
                         <div class="col-12 col-lg-6 p-2 b2b d-none">
                             <div class="col-12">
-                                Vat number
+                                {{ __('admin.vatNumber') }}
                             </div>
                             <div class="col-12 pt-3">
                                 <input type="text" name="vat_number" maxlength="190" class="form-control"
@@ -134,18 +136,20 @@
                         </div>
                         <div class="col-12 col-lg-6 p-2">
                             <div class="col-12">
-                                Blocked ?
+                                {{ __('admin.blocked') }}
                             </div>
                             <div class="col-12 pt-3">
                                 <select class="form-control" name="blocked">
-                                    <option @if (old('blocked') == '0') selected @endif value="0">No</option>
-                                    <option @if (old('blocked') == '1') selected @endif value="1">Yes</option>
+                                    <option @if (old('blocked') == '0') selected @endif value="0">
+                                        {{ __('admin.no') }}</option>
+                                    <option @if (old('blocked') == '1') selected @endif value="1">
+                                        {{ __('admin.yes') }}</option>
                                 </select>
                             </div>
                         </div>
                         <div class="col-12 col-lg-6 p-2">
                             <div class="col-12">
-                                Discreption
+                                {{ __('admin.description') }}
                             </div>
                             <div class="col-12 pt-3">
                                 <textarea name="bio" maxlength="5000" class="form-control" style="min-height:150px">{{ old('bio') }}</textarea>
@@ -156,7 +160,7 @@
                 </div>
 
                 <div class="col-12 p-3">
-                    <button class="btn btn-success" id="submitEvaluation">Save</button>
+                    <button class="btn btn-success" id="submitEvaluation">{{ __('admin.save') }}</button>
                 </div>
             </form>
         </div>

@@ -6,7 +6,7 @@
             <div class="col-12 px-0">
                 <div class="col-12 p-0 row">
                     <div class="col-12 col-lg-4 py-3 px-3">
-                        <span class="fas fa-files"></span> File Manager
+                        <span class="fas fa-files"></span> {{ __('admin.fileManager') }}
                     </div>
                     <div class="col-12 col-lg-4 p-0">
                     </div>
@@ -17,7 +17,7 @@
             <div class="col-12 py-2 px-2 row">
                 <div class="col-12 col-lg-4 p-2">
                     <form method="GET">
-                        <input type="text" name="q" class="form-control" placeholder="SEARCH ... "
+                        <input type="text" name="q" class="form-control" placeholder="{{ __('admin.search') }}"
                             value="{{ request()->get('q') }}">
                     </form>
                 </div>
@@ -30,10 +30,10 @@
                         <thead>
                             <tr>
                                 <th>#</th>
-                                <th> File </th>
-                                <th> Used in</th>
-                                <th> Update date</th>
-                                <th> Control </th>
+                                <th>{{ __('admin.file') }}</th>
+                                <th>{{ __('admin.usedIn') }}</th>
+                                <th>{{ __('admin.updateDate') }}</th>
+                                <th>{{ __('admin.control') }}</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -50,7 +50,7 @@
                                         @endif
                                         <div class="col-auto p-1">
                                             <a href="{{ $file->getUrl() }}" style="display: inline-block;" target="_blank">
-                                                <span class="fas fa-link mx-1"></span> LINK
+                                                <span class="fas fa-link mx-1"></span> {{ __('admin.link') }}
                                             </a>
                                             <br>
                                             @if ($file->views != 0)
@@ -58,7 +58,7 @@
                                                 <br>
                                             @endif
                                             @if ($file->last_access != null)
-                                                <span class="fas fa-clock mx-1"></span>LAST ACCESS
+                                                <span class="fas fa-clock mx-1"></span>{{ __('admin.lastAccess') }}
                                                 {{ \Carbon::parse($file->last_access)->diffForHumans() }}
                                                 <br>
                                             @endif
@@ -72,7 +72,7 @@
                                         @can('hub-files-read')
                                             <a href="{{ $file->getUrl() }}" target="_blank">
                                                 <span class="btn  btn-outline-success btn-sm font-1 mx-1 py-1 px-2">
-                                                    <span class="fas fa-eye "></span> SHOW
+                                                    <span class="fas fa-eye "></span> {{ __('admin.show') }}
                                                 </span>
                                             </a>
                                         @endcan
@@ -80,8 +80,8 @@
                                             <form method="POST" action="{{ route('admin.files.destroy', $file) }}"
                                                 class="d-inline-block">@csrf @method('DELETE')
                                                 <button class="btn  btn-outline-danger btn-sm font-1 mx-1 py-1 px-2"
-                                                    onclick="var result = confirm('ARE U SURE U NEED DELETE THIS');if(result){}else{event.preventDefault()}">
-                                                    <span class="fas fa-trash "></span> DELETE
+                                                    onclick="var result = confirm('{{ __('admin.confirmDelete') }}');if(result){}else{event.preventDefault()}">
+                                                    <span class="fas fa-trash "></span> {{ __('admin.delete') }}
                                                 </button>
                                             </form>
                                         @endcan

@@ -2,10 +2,11 @@
 
 namespace App\Http\Controllers\Backend;
 
-use App\Http\Controllers\Controller;
 use App\Models\Customer;
 use Illuminate\Http\Request;
 use Spatie\Permission\Models\Role;
+use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Hash;
 
 class BackendCustomerController extends Controller
 {
@@ -69,14 +70,17 @@ class BackendCustomerController extends Controller
             "company_country" => $request->company_country,
             "blocked" => $request->blocked,
             "email" => $request->email,
-            "password" => \Hash::make($request->password),
+            "password" => Hash::make($request->password),
         ]);
-        if (auth()->user()->can('customer-roles-update')) {
-            $request->validate([
-                'roles' => "required|array",
-                'roles.*' => "required|exists:roles,id",
-            ]);
-            $customer->syncRoles($request->roles);
+
+        foreach ($customer->roles as $role) {
+            if ($role->display_name == 'admin' || $role->display_name == 'superadmin') {
+                $request->validate([
+                    'roles' => "required|array",
+                    'roles.*' => "required|exists:roles,id",
+                ]);
+                $customer->syncRoles($request->roles);
+            }
         }
 
         if ($request->hasFile('avatar')) {
@@ -96,7 +100,7 @@ class BackendCustomerController extends Controller
      */
     public function show(Customer $customer)
     {
-        return view('admin.customers.show', compact('user'));
+        return view('admin.customers.show', compact('customer'));
     }
 
     /**
