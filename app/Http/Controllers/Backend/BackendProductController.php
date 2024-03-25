@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Backend;
 
 use App\Http\Controllers\Controller;
 use App\Models\Category;
+use App\Models\Order;
 use App\Models\Product;
 use App\Models\ProductDetails;
 use Illuminate\Http\Request;
@@ -13,9 +14,9 @@ class BackendProductController extends Controller
 
     public function __construct()
     {
-        $this->middleware('can:products-create', ['only' => ['create','store']]);
+        $this->middleware('can:products-create', ['only' => ['create', 'store']]);
         $this->middleware('can:products-read',   ['only' => ['show', 'index']]);
-        $this->middleware('can:products-update',   ['only' => ['edit','update']]);
+        $this->middleware('can:products-update',   ['only' => ['edit', 'update']]);
         $this->middleware('can:products-delete',   ['only' => ['delete']]);
     }
 
@@ -201,6 +202,12 @@ class BackendProductController extends Controller
      */
     public function destroy(Product $product)
     {
+        $orders = Order::where('product_id', $product->id)->get();
+        foreach ($orders as $key => $value) {
+            $value->update('status', 'faild');
+        }
+        $product_details = ProductDetails::findOrFaild($product->id);
+        $product_details->delete();
         $product->delete();
         toastr()->success('product deleted successfully', 'The operation is successful');
         return redirect()->route('admin.products.index');

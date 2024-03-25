@@ -538,6 +538,16 @@
                                             class="fal fa-bug font-1"></span> ERROR REPORTS</a></li>
                             @endcan
 
+                            @foreach (LaravelLocalization::getSupportedLocales() as $localeCode => $properties)
+                                <li>
+                                    <a class="dropdown-item font-1" rel="alternate" hreflang="{{ $localeCode }}"
+                                        href="{{ LaravelLocalization::getLocalizedURL($localeCode, null, [], true) }}">
+                                        <span class="fal fa-globe font-1"></span>
+                                        {{ Str::upper($properties['native']) }}
+                                    </a>
+                                </li>
+                            @endforeach
+
 
 
 

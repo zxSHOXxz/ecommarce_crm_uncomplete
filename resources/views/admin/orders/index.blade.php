@@ -61,21 +61,21 @@
                             @foreach ($orders as $order)
                                 <tr>
                                     <td>{{ $order->id }}</td>
-                                    <td>{{ $order->customer->name }}</td>
-                                    <td>{{ $order->total_amount }}</td>
+                                    <td>{{ $order->customer->name ?? 'null' }}</td>
+                                    <td>{{ $order->total_amount ?? 'null' }}</td>
                                     <td>
                                         @foreach ($order->products as $productDetail)
                                             <h6>
                                                 <span
-                                                    class="badge bg-dark text-white rounded-pill">{{ Str::upper($productDetail->product->title) }}
+                                                    class="badge bg-dark text-white rounded-pill">{{ Str::upper($productDetail->product->title ?? 'null') }}
                                                 </span>
                                                 <span class="badge bg-danger text-white rounded-pill">
-                                                    {{ $productDetail->quantity }}
+                                                    {{ $productDetail->quantity ?? 'null' }}
                                                 </span>
                                             </h6>
                                         @endforeach
                                     </td>
-                                    <td>{{ $order->status }}</td>
+                                    <td>{{ $order->status ?? 'null' }}</td>
                                     <td>
                                         <form method="POST" action="{{ route('admin.orders.update', $order) }}">
                                             @csrf

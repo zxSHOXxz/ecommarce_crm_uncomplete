@@ -30,7 +30,7 @@
                             @csrf
 
                             <div class="col-12 p-0 mb-5 mt-3" style="width: 550px;max-width: 100%;margin: 0px auto;">
-                                <h3 class="mb-4 font-4">{{ Str::upper(__('lang.login')) }}</h3>
+                                <h3 class="mb-4 font-4">{{ Str::upper(__('auth.login')) }}</h3>
 
                             </div>
 
@@ -78,12 +78,6 @@
                                     </span>
                                 @enderror
                             </div>
-
-
-
-
-
-
                             <div class="col-12 p-0 row d-flex align-items-center">
                                 <div class="col-12 col-lg-6 p-2">
                                     <div class="form-group row ">
@@ -95,7 +89,7 @@
 
                                             <label class="form-check-label" for="remember"
                                                 style="position:relative;cursor: pointer;">
-                                                {{ Str::upper(__('lang.remember_me')) }}
+                                                {{ Str::upper(__('auth.remember')) }}
                                             </label>
                                         </div>
                                     </div>
@@ -104,7 +98,7 @@
                                     <div class="form-group row mb-0 ">
                                         <div class="col-12 p-0 d-flex justify-content-lg-end">
                                             <button type="submit" class="btn btn-success font-1">
-                                                {{ Str::upper(__('lang.login')) }}
+                                                {{ Str::upper(__('auth.login')) }}
                                             </button>
                                         </div>
                                     </div>

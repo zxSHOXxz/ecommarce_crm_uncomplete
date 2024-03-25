@@ -1,6 +1,8 @@
 <?php
 
-/*
+return [
+
+    /*
 |--------------------------------------------------------------------------
 | Authentication Language Lines
 |--------------------------------------------------------------------------
@@ -11,8 +13,10 @@
 |
 */
 
-return [
-    'failed'   => 'بيانات الاعتماد هذه غير متطابقة مع البيانات المسجلة لدينا.',
-    'password' => 'كلمة المرور المستخدمة غير صحيحة.',
-    'throttle' => 'عدد كبير جدا من محاولات الدخول. يرجى المحاولة مرة أخرى بعد :seconds ثانية.',
+    'login' => 'tentativi',
+    'failed' => 'Credenziali non valide.',
+    'password' => 'La password inserita non è corretta.',
+    'throttle' => 'Troppi tentativi di accesso. Riprova tra :seconds secondi.',
+    'remember' => 'remember me',
+
 ];
