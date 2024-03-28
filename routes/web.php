@@ -1,7 +1,6 @@
 <?php
 # Backend Controllers
 
-use Illuminate\Support\Facades\View;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Backend\BackendFileController;
@@ -24,6 +23,8 @@ use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
 use App\Http\Controllers\Backend\BackendRedirectionController;
 use App\Http\Controllers\Backend\BackendContactReplyController;
 use App\Http\Controllers\Backend\BackendNotificationsController;
+use App\Models\User;
+use App\Notifications\CreateCustomerNotification;
 
 # Frontend Controllers
 
@@ -44,6 +45,23 @@ Route::group([
 
         Route::get('/home', [BackendAdminController::class, 'index'])->name('index');
         Route::middleware('auth')->group(function () {
+
+
+            // Route::get('testNotify', function () {
+
+            //     User::where('email', env("ADMIN_MAIL"))->first()->notify(
+            //         new \App\Notifications\CreateCustomerNotification(
+            //             'New Customer Created',
+            //             'Hello',
+            //             ['database', 'broadcast'],
+            //             'A new customer has been created'
+            //         )
+            //     );
+
+            //     dd('notification sent');
+            // });
+
+
             Route::resource('files', BackendFileController::class);
             Route::post('contacts/resolve', [BackendContactController::class, 'resolve']);
             Route::resource('contacts', BackendContactController::class);

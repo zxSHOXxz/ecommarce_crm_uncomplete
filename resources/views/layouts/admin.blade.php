@@ -581,6 +581,7 @@
                         style="position:fixed;width: 120px;max-width: 80%;margin-top: -60px;" id="loading-image">
                 </div>
 
+
                 @yield('content')
             </div>
         </div>
@@ -591,7 +592,38 @@
     @include('layouts.scripts')
     @yield('scripts')
     @stack('scripts')
+    <link href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/toastify-js/1.12.0/toastify.js"
+        integrity="sha512-ZHzbWDQKpcZxIT9l5KhcnwQTidZFzwK/c7gpUUsFvGjEsxPusdUCyFxjjpc7e/Wj7vLhfMujNx7COwOmzbn+2w=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://js.pusher.com/8.2.0/pusher.min.js"></script>
+    <script>
+        // Enable pusher logging - don't include this in production
+        Pusher.logToConsole = true;
 
+        var pusher = new Pusher('a78629fb47c1698dccf1', {
+            cluster: 'eu'
+        });
+
+        var channel = pusher.subscribe('my-channel');
+        channel.bind('Illuminate\\Notifications\\Events\\BroadcastNotificationCreated', function(data) {
+            var toastHTML = '<img src="' + data.image + '" width="50" height="50" />' +
+                '<h4>' + data.greeting + '</h4>' +
+                '<h5>' + data.subject + '</h5>' +
+                '<p>' + data.content + '</p>';
+
+            Toastify({
+                text: toastHTML,
+                duration: 3200,
+                gravity: "bottom", // Display the toast from the top
+                position: "right", // Display the toast on the right
+                backgroundColor: "linear-gradient(to right, #00b09b, #96c93d)", // Set the background color
+                stopOnFocus: true, // Stops the toast from auto hiding on focus
+                className: "info-toast",
+                escapeMarkup: false,
+            }).showToast();
+        });
+    </script>
 </body>
 
 </html>

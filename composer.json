@@ -27,6 +27,7 @@
         "nafezly/payments": "dev-master",
         "nesbot/carbon": "^2.54",
         "nwidart/laravel-modules": "^9.0",
+        "pusher/pusher-php-server": "^7.2",
         "spatie/laravel-medialibrary": "^10.0.0",
         "spatie/laravel-permission": "^5.7",
         "spatie/laravel-translatable": "^6.1",
