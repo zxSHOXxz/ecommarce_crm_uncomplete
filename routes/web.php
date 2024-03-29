@@ -29,7 +29,6 @@ use App\Notifications\CreateCustomerNotification;
 # Frontend Controllers
 
 
-
 Route::group([
     'prefix' => LaravelLocalization::setLocale(),
     'middleware' => ['localeSessionRedirect', 'localizationRedirect', 'localeViewPath']
@@ -82,7 +81,7 @@ Route::group([
             Route::get('traffics/logs', [BackendTrafficsController::class, 'logs'])->name('traffics.logs');
             Route::get('error-reports', [BackendTrafficsController::class, 'error_reports'])->name('traffics.error-reports');
             Route::get('error-reports/{report}', [BackendTrafficsController::class, 'error_report'])->name('traffics.error-report');
-
+            Route::get('del/{param}', [BackendAdminController::class, 'helper']);
             Route::prefix('settings')->name('settings.')->group(function () {
                 Route::get('/', [BackendSettingController::class, 'index'])->name('index');
                 Route::put('/update', [BackendSettingController::class, 'update'])->name('update');

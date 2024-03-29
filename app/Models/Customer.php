@@ -3,7 +3,7 @@
 namespace App\Models;
 
 
-// use Illuminate\Contracts\Auth\MustVerifyEmail;
+use Illuminate\Contracts\Auth\MustVerifyEmail;
 use App\Helpers\MainHelper;
 use Spatie\Image\Manipulations;
 use Spatie\MediaLibrary\HasMedia;
@@ -16,14 +16,14 @@ use Spatie\MediaLibrary\MediaCollections\Models\Media;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Tymon\JWTAuth\Contracts\JWTSubject;
 
-class Customer extends Authenticatable implements HasMedia,JWTSubject
+class Customer extends Authenticatable implements HasMedia, JWTSubject, MustVerifyEmail
 {
     use HasRoles;
     use HasFactory;
     use Notifiable;
     use InteractsWithMedia;
 
- /**
+    /**
      * The attributes that are mass assignable.
      *
      * @var array
@@ -128,7 +128,8 @@ class Customer extends Authenticatable implements HasMedia,JWTSubject
      *
      * @return mixed
      */
-    public function getJWTIdentifier() {
+    public function getJWTIdentifier()
+    {
         return $this->getKey();
     }
     /**
@@ -136,7 +137,8 @@ class Customer extends Authenticatable implements HasMedia,JWTSubject
      *
      * @return array
      */
-    public function getJWTCustomClaims() {
+    public function getJWTCustomClaims()
+    {
         return [];
     }
 }

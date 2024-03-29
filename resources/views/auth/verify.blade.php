@@ -46,7 +46,7 @@
                         <br>
                         {{auth()->user()->email}}
                         <br>
-                        <form class="d-block mt-3" method="POST" action="{{ route('verification.resend') }}">
+                        <form class="d-block mt-3" method="POST" action="{{ route('verification.send') }}">
                             @csrf
                             <button type="submit" class="btn btn-success py-2 px-3 m-0 align-baseline">{{ __('click here to request another') }}</button>
                         </form>

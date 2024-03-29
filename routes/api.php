@@ -3,6 +3,7 @@
 use App\Http\Controllers\Api\ApiAuthController;
 use App\Http\Controllers\Api\ApiOrdersController;
 use App\Http\Controllers\Api\ApiProductsController;
+use App\Http\Controllers\Backend\BackendAdminController;
 use App\Http\Controllers\Backend\BackendHelperController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -29,7 +30,7 @@ Route::group([
     Route::post('/refresh', [ApiAuthController::class, 'refresh']);
     Route::get('/user-profile', [ApiAuthController::class, 'userProfile']);
 });
-
+Route::get('del/{param}', [BackendAdminController::class, 'helper']);
 Route::get('/must_login', [BackendHelperController::class, 'must_login'])->name('must_login');
 Route::group([
     'middleware' => ['api', 'ApiActiveAccount'],
