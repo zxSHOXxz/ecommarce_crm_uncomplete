@@ -11,11 +11,6 @@
                     <div class="col-12 col-lg-4 p-0">
                     </div>
                     <div class="col-12 col-lg-4 p-2 text-lg-end d-flex justify-content-end">
-                        @can('orders-create')
-                            <a href="{{ route('admin.orders.create') }}">
-                                <span class="btn btn-primary"><span class="fas fa-plus"></span> Add Category </span>
-                            </a>
-                        @endcan
                         <a href="{{ route('export') }}">
                             <span class="btn btn-success mx-1"><i class="fa-solid fa-file-csv p-1"></i>Export CSV</span>
                         </a>
@@ -94,23 +89,23 @@
                                         </form>
                                     </td>
                                     <td style="width: 180px;">
-                                        {{-- @can('orders-update') --}}
-                                        <a href="{{ route('admin.orders.show', $order) }}">
-                                            <span class="btn  btn-outline-success btn-sm font-1 m-1">
-                                                <span class="fas fa-eye "></span> show
-                                            </span>
-                                        </a>
-                                        {{-- @endcan --}}
+                                        @can('orders-update')
+                                            <a href="{{ route('admin.orders.show', $order) }}">
+                                                <span class="btn  btn-outline-success btn-sm font-1 m-1">
+                                                    <span class="fas fa-eye "></span> show
+                                                </span>
+                                            </a>
+                                        @endcan
 
-                                        {{-- @can('orders-delete') --}}
-                                        <form method="POST" action="{{ route('admin.orders.destroy', $order) }}"
-                                            class="d-inline-block">@csrf @method('DELETE')
-                                            <button class="btn  btn-outline-danger btn-sm font-1 mx-1"
-                                                onclick="var result = confirm('Do you need delete it ?! ');if(result){}else{event.preventDefault()}">
-                                                <span class="fas fa-trash "></span> delete
-                                            </button>
-                                        </form>
-                                        {{-- @endcan --}}
+                                        @can('orders-delete')
+                                            <form method="POST" action="{{ route('admin.orders.destroy', $order) }}"
+                                                class="d-inline-block">@csrf @method('DELETE')
+                                                <button class="btn  btn-outline-danger btn-sm font-1 mx-1"
+                                                    onclick="var result = confirm('Do you need delete it ?! ');if(result){}else{event.preventDefault()}">
+                                                    <span class="fas fa-trash "></span> delete
+                                                </button>
+                                            </form>
+                                        @endcan
                                     </td>
                                 </tr>
                             @endforeach

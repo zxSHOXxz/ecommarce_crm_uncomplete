@@ -25,10 +25,10 @@ class BackendOrderController extends Controller
 
     public function __construct()
     {
-         $this->middleware('can:orders-create', ['only' => ['create','store','uploadFileXml']]);
-         $this->middleware('can:orders-read',   ['only' => ['show', 'index','export','xml']]);
-         $this->middleware('can:orders-update',   ['only' => ['edit','update']]);
-         $this->middleware('can:orders-delete',   ['only' => ['delete']]);
+        $this->middleware('can:orders-create', ['only' => ['create', 'store', 'uploadFileXml']]);
+        $this->middleware('can:orders-read',   ['only' => ['show', 'index', 'export', 'xml']]);
+        $this->middleware('can:orders-update',   ['only' => ['edit', 'update']]);
+        $this->middleware('can:orders-delete',   ['only' => ['delete']]);
     }
 
 

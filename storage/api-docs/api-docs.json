@@ -1,0 +1,592 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "My Awesome API",
+        "description": "A brief description of your API",
+        "contact": {
+            "email": "youremail@example.com"
+        },
+        "license": {
+            "name": "Apache 2.0",
+            "url": "https://www.apache.org/licenses/LICENSE-2.0"
+        },
+        "version": "1.0.0"
+    },
+    "paths": {
+        "/api/auth/login": {
+            "post": {
+                "tags": [
+                    "Authentication"
+                ],
+                "summary": "Login a user",
+                "operationId": "9fc3b2710611af42af6efc73a81e9d97",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "email": {
+                                        "description": "User email",
+                                        "type": "string",
+                                        "format": "email"
+                                    },
+                                    "password": {
+                                        "description": "User password",
+                                        "type": "string"
+                                    }
+                                },
+                                "type": "object",
+                                "example": {
+                                    "email": "user@example.com",
+                                    "password": "password"
+                                }
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Login successful",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "access_token": {
+                                            "description": "JWT access token",
+                                            "type": "string"
+                                        },
+                                        "token_type": {
+                                            "description": "Bearer",
+                                            "type": "string"
+                                        },
+                                        "expires_in": {
+                                            "description": "Token expiration time in seconds",
+                                            "type": "integer"
+                                        },
+                                        "user": {
+                                            "$ref": "#/components/schemas/User"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "error": {
+                                            "description": "Unauthorized",
+                                            "type": "string"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/register": {
+            "post": {
+                "tags": [
+                    "Authentication"
+                ],
+                "summary": "Register a new customer",
+                "operationId": "7b7d9f145c573b3f98473d32bde11f94",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "name": {
+                                        "description": "Customer name",
+                                        "type": "string"
+                                    },
+                                    "phone": {
+                                        "description": "Customer phone",
+                                        "type": "string"
+                                    },
+                                    "bio": {
+                                        "description": "Customer bio",
+                                        "type": "string"
+                                    },
+                                    "customer_type": {
+                                        "description": "Customer type (b2b or b2c)",
+                                        "type": "string"
+                                    },
+                                    "company_name": {
+                                        "description": "Company name (required for b2b)",
+                                        "type": "string",
+                                        "example": "ABC Company"
+                                    },
+                                    "company_address": {
+                                        "description": "Company address (required for b2b)",
+                                        "type": "string",
+                                        "example": "123 Street, City, Country"
+                                    },
+                                    "vat_number": {
+                                        "description": "VAT number (required for b2b)",
+                                        "type": "string",
+                                        "example": "123456789"
+                                    },
+                                    "company_country": {
+                                        "description": "Company country (required for b2b)",
+                                        "type": "string",
+                                        "example": "Country"
+                                    },
+                                    "email": {
+                                        "description": "Customer email",
+                                        "type": "string",
+                                        "format": "email"
+                                    },
+                                    "password": {
+                                        "description": "Customer password",
+                                        "type": "string"
+                                    }
+                                },
+                                "type": "object",
+                                "example": {
+                                    "name": "John Doe",
+                                    "phone": "1234567890",
+                                    "bio": "Some bio",
+                                    "customer_type": "b2b",
+                                    "company_name": "ABC Company",
+                                    "company_address": "123 Street, City, Country",
+                                    "vat_number": "123456789",
+                                    "company_country": "Country",
+                                    "email": "user@example.com",
+                                    "password": "password"
+                                }
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "Customer successfully registered",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "description": "Success message",
+                                            "type": "string"
+                                        },
+                                        "User": {
+                                            "$ref": "#/components/schemas/User"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Bad request",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "description": "Error message",
+                                            "type": "string"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/auth/logout": {
+            "post": {
+                "tags": [
+                    "Authentication"
+                ],
+                "summary": "Logout a user",
+                "operationId": "c307e1ba7f866da611b3fff937f12b11",
+                "responses": {
+                    "200": {
+                        "description": "Customer successfully signed out",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "description": "Success message",
+                                            "type": "string"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            }
+        },
+        "/api/auth/refresh": {
+            "post": {
+                "tags": [
+                    "Authentication"
+                ],
+                "summary": "Refresh JWT token",
+                "operationId": "8fe3108e87f20013f356031c4f52f4a0",
+                "responses": {
+                    "200": {
+                        "description": "Token refreshed successfully",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "access_token": {
+                                            "description": "JWT access token",
+                                            "type": "string"
+                                        },
+                                        "token_type": {
+                                            "description": "Bearer",
+                                            "type": "string"
+                                        },
+                                        "expires_in": {
+                                            "description": "Token expiration time in seconds",
+                                            "type": "integer"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            }
+        },
+        "/api/auth/user-profile": {
+            "get": {
+                "tags": [
+                    "Authentication"
+                ],
+                "summary": "Get user profile",
+                "operationId": "74885f52afa4c517de05b3cebfc2a4d1",
+                "responses": {
+                    "200": {
+                        "description": "User profile fetched successfully",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/User"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            }
+        },
+        "/api/orders/create": {
+            "post": {
+                "tags": [
+                    "Orders"
+                ],
+                "summary": "Store a new order",
+                "operationId": "0a55eae597010e97416640176e1f52f5",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "required": [
+                                    "products"
+                                ],
+                                "properties": {
+                                    "products": {
+                                        "type": "array",
+                                        "items": {
+                                            "required": [
+                                                "id",
+                                                "quantity"
+                                            ],
+                                            "properties": {
+                                                "id": {
+                                                    "description": "Product ID",
+                                                    "type": "integer"
+                                                },
+                                                "quantity": {
+                                                    "description": "Product quantity",
+                                                    "type": "integer"
+                                                }
+                                            },
+                                            "type": "object"
+                                        }
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Successful operation",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "description": "URL to redirect for payment",
+                                    "type": "string"
+                                }
+                            }
+                        }
+                    },
+                    "422": {
+                        "description": "Unprocessable Entity",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "error": {
+                                            "description": "Error message",
+                                            "type": "string"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            }
+        },
+        "/api/products/get": {
+            "get": {
+                "tags": [
+                    "Products"
+                ],
+                "summary": "Get all products",
+                "description": "Retrieve all products with their details and category",
+                "operationId": "0a931b06559c9a756829ea35930912cc",
+                "responses": {
+                    "200": {
+                        "description": "Successful operation",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "products": {
+                                            "type": "arrayOfJson"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "components": {
+        "schemas": {
+            "User": {
+                "title": "Customer",
+                "required": [
+                    "id",
+                    "name",
+                    "email",
+                    "avatar",
+                    "phone",
+                    "bio",
+                    "customer_type"
+                ],
+                "properties": {
+                    "id": {
+                        "description": "Customer ID",
+                        "type": "integer",
+                        "format": "int64"
+                    },
+                    "name": {
+                        "description": "Customer name",
+                        "type": "string"
+                    },
+                    "email": {
+                        "description": "Customer email",
+                        "type": "string",
+                        "format": "email"
+                    },
+                    "avatar": {
+                        "description": "Customer image",
+                        "type": "string"
+                    },
+                    "phone": {
+                        "description": "Customer phone",
+                        "type": "string"
+                    },
+                    "bio": {
+                        "description": "Customer bio",
+                        "type": "string"
+                    },
+                    "customer_type": {
+                        "description": "Customer type (b2b or b2c)",
+                        "type": "string",
+                        "example": "b2b"
+                    },
+                    "company_name": {
+                        "description": "Company name (required for b2b)",
+                        "type": "string",
+                        "example": "ABC Company"
+                    },
+                    "company_address": {
+                        "description": "Company address (required for b2b)",
+                        "type": "string",
+                        "example": "123 Street, City, Country"
+                    },
+                    "vat_number": {
+                        "description": "VAT number (required for b2b)",
+                        "type": "string",
+                        "example": "123456789"
+                    },
+                    "company_country": {
+                        "description": "Company country (required for b2b)",
+                        "type": "string",
+                        "example": "Country"
+                    }
+                },
+                "type": "object"
+            },
+            "Order": {
+                "title": "Order",
+                "required": [
+                    "id",
+                    "customer_id",
+                    "total_amount",
+                    "status",
+                    "products"
+                ],
+                "properties": {
+                    "id": {
+                        "description": "Order ID",
+                        "type": "integer",
+                        "format": "int64"
+                    },
+                    "customer_id": {
+                        "description": "Customer ID",
+                        "type": "integer",
+                        "format": "int64"
+                    },
+                    "total_amount": {
+                        "description": "Total amount of the order",
+                        "type": "number",
+                        "format": "float"
+                    },
+                    "status": {
+                        "description": "Order status",
+                        "type": "string"
+                    },
+                    "products": {
+                        "type": "array",
+                        "items": {
+                            "required": [
+                                "id",
+                                "quantity"
+                            ],
+                            "properties": {
+                                "id": {
+                                    "description": "Product ID",
+                                    "type": "integer"
+                                },
+                                "quantity": {
+                                    "description": "Product quantity",
+                                    "type": "integer"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                },
+                "type": "object"
+            },
+            "Prduct": {
+                "title": "Product",
+                "required": [
+                    "id",
+                    "discount",
+                    "price",
+                    "code",
+                    "status",
+                    "quantity",
+                    "description",
+                    "title"
+                ],
+                "properties": {
+                    "id": {
+                        "description": "Product ID",
+                        "type": "integer",
+                        "format": "int64"
+                    },
+                    "title": {
+                        "description": "Product title",
+                        "type": "string",
+                        "format": "string"
+                    },
+                    "description": {
+                        "description": "Product description",
+                        "type": "string",
+                        "format": "string"
+                    },
+                    "quantity": {
+                        "description": "Product quantity",
+                        "type": "integer",
+                        "format": "int64"
+                    },
+                    "status": {
+                        "description": "Product status",
+                        "type": "string",
+                        "format": "string"
+                    },
+                    "discount": {
+                        "description": "Product discount",
+                        "type": "integer",
+                        "format": "int64"
+                    },
+                    "price": {
+                        "description": "Product price",
+                        "type": "integer",
+                        "format": "int64"
+                    },
+                    "code": {
+                        "description": "Product code",
+                        "type": "integer",
+                        "format": "int64"
+                    }
+                },
+                "type": "object"
+            }
+        }
+    }
+}

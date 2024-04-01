@@ -13,17 +13,29 @@ class Contact extends Model implements HasMedia
 {
     use InteractsWithMedia;
     use HasFactory;
-    public $guarded=['id','created_at','updated_at'];
-    public function user(){
+
+    public $guarded = ['id', 'created_at', 'updated_at'];
+
+    public function user()
+    {
         return $this->belongsTo(\App\Models\User::class);
     }
+
+    public function customer()
+    {
+        return $this->belongsTo(\App\Models\Customer::class);
+    }
+
     public function replies()
     {
         return $this->hasMany(\App\Models\ContactReply::class)/*->orderBy('id','DESC')*/;
     }
-    public function files(){
-        return $this->hasMany(\App\Models\HubFile::class,'type_id')->where('type','CONTACT');
+
+    public function files()
+    {
+        return $this->hasMany(\App\Models\HubFile::class, 'type_id')->where('type', 'CONTACT');
     }
+
     public function registerMediaConversions(Media $media = null): void
     {
         $this
@@ -42,7 +54,7 @@ class Contact extends Model implements HasMedia
 
         $this
             ->addMediaConversion('original')
-            ->fit(Manipulations::FIT_MAX, 1200,10000)
+            ->fit(Manipulations::FIT_MAX, 1200, 10000)
             ->width(1200)
             ->format(Manipulations::FORMAT_WEBP)
             ->nonQueued();

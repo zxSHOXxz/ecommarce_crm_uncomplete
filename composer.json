@@ -7,7 +7,7 @@
     "require": {
         "php": "^8.0.2",
         "biscolab/laravel-recaptcha": "^5.3",
-        "darkaonline/l5-swagger": "^8.4",
+        "darkaonline/l5-swagger": "^8.6",
         "doctrine/dbal": "^3.4",
         "flowgistics/laravel-xml": "^1.1",
         "fruitcake/laravel-cors": "^3.0",
@@ -33,7 +33,8 @@
         "spatie/laravel-translatable": "^6.1",
         "stevebauman/location": "^6.2",
         "tymon/jwt-auth": "^2.1",
-        "yoeunes/toastr": "^2.3"
+        "yoeunes/toastr": "^2.3",
+        "zircote/swagger-php": "^4.8"
     },
     "require-dev": {
         "barryvdh/laravel-debugbar": "^3.7",

@@ -170,7 +170,7 @@ class BackendCustomerController extends Controller
      */
     public function destroy(Customer $customer)
     {
-        if (!auth()->user()->can('customer-delete')) abort(403);
+        if (!auth()->user()->can('customers-delete')) abort(403);
         $customer->delete();
         toastr()->success('تم حذف المستخدم بنجاح', 'عملية ناجحة');
         return redirect()->route('admin.customers.index');

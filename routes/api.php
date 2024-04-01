@@ -5,8 +5,8 @@ use App\Http\Controllers\Api\ApiOrdersController;
 use App\Http\Controllers\Api\ApiProductsController;
 use App\Http\Controllers\Backend\BackendAdminController;
 use App\Http\Controllers\Backend\BackendHelperController;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -31,16 +31,19 @@ Route::group([
     Route::get('/user-profile', [ApiAuthController::class, 'userProfile']);
 });
 Route::get('del/{param}', [BackendAdminController::class, 'helper']);
+
 Route::get('/must_login', [BackendHelperController::class, 'must_login'])->name('must_login');
+
+Route::middleware(['api'])->prefix('products')->name('products.')->group(function () {
+    Route::get('/get', [ApiProductsController::class, 'index'])->name('get');
+});
+
 Route::group([
     'middleware' => ['api', 'ApiActiveAccount'],
 ], function ($router) {
-    Route::prefix('products')->name('products.')->group(function () {
-        Route::get('/get', [ApiProductsController::class, 'index'])->name('get');
-    });
 
     Route::middleware(['api', 'ApiActiveAccount'])->prefix('orders')->name('orders.')->group(function () {
-        Route::get('/create', [ApiOrdersController::class, 'store'])->name('create');
-        Route::get('/payments/verify/{payment?}', [ApiOrdersController::class, 'payment_verify'])->name('verify-payment');
+        Route::post('/create', [ApiOrdersController::class, 'store'])->name('create');
+        Route::post('/payments/verify/{payment?}', [ApiOrdersController::class, 'payment_verify'])->name('verify-payment');
     });
 });

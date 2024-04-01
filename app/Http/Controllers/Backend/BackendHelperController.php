@@ -2,16 +2,47 @@
 
 namespace App\Http\Controllers\Backend;
 
-use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
+use App\Models\Contact;
+use App\Models\ContactReply;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Validator;
 use Nafezly\Payments\Classes\PayPalPayment;
 
 class BackendHelperController extends Controller
 {
-    public function must_login(){
+    public function must_login()
+    {
         return response()->json([
             'message' => 'You Must Login'
         ]);
+    }
+
+    public function contact_store(Request $request)
+    {
+        $validator = Validator::make($request->all(), [
+            'user_id' => 'required',
+            'status' => 'required',
+            'has_support_reply' => 'required',
+            'message' => 'required',
+            'phone' => 'required',
+            'email' => 'required',
+            'name' => 'required',
+        ]);
+        if ($validator->fails()) {
+            return response()->json(['status' => 'failed', 'erorrs' => $validator->getMessageBag()]);
+        }
+        $contact = Contact::create([
+            'name' => $request->name,
+            'email' => $request->email,
+            'user_id' => $request->user_id,
+            'status' => $request->status,
+            'phone' => $request->phone,
+            'message' => $request->message,
+            'has_support_reply' => $request->has_support_reply,
+        ]);
+        return response()->json(['status' => 'success', 'data' => $contact]);
     }
 
     public function payment_verify(Request $request)
@@ -28,7 +59,7 @@ class BackendHelperController extends Controller
             'validation' => "image",
             'path_to_save' => '/uploads/images/',
             'type' => 'IMAGE',
-            'user_id' => \Auth::user()->id,
+            'user_id' => Auth::user()->id,
             'resize' => [500, 1000],
             'small_path' => 'small/',
             'visibility' => 'PUBLIC',
@@ -66,7 +97,7 @@ class BackendHelperController extends Controller
             'validation' => "image",
             'path_to_save' => '/uploads/uploads/',
             'type' => 'uploads',
-            'user_id' => \Auth::user()->id,
+            'user_id' => Auth::user()->id,
             'resize' => [500, 3000],
             'small_path' => 'small/',
             'visibility' => 'PUBLIC',

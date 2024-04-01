@@ -8,28 +8,42 @@ use Illuminate\Foundation\Validation\ValidatesRequests;
 use Illuminate\Routing\Controller as BaseController;
 
 
+/**
+ * @OA\Info(
+ *    title="My Awesome API",
+ *    version="1.0.0",
+ *    description="A brief description of your API",
+ *    @OA\Contact(
+ *       email="youremail@example.com"
+ *    ),
+ *    @OA\License(
+ *       name="Apache 2.0",
+ *       url="https://www.apache.org/licenses/LICENSE-2.0"
+ *    )
+ * )
+ */
+
 class Controller extends BaseController
 {
     use AuthorizesRequests, DispatchesJobs, ValidatesRequests;
-    public function store_file($options=[])
-    {   
+    public function store_file($options = [])
+    {
         $options = array_merge([
             //'source'=>"",
-            'validation'=>"file",
-            'path_to_save'=>'/uploads/files/',
-            'type'=>'',
-            'type_id'=>"",
-            'user_id'=>NULL,
-            'resize'=>[400,15000],
-            'small_path'=>'small/',
-            'visibility'=>'PUBLIC',
-            'file_system_type'=>env('FILESYSTEM_DRIVER','s3'),
-            'optimize'=>false,
-            'new_extension'=>"",
-            'used_at'=>NULL,
-        ],$options);
+            'validation' => "file",
+            'path_to_save' => '/uploads/files/',
+            'type' => '',
+            'type_id' => "",
+            'user_id' => NULL,
+            'resize' => [400, 15000],
+            'small_path' => 'small/',
+            'visibility' => 'PUBLIC',
+            'file_system_type' => env('FILESYSTEM_DRIVER', 's3'),
+            'optimize' => false,
+            'new_extension' => "",
+            'used_at' => NULL,
+        ], $options);
         return \App\Helpers\UploadFilesHelper::store_file($options);
- 
     }
     public function remove_hub_file($name)
     {
@@ -37,6 +51,6 @@ class Controller extends BaseController
     }
     public function use_hub_file($name, $type_id, $user_id = null, $is_main = 0)
     {
-        return \App\Helpers\UploadFilesHelper::use_hub_file($name, $type_id, $user_id , $is_main);
+        return \App\Helpers\UploadFilesHelper::use_hub_file($name, $type_id, $user_id, $is_main);
     }
 }

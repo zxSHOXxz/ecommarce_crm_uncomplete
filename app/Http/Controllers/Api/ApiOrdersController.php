@@ -12,13 +12,123 @@ use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\Validator;
 use Nafezly\Payments\Classes\PayPalPayment;
 
+
+/**
+ * @OA\Schema(
+ *     schema="Order",
+ *     title="Order",
+ *     required={"id", "customer_id", "total_amount", "status","products"},
+ *     @OA\Property(
+ *         property="id",
+ *         type="integer",
+ *         format="int64",
+ *         description="Order ID"
+ *     ),
+ *     @OA\Property(
+ *         property="customer_id",
+ *         type="integer",
+ *         format="int64",
+ *         description="Customer ID"
+ *     ),
+ *     @OA\Property(
+ *         property="total_amount",
+ *         type="number",
+ *         format="float",
+ *         description="Total amount of the order"
+ *     ),
+ *     @OA\Property(
+ *         property="status",
+ *         type="string",
+ *         description="Order status"
+ *     ),
+ *      @OA\Property(
+ *                 property="products",
+ *                 type="array",
+ *                 @OA\Items(
+ *                     required={"id", "quantity"},
+ *                     @OA\Property(
+ *                         property="id",
+ *                         type="integer",
+ *                         description="Product ID"
+ *                     ),
+ *                     @OA\Property(
+ *                         property="quantity",
+ *                         type="integer",
+ *                         description="Product quantity"
+ *                     )
+ *                 )
+ *             )
+ * )
+ */
+
 class ApiOrdersController extends Controller
 {
+    /**
+     * Create a new ApiOrdersController instance.
+     *
+     * @return void
+     */
     public function __construct()
     {
         $this->middleware('auth:api');
         // $this->middleware('can:orders-create', ['only' => ['store']]);
     }
+
+    /**
+     * @OA\Post(
+     *     path="/api/orders/create",
+     *     summary="Store a new order",
+     *     tags={"Orders"},
+     *     security={{"bearerAuth": {}}},
+     *     @OA\RequestBody(
+     *         required=true,
+     *         @OA\JsonContent(
+     *             required={"products"},
+     *             @OA\Property(
+     *                 property="products",
+     *                 type="array",
+     *                 @OA\Items(
+     *                     required={"id", "quantity"},
+     *                     @OA\Property(
+     *                         property="id",
+     *                         type="integer",
+     *                         description="Product ID"
+     *                     ),
+     *                     @OA\Property(
+     *                         property="quantity",
+     *                         type="integer",
+     *                         description="Product quantity"
+     *                     )
+     *                 )
+     *             )
+     *         )
+     *     ),
+     *     @OA\Response(
+     *         response=200,
+     *         description="Successful operation",
+     *         @OA\JsonContent(
+     *             type="string",
+     *             description="URL to redirect for payment"
+     *         )
+     *     ),
+     *     @OA\Response(
+     *         response=422,
+     *         description="Unprocessable Entity",
+     *         @OA\JsonContent(
+     *             type="object",
+     *             @OA\Property(
+     *                 property="error",
+     *                 type="string",
+     *                 description="Error message"
+     *             )
+     *         )
+     *     ),
+     *     security={{"bearerAuth": {}}}
+     * )
+     *
+     */
+
+
 
     public function payment_verify(Request $request)
     {
@@ -43,16 +153,12 @@ class ApiOrdersController extends Controller
             'response' => $response
         ]);
     }
-
     public function store(Request $request)
     {
-        // Validation rules
         $validator = Validator::make($request->all(), [
-            'status' => 'nullable|string',
             'products.*.id' => 'required|integer',
             'products.*.quantity' => 'required|integer',
         ], [
-            'status.string' => 'The status field must be a string.',
             'products.*.id.required' => 'The product ID field is required for all products.',
             'products.*.id.integer' => 'The product ID must be an integer for all products.',
             'products.*.quantity.required' => 'The quantity field is required for all products.',

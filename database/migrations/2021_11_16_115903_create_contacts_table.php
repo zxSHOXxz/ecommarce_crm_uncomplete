@@ -17,6 +17,8 @@ class CreateContactsTable extends Migration
             $table->bigIncrements('id');
             $table->unsignedBigInteger('user_id')->nullable();
             $table->foreign('user_id')->references('id')->on("users")->onDelete('cascade');
+            $table->unsignedBigInteger('customer_id')->nullable();
+            $table->foreign('customer_id')->references('id')->on("customers")->onDelete('cascade');
             $table->text('name')->nullable();
             $table->text('email')->nullable();
             $table->text('phone')->nullable();

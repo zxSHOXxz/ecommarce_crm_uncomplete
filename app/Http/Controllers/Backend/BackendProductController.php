@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Backend;
 use App\Http\Controllers\Controller;
 use App\Models\Category;
 use App\Models\Order;
+use App\Models\OrderProductDetails;
 use App\Models\Product;
 use App\Models\ProductDetails;
 use Illuminate\Http\Request;
@@ -202,11 +203,12 @@ class BackendProductController extends Controller
      */
     public function destroy(Product $product)
     {
-        $orders = Order::where('product_id', $product->id)->get();
-        foreach ($orders as $key => $value) {
-            $value->update('status', 'faild');
+        $orders = OrderProductDetails::where('product_id', $product->id)->get();
+        foreach ($orders as $order_product_details) {
+            $order = Order::findOrFail($order_product_details->order_id);
+            $order->update('status', 'faild');
         }
-        $product_details = ProductDetails::findOrFaild($product->id);
+        $product_details = ProductDetails::where('product_id', $product->id)->first();
         $product_details->delete();
         $product->delete();
         toastr()->success('product deleted successfully', 'The operation is successful');
