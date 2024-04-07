@@ -64,7 +64,7 @@ class User extends Authenticatable implements HasMedia, JWTSubject
         if ($this->avatar == null)
             return env('DEFAULT_IMAGE_AVATAR');
         else
-            return env("STORAGE_URL") . '/' . \MainHelper::get_conversion($this->avatar, $type);
+            return env("STORAGE_URL") . '/' . \App\Helpers\MainHelper::get_conversion($this->avatar, $type);
     }
 
     public function scopeWithoutTimestamps()
@@ -115,7 +115,7 @@ class User extends Authenticatable implements HasMedia, JWTSubject
 
     public function is_online()
     {
-        if ($this->last_activity < \Carbon::now()->subMinutes(10)->format('Y-m-d H:i:s'))
+        if ($this->last_activity < \Carbon\Carbon::now()->subMinutes(10)->format('Y-m-d H:i:s'))
             return 0;
         return 1;
         //return $this->last_activity;

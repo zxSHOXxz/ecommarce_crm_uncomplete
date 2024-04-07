@@ -20,25 +20,25 @@
                     <table class="table table-bordered table-striped rounded table-hover">
                         <tbody>
                             <tr>
-                                <td>البريد الإلكتروني</td>
+                                <td> {{ trans('admin.email') }} </td>
                                 <td>{{ auth()->user()->email }}</td>
                             </tr>
                             <tr>
-                                <td>الهاتف</td>
+                                <td>{{ trans('admin.phone') }}</td>
                                 <td>
                                     @if (auth()->user()->phone == null)
-                                        لا يوجد
+                                        null
                                     @else
                                         {{ auth()->user()->phone }}
                                     @endif
                                 </td>
                             </tr>
                             <tr>
-                                <td>نوع الحساب</td>
-                                <td>{{ auth()->user()->power }}</td>
+                                <td>account type</td>
+                                <td>{{ auth()->user()->customer_type ?? null }}</td>
                             </tr>
                             <tr>
-                                <td>فعال</td>
+                                <td>Active</td>
                                 <td>
                                     @if (!auth()->user()->blocked)
                                         <span class="fas fa-check-circle text-success"></span>
@@ -48,17 +48,17 @@
 
                                 </td>
                             <tr>
-                                <td>نبذة</td>
+                                <td>bio</td>
                                 <td>
                                     {{ auth()->user()->bio }}
                                 </td>
                             </tr>
 
                             <tr>
-                                <td>تحكم</td>
+                                <td>control</td>
                                 <td><a href="{{ route('admin.profile.edit') }}"
                                         class="rounded-0 btn btn-success btn-sm border"><span class="fal fa-wrench"></span>
-                                        تعديل</a></td>
+                                        edit</a></td>
                             </tr>
 
 

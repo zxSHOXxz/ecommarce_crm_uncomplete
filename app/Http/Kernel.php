@@ -39,7 +39,7 @@ class Kernel extends HttpKernel
             \Illuminate\View\Middleware\ShareErrorsFromSession::class,
             \App\Http\Middleware\VerifyCsrfToken::class,
             \Illuminate\Routing\Middleware\SubstituteBindings::class,
-            \App\Http\Middleware\RateLimit::class,
+            // \App\Http\Middleware\RateLimit::class,
             // \App\Http\Middleware\RedirectLinks::class,
         ],
 
@@ -71,7 +71,7 @@ class Kernel extends HttpKernel
         'ActiveAccount' => \App\Http\Middleware\ActiveAccount::class,
         'ApiActiveAccount' => \App\Http\Middleware\ApiActiveAccount::class,
 
-        'RateLimit' => \App\Http\Middleware\RateLimit::class,
+        // 'RateLimit' => \App\Http\Middleware\RateLimit::class,
         //'CheckRole' => \App\Http\Middleware\CheckRole::class,
         'localize'                => \Mcamara\LaravelLocalization\Middleware\LaravelLocalizationRoutes::class,
         'localizationRedirect'    => \Mcamara\LaravelLocalization\Middleware\LaravelLocalizationRedirectFilter::class,

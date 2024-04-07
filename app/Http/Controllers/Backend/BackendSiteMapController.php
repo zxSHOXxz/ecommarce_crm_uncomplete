@@ -5,12 +5,13 @@ namespace App\Http\Controllers\Backend;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use DateTime;
+
 class BackendSiteMapController extends Controller
 {
-    public $items_per_page =  5000 ;
+    public $items_per_page =  5000;
     public $data;
     public $custom_links;
- 
+
     // public function __construct()
     // {
     //     // $this->custom_links= [
@@ -46,7 +47,7 @@ class BackendSiteMapController extends Controller
     //     foreach($items as $item){
     //         $url='<url><loc>'.str_replace('&','-',route($route,$item)).'</loc><priority>1.0</priority><lastmod>'.gmdate(DateTime::W3C, strtotime($item->updated_at)).'</lastmod></url>';
     //         array_push($urls,$url);
-    //     } 
+    //     }
     //     $urls=implode('',$urls);
     //     return response('<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">'.$urls.'</urlset>', 200, [
     //         'Content-Type' => 'application/xml'
@@ -59,7 +60,7 @@ class BackendSiteMapController extends Controller
     //             $url='<sitemap><loc>'.env("APP_URL").'/sitemaps/'.$item['name'].'/'.$i.'/sitemap.xml</loc></sitemap>';
     //             array_push($urls,$url);
     //         }
-    //     } 
+    //     }
     //     array_push($urls , '<sitemap><loc>'.env('APP_URL').'/sitemaps/links'.'</loc></sitemap>');
     //     $urls=implode('',$urls);
 
@@ -72,7 +73,7 @@ class BackendSiteMapController extends Controller
     //     foreach($this->custom_links as $custom_link){
     //         $url='<url><loc>'.$custom_link.'</loc><priority>1.0</priority><lastmod>'.gmdate(DateTime::W3C, strtotime(date('Y-m-d'))).'</lastmod></url>';
     //         array_push($urls,$url);
-    //     } 
+    //     }
     //     $urls=implode('',$urls);
     //     return response('<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">'.$urls.'</urlset>', 200, [
     //         'Content-Type' => 'application/xml'

@@ -43,7 +43,7 @@
                         <thead>
                             <tr>
                                 <th>#</th>
-                                <th>customer id</th>
+                                <th>customer</th>
                                 <th>total amount</th>
                                 <th>products</th>
                                 <th>status</th>

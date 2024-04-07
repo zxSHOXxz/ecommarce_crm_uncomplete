@@ -92,13 +92,13 @@
                 }
             }
         },
-        "/api/register": {
+        "/api/auth/register": {
             "post": {
                 "tags": [
                     "Authentication"
                 ],
                 "summary": "Register a new customer",
-                "operationId": "7b7d9f145c573b3f98473d32bde11f94",
+                "operationId": "41e19a2fac6a7a92cb178ce900aa07ad",
                 "requestBody": {
                     "required": true,
                     "content": {

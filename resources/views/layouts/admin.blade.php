@@ -533,18 +533,6 @@
                             @endcan
 
 
-                            @can('traffics-read')
-                                <li><a class="dropdown-item font-1" href="{{ route('admin.traffics.index') }}"><span
-                                            class="fal fa-traffic-light font-1"></span> {{ __('admin.traffics') }}</a>
-                                </li>
-                            @endcan
-
-                            @can('error-reports-read')
-                                <li><a class="dropdown-item font-1"
-                                        href="{{ route('admin.traffics.error-reports') }}"><span
-                                            class="fal fa-bug font-1"></span> {{ __('admin.errorReports') }}</a></li>
-                            @endcan
-
                             @foreach (LaravelLocalization::getSupportedLocales() as $localeCode => $properties)
                                 <li>
                                     <a class="dropdown-item font-1" rel="alternate" hreflang="{{ $localeCode }}"
