@@ -1,22 +1,24 @@
 <!doctype html>
 <html lang="ar" dir="rtl">
+
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="csrf-token" content="{{ csrf_token() }}">  
+    <meta name="csrf-token" content="{{ csrf_token() }}">
     @include('seo.index')
-    
-    
 
 
-    {!!$settings['header_code']!!}
+
+
+    {!! $settings['header_code'] !!}
     @livewireStyles
-    @if(auth()->check())
+    @if (auth()->check())
         @php
-        if(session('seen_notifications')==null)
-            session(['seen_notifications'=>0]);
-        $notifications=auth()->user()->notifications()->orderBy('created_at','DESC')->limit(50)->get();
-        $unreadNotifications=auth()->user()->unreadNotifications()->count();
+            if (session('seen_notifications') == null) {
+                session(['seen_notifications' => 0]);
+            }
+            $notifications = auth()->user()->notifications()->orderBy('created_at', 'DESC')->limit(50)->get();
+            $unreadNotifications = auth()->user()->unreadNotifications()->count();
         @endphp
     @endif
     @vite('resources/css/app.css')
@@ -29,10 +31,11 @@
             --font-2: #555555;
             --border-color: #dddddd;
             --main-color: #0194fe;
-            --main-color-rgb: 1,148,254;
+            --main-color-rgb: 1, 148, 254;
             --main-color-flexable: #0194fe;
             --scroll-bar-color: #d1d1d1;
         }
+
         body.night {
             --bg-main: #1c222b;
             --bg-second: #131923;
@@ -40,14 +43,14 @@
             --font-2: #e3e3e3;
             --border-color: #33343b;
             --main-color: #0194fe;
-            --main-color-rgb: 1,148,254;
+            --main-color-rgb: 1, 148, 254;
             --main-color-flexable: #15202b;
             --scroll-bar-color: #505050;
         }
-        
     </style>
     @yield('styles')
 </head>
+
 <body style="background:#eef4f5;margin-top: 65px;" class="body">
     <style type="text/css">
         #toast-container>div {
@@ -57,7 +60,9 @@
     @yield('after-body')
     <div id="app">
         {{-- <div class="page-loader"></div> --}}
-        <div id="body-overlay"onclick="document.getElementById('aside-menu').classList.toggle('active');document.getElementById('body-overlay').classList.toggle('active');"></div>
+        <div
+            id="body-overlay"onclick="document.getElementById('aside-menu').classList.toggle('active');document.getElementById('body-overlay').classList.toggle('active');">
+        </div>
         {{-- <x-navbar /> --}}
         <main class="p-0 font-2">
             @yield('content')
@@ -97,11 +102,11 @@
             $('.notifications-container').empty();
             $('.notifications-container').append(msg.response);
             $('.notifications-container a').on('click', function() { window.location.href = $(this).attr('href'); });
-        } 
+        }
         function get_notifications() {
             $.ajax({
                 method: "GET",
-                url: "{{route('admin.notifications.ajax')}}", 
+                url: "{{route('admin.notifications.ajax')}}",
                 success: function(data, textStatus, xhr) {
 
                     favicon.badge(data.notifications.response.count_unseen_notifications);
@@ -109,10 +114,10 @@
                     if (data.alert) {
                         var audio = new Audio('{{asset("/sounds/notification.wav")}}');
                         audio.play();
-                    }  
-                    append_notification_notifications(data.notifications.response); 
+                    }
+                    append_notification_notifications(data.notifications.response);
                     if (data.notifications.response.count_unseen_notifications > 0) {
-                        $('title').text('(' + parseInt(data.notifications.response.count_unseen_notifications) + ')' + " " +  
+                        $('title').text('(' + parseInt(data.notifications.response.count_unseen_notifications) + ')' + " " +
                         get_website_title());
 
                     } else {
@@ -120,24 +125,24 @@
                     }
                 }
             });
-        } 
+        }
         window.focused = 25000;
         window.onfocus = function() {
-            get_notifications(); 
+            get_notifications();
             window.focused = 25000;
         };
         window.onblur = function() {
             window.focused = 60000;
-        }; 
+        };
         function get_nots() {
-            setTimeout(function() { 
+            setTimeout(function() {
                 get_notifications();
                 get_nots();
             }, window.focused);
         }
         get_nots();
 
-        @if($unreadNotifications!=session('seen_notifications') && $unreadNotifications!=0)
+        @if ($unreadNotifications != session('seen_notifications') && $unreadNotifications != 0)
             @php
             session(['seen_notifications'=>$unreadNotifications]);
             @endphp
@@ -149,4 +154,5 @@
     @yield('scripts')
     {{-- {!!$settings['footer_code']!!} --}}
 </body>
+
 </html>

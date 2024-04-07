@@ -74,10 +74,6 @@ class Customer extends Authenticatable implements HasMedia, JWTSubject, MustVeri
         $this->timestamps = false;
         return $this;
     }
-    public function contacts()
-    {
-        return $this->hasMany(\App\Models\Contact::class);
-    }
     public function traffics()
     {
         return $this->hasMany(\App\Models\RateLimit::class);

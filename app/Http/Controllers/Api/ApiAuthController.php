@@ -173,7 +173,7 @@ class ApiAuthController extends Controller
 
     /**
      * @OA\Post(
-     *     path="/api/register",
+     *     path="/api/auth/register",
      *     summary="Register a new customer",
      *     tags={"Authentication"},
      *     @OA\RequestBody(

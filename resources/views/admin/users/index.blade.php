@@ -46,9 +46,6 @@
                                 <th>نشط</th>
                                 <th>الاسم</th>
                                 <th>البريد</th>
-                                @if (auth()->user()->can('contacts-read'))
-                                    <th>التذاكر</th>
-                                @endif
                                 @if (auth()->user()->can('traffics-read'))
                                     <th>الترافيك</th>
                                 @endif
@@ -64,11 +61,6 @@
                                     <td>{{ \Carbon::parse($user->last_activity)->diffForHumans() }}</td>
                                     <td>{{ $user->name }}</td>
                                     <td>{{ $user->email }}</td>
-                                    @if (auth()->user()->can('contacts-read'))
-                                        <td><a
-                                                href="{{ route('admin.contacts.index', ['user_id' => $user->id]) }}">{{ $user->contacts_count ?? null }}</a>
-                                        </td>
-                                    @endif
                                     @if (auth()->user()->can('traffics-read'))
                                         <td><a
                                                 href="{{ route('admin.traffics.logs', ['user_id' => $user->id]) }}">{{ $user->logs_count ?? null }}</a>
@@ -96,7 +88,7 @@
 
 
 
-                                        @can('notifications-create')
+                                        {{-- @can('notifications-create')
                                             <a href="{{ route('admin.notifications.index', ['user_id' => $user->id]) }}">
                                                 <span class="btn  btn-outline-primary btn-sm font-small mx-1">
                                                     <span class="far fa-bells"></span> الاشعارات
@@ -107,7 +99,7 @@
                                                     <span class="far fa-bell"></span>
                                                 </span>
                                             </a>
-                                        @endcan
+                                        @endcan --}}
 
                                         @can('user-roles-update')
                                             <a href="{{ route('admin.users.roles.index', $user) }}">

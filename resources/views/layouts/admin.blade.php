@@ -7,8 +7,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     @vite('resources/css/dashboard.css')
     <link rel="stylesheet" href="{{ asset('css/dir-ltr.css') }}">
-
-
     <style type="text/css">
         html {
             --background-0: #eef4f5;
@@ -265,170 +263,181 @@
                             </div>
                         </div>
                     </a>
+                    @if (Auth::guard('customer')->user() != null)
+                        @can('orders-read', 'App\\Models\Customer')
+                            <a href="{{ route('admin.customer_orders') }}" class="col-12 px-0">
+                                <div class="col-12 item-container px-0 d-flex ">
+                                    <div style="width: 50px" class="px-3 text-center">
+                                        <span class="fa-solid fa-cart-arrow-down"></span>
+                                    </div>
+                                    <div style="width: calc(100% - 50px)" class="px-2 item-container-title">
+                                        {{ __('admin.orders') }}
+                                    </div>
+                                </div>
+                            </a>
+                        @endcan
+                    @endif
+                    @if (Auth::guard('web')->user() != null)
+                        @can('roles-read')
+                            <a href="{{ route('admin.roles.index') }}" class="col-12 px-0">
+                                <div class="col-12 item-container px-0 d-flex ">
+                                    <div style="width: 50px" class="px-3 text-center">
+                                        <span class="fal fa-key font-2"> </span>
+                                    </div>
+                                    <div style="width: calc(100% - 50px)" class="px-2 item-container-title">
+                                        {{ __('admin.permissions') }}
+                                    </div>
+                                </div>
+                            </a>
+                        @endcan
 
+                        @can('users-read')
+                            <a href="{{ route('admin.users.index') }}" class="col-12 px-0">
+                                <div class="col-12 item-container px-0 d-flex ">
+                                    <div style="width: 50px" class="px-3 text-center">
+                                        <span class="fal fa-user font-2"> </span>
+                                    </div>
+                                    <div style="width: calc(100% - 50px)" class="px-2 item-container-title">
+                                        {{ __('admin.admin') }}
+                                    </div>
+                                </div>
+                            </a>
+                        @endcan
 
-                    @can('roles-read')
-                        <a href="{{ route('admin.roles.index') }}" class="col-12 px-0">
-                            <div class="col-12 item-container px-0 d-flex ">
-                                <div style="width: 50px" class="px-3 text-center">
-                                    <span class="fal fa-key font-2"> </span>
-                                </div>
-                                <div style="width: calc(100% - 50px)" class="px-2 item-container-title">
-                                    {{ __('admin.permissions') }}
-                                </div>
-                            </div>
-                        </a>
-                    @endcan
-                    @can('users-read')
-                        <a href="{{ route('admin.users.index') }}" class="col-12 px-0">
-                            <div class="col-12 item-container px-0 d-flex ">
-                                <div style="width: 50px" class="px-3 text-center">
-                                    <span class="fal fa-user font-2"> </span>
-                                </div>
-                                <div style="width: calc(100% - 50px)" class="px-2 item-container-title">
-                                    {{ __('admin.admin') }}
-                                </div>
-                            </div>
-                        </a>
-                    @endcan
-                    <style>
-                        .item-container .item-container-title.has-sub-menu:after {
-                            content: "\f107";
-                            font-family: "Font Awesome 5 Pro";
-                            width: 20px;
-                            height: 20px;
-                            display: flex;
-                            left: 85%;
-                            top: 4px;
-                            position: absolute;
-                            align-items: center;
-                            justify-content: center;
-                            justify-items: center;
-                            font-size: 12px
-                        }
-                    </style>
-                    <div class="col-12 px-0" style="cursor: pointer;">
-                        <div class="col-12 item px-0 d-flex row ">
-                            <div class="col-12 d-flex px-0 item-container">
-                                <div style="width: 50px" class="px-3 text-center">
-                                    <span class="fal fa-users font-2"> </span>
-                                </div>
-                                <div style="width: calc(100% - 50px)" class="px-2 item-container-title has-sub-menu">
-                                    {{ __('admin.customers') }}
+                        <style>
+                            .item-container .item-container-title.has-sub-menu:after {
+                                content: "\f107";
+                                font-family: "Font Awesome 5 Pro";
+                                width: 20px;
+                                height: 20px;
+                                display: flex;
+                                left: 85%;
+                                top: 4px;
+                                position: absolute;
+                                align-items: center;
+                                justify-content: center;
+                                justify-items: center;
+                                font-size: 12px
+                            }
+                        </style>
+                        @can('customers-read')
+                            <div class="col-12 px-0" style="cursor: pointer;">
+                                <div class="col-12 item px-0 d-flex row ">
+                                    <div class="col-12 d-flex px-0 item-container">
+                                        <div style="width: 50px" class="px-3 text-center">
+                                            <span class="fal fa-users font-2"> </span>
+                                        </div>
+                                        <div style="width: calc(100% - 50px)"
+                                            class="px-2 item-container-title has-sub-menu">
+                                            {{ __('admin.customers') }}
+                                        </div>
+                                    </div>
+                                    <div class="col-12 px-0">
+                                        <ul class="sub-item font-1" style="list-style:none;">
+                                            <li><a href="{{ route('admin.customers.index') }}"
+                                                    style="font-size: 16px;"><span class="fal fa-eye px-2"
+                                                        style="width: 28px;font-size: 15px;"></span>
+                                                    {{ __('admin.showCustomers') }}
+                                                </a></li>
+                                            <li><a href="{{ route('admin.customers.create') }}"
+                                                    style="font-size: 16px;"><span class="fal fa-plus px-2"
+                                                        style="width: 28px;font-size: 15px;"></span>
+                                                    {{ __('admin.addCustomers') }}
+                                                </a></li>
+                                        </ul>
+                                    </div>
                                 </div>
                             </div>
-                            <div class="col-12 px-0">
-                                <ul class="sub-item font-1" style="list-style:none;">
-                                    <li><a href="{{ route('admin.customers.index') }}" style="font-size: 16px;"><span
-                                                class="fal fa-eye px-2" style="width: 28px;font-size: 15px;"></span>
-                                            {{ __('admin.showCustomers') }}
-                                        </a></li>
-                                    <li><a href="{{ route('admin.customers.create') }}" style="font-size: 16px;"><span
-                                                class="fal fa-plus px-2" style="width: 28px;font-size: 15px;"></span>
-                                            {{ __('admin.addCustomers') }}
-                                        </a></li>
-                                </ul>
+                        @endcan
+                        @can('categories-read')
+                            <div class="col-12 px-0" style="cursor: pointer;">
+                                <div class="col-12 item px-0 d-flex row ">
+                                    <div class="col-12 d-flex px-0 item-container">
+                                        <div style="width: 50px" class="px-3 text-center">
+                                            <span class="fal fa-tags font-2"> </span>
+                                        </div>
+                                        <div style="width: calc(100% - 50px)"
+                                            class="px-2 item-container-title has-sub-menu">
+                                            {{ __('admin.categories') }}
+                                        </div>
+                                    </div>
+                                    <div class="col-12 px-0">
+                                        <ul class="sub-item font-1" style="list-style:none;">
+                                            <li><a href="{{ route('admin.categories.index') }}"
+                                                    style="font-size: 16px;"><span class="fal fa-eye px-2"
+                                                        style="width: 28px;font-size: 15px;"></span>
+                                                    {{ __('admin.showCategory') }}
+                                                </a></li>
+                                            <li><a href="{{ route('admin.categories.create') }}"
+                                                    style="font-size: 16px;"><span class="fal fa-plus px-2"
+                                                        style="width: 28px;font-size: 15px;"></span>
+                                                    {{ __('admin.addCategory') }}
+                                                </a></li>
+                                        </ul>
+                                    </div>
+                                </div>
                             </div>
-                        </div>
-                    </div>
+                        @endcan
+                        @can('products-read')
+                            <div class="col-12 px-0" style="cursor: pointer;">
+                                <div class="col-12 item px-0 d-flex row ">
+                                    <div class="col-12 d-flex px-0 item-container">
+                                        <div style="width: 50px" class="px-3 text-center">
+                                            <i class="fa-solid fa-cart-flatbed-boxes"></i>
+                                        </div>
+                                        <div style="width: calc(100% - 50px)"
+                                            class="px-2 item-container-title has-sub-menu">
+                                            {{ __('admin.products') }}
+                                        </div>
+                                    </div>
+                                    <div class="col-12 px-0">
+                                        <ul class="sub-item font-1" style="list-style:none;">
+                                            <li><a href="{{ route('admin.products.index') }}"
+                                                    style="font-size: 16px;"><span class="fal fa-eye px-2"
+                                                        style="width: 28px;font-size: 15px;"></span>
+                                                    {{ __('admin.showProducts') }}
+                                                </a></li>
+                                            <li><a href="{{ route('admin.products.create') }}"
+                                                    style="font-size: 16px;"><span class="fal fa-plus px-2"
+                                                        style="width: 28px;font-size: 15px;"></span>
+                                                    {{ __('admin.addProducts') }}
+                                                </a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        @endcan
 
-                    <div class="col-12 px-0" style="cursor: pointer;">
-                        <div class="col-12 item px-0 d-flex row ">
-                            <div class="col-12 d-flex px-0 item-container">
-                                <div style="width: 50px" class="px-3 text-center">
-                                    <span class="fal fa-tags font-2"> </span>
-                                </div>
-                                <div style="width: calc(100% - 50px)" class="px-2 item-container-title has-sub-menu">
-                                    {{ __('admin.categories') }}
-                                </div>
-                            </div>
-                            <div class="col-12 px-0">
-                                <ul class="sub-item font-1" style="list-style:none;">
-                                    <li><a href="{{ route('admin.categories.index') }}"
-                                            style="font-size: 16px;"><span class="fal fa-eye px-2"
-                                                style="width: 28px;font-size: 15px;"></span>
-                                            {{ __('admin.showCategory') }}
-                                        </a></li>
-                                    <li><a href="{{ route('admin.categories.create') }}"
-                                            style="font-size: 16px;"><span class="fal fa-plus px-2"
-                                                style="width: 28px;font-size: 15px;"></span>
-                                            {{ __('admin.addCategory') }}
-                                        </a></li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-12 px-0" style="cursor: pointer;">
-                        <div class="col-12 item px-0 d-flex row ">
-                            <div class="col-12 d-flex px-0 item-container">
-                                <div style="width: 50px" class="px-3 text-center">
-                                    <i class="fa-solid fa-cart-flatbed-boxes"></i>
-                                </div>
-                                <div style="width: calc(100% - 50px)" class="px-2 item-container-title has-sub-menu">
-                                    {{ __('admin.products') }}
+                        @can('orders-read')
+                            <div class="col-12 px-0" style="cursor: pointer;">
+                                <div class="col-12 item px-0 d-flex row ">
+                                    <div class="col-12 d-flex px-0 item-container">
+                                        <div style="width: 50px" class="px-3 text-center">
+                                            <span class="fa-solid fa-cart-arrow-down"></span>
+                                        </div>
+                                        <div style="width: calc(100% - 50px)"
+                                            class="px-2 item-container-title has-sub-menu">
+                                            {{ __('admin.orders') }}
+                                        </div>
+                                    </div>
+                                    <div class="col-12 px-0">
+                                        <ul class="sub-item font-1" style="list-style:none;">
+                                            <li><a href="{{ route('admin.orders.index') }}"
+                                                    style="font-size: 16px;"><span class="fal fa-eye px-2"
+                                                        style="width: 28px;font-size: 15px;"></span>
+                                                    {{ __('admin.showOrders') }}
+                                                </a></li>
+                                            <li><a href="{{ route('admin.orders.create') }}"
+                                                    style="font-size: 16px;"><span class="fal fa-plus px-2"
+                                                        style="width: 28px;font-size: 15px;"></span>
+                                                    {{ __('admin.createOfflineOrders') }}
+                                                </a></li>
+                                        </ul>
+                                    </div>
                                 </div>
                             </div>
-                            <div class="col-12 px-0">
-                                <ul class="sub-item font-1" style="list-style:none;">
-                                    <li><a href="{{ route('admin.products.index') }}" style="font-size: 16px;"><span
-                                                class="fal fa-eye px-2" style="width: 28px;font-size: 15px;"></span>
-                                            {{ __('admin.showProducts') }}
-                                        </a></li>
-                                    <li><a href="{{ route('admin.products.create') }}" style="font-size: 16px;"><span
-                                                class="fal fa-plus px-2" style="width: 28px;font-size: 15px;"></span>
-                                            {{ __('admin.addProducts') }}
-                                        </a></li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="col-12 px-0" style="cursor: pointer;">
-                        <div class="col-12 item px-0 d-flex row ">
-                            <div class="col-12 d-flex px-0 item-container">
-                                <div style="width: 50px" class="px-3 text-center">
-                                    <span class="fa-solid fa-cart-arrow-down"></span>
-                                </div>
-                                <div style="width: calc(100% - 50px)" class="px-2 item-container-title has-sub-menu">
-                                    {{ __('admin.orders') }}
-                                </div>
-                            </div>
-                            <div class="col-12 px-0">
-                                <ul class="sub-item font-1" style="list-style:none;">
-                                    <li><a href="{{ route('admin.orders.index') }}" style="font-size: 16px;"><span
-                                                class="fal fa-eye px-2" style="width: 28px;font-size: 15px;"></span>
-                                            {{ __('admin.showOrders') }}
-                                        </a></li>
-                                    <li><a href="{{ route('admin.orders.create') }}" style="font-size: 16px;"><span
-                                                class="fal fa-plus px-2" style="width: 28px;font-size: 15px;"></span>
-                                            {{ __('admin.createOfflineOrders') }}
-                                        </a></li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-
-                    @can('contacts-read')
-                        <a href="{{ route('admin.contacts.index') }}" class="col-12 px-0">
-                            <div class="col-12 item-container px-0 d-flex ">
-                                <div style="width: 50px" class="px-3 text-center">
-                                    <span class="fal fa-phone font-2"> </span>
-                                </div>
-                                <div style="width: calc(100% - 50px)" class="px-2 item-container-title">
-                                    {{ __('admin.contacts') }}
-                                    @php
-                                        $contacts_count = \App\Models\Contact::where('status', 'PENDING')->count();
-                                    @endphp
-                                    @if ($contacts_count)
-                                        <span
-                                            style="background: #d34339;border-radius: 2px;color:var(--background-1);display: inline-block;font-size: 11px;text-align: center;padding: 1px 5px;margin: 0px 8px">{{ $contacts_count }}</span>
-                                    @endif
-                                </div>
-                            </div>
-                        </a>
-                    @endcan
-
-
+                        @endcan
+                    @endif
 
                     @can('settings-update')
                         <a href="{{ route('admin.settings.index') }}" class="col-12 px-0">
@@ -466,10 +475,7 @@
                 </div>
                 <div class="col-12 px-0 d-flex justify-content-end  " style="height: 60px;">
 
-
-
-
-                    <div class="btn-group" id="notificationDropdown">
+                    {{-- <div class="btn-group" id="notificationDropdown">
 
                         <div class="col-12 px-0 d-flex justify-content-center align-items-center btn  "
                             style="width: 55px;height: 55px;" data-bs-toggle="dropdown" aria-expanded="false"
@@ -499,7 +505,7 @@
                                 </a>
                             </div>
                         </div>
-                    </div>
+                    </div> --}}
                     <div class="col-12 px-0 d-flex justify-content-center align-items-center  dropdown"
                         style="width: 55px;height: 55px;">
                         <div style="width: 55px;height: 55px;cursor: pointer;" data-bs-toggle="dropdown"

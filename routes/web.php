@@ -21,13 +21,11 @@ use App\Http\Controllers\Backend\BackendTrafficsController;
 use App\Http\Controllers\Backend\BackendUserRoleController;
 use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
 use App\Http\Controllers\Backend\BackendRedirectionController;
-use App\Http\Controllers\Backend\BackendContactReplyController;
 use App\Http\Controllers\Backend\BackendNotificationsController;
-use App\Models\User;
-use App\Notifications\CreateCustomerNotification;
 
 # Frontend Controllers
 
+Route::view('/', 'deleted.layouts.guest');
 
 Route::group([
     'prefix' => LaravelLocalization::setLocale(),
@@ -44,38 +42,19 @@ Route::group([
 
         Route::get('/home', [BackendAdminController::class, 'index'])->name('index');
         Route::middleware('auth')->group(function () {
-
-
-            // Route::get('testNotify', function () {
-
-            //     User::where('email', env("ADMIN_MAIL"))->first()->notify(
-            //         new \App\Notifications\CreateCustomerNotification(
-            //             'New Customer Created',
-            //             'Hello',
-            //             ['database', 'broadcast'],
-            //             'A new customer has been created'
-            //         )
-            //     );
-
-            //     dd('notification sent');
-            // });
-
-
             Route::resource('files', BackendFileController::class);
-            Route::post('contacts/resolve', [BackendContactController::class, 'resolve']);
-            Route::resource('contacts', BackendContactController::class);
             Route::get('users/{user}/access', [BackendUserController::class, 'access'])->name('users.access');
             Route::resource('users', BackendUserController::class);
             Route::resource('customers', BackendCustomerController::class);
             Route::resource('categories', BackendCategoryController::class);
             Route::resource('products', BackendProductController::class);
             Route::resource('orders', BackendOrderController::class);
+            Route::get('customer_orders', [BackendOrderController::class, 'customer_orders'])->name('customer_orders');
             Route::resource('roles', BackendRoleController::class);
             Route::get('user-roles/{user}', [BackendUserRoleController::class, 'index'])->name('users.roles.index');
             Route::put('user-roles/{user}', [BackendUserRoleController::class, 'update'])->name('users.roles.update');
             Route::get('customer-roles/{customer}', [BackendUserRoleController::class, 'indexCustomer'])->name('customers.roles.index');
             Route::put('customer-roles/{customer}', [BackendUserRoleController::class, 'updateCustomer'])->name('customers.roles.update');
-            Route::resource('contact-replies', BackendContactReplyController::class);
             Route::resource('redirections', BackendRedirectionController::class);
             Route::get('traffics', [BackendTrafficsController::class, 'index'])->name('traffics.index');
             Route::get('traffics/logs', [BackendTrafficsController::class, 'logs'])->name('traffics.logs');

@@ -31,6 +31,15 @@ class BackendOrderController extends Controller
         $this->middleware('can:orders-delete',   ['only' => ['delete']]);
     }
 
+    public function customer_orders()
+    {
+        if (auth('customer')->user() != null) {
+            $orders = Order::where('id', auth('customer')->id())->get();
+        } else {
+            $orders = Order::all();
+        }
+        return view('admin.orders.index', compact('orders'));
+    }
 
     public function index()
     {

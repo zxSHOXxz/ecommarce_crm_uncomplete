@@ -82,23 +82,6 @@
                                                 </button>
                                             </form>
                                         @endcan
-                                        <div class="dropdown d-inline-block">
-                                            <button class="py-1 px-2 btn btn-outline-primary font-small" type="button"
-                                                id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="true">
-                                                <span class="fas fa-bars"></span>
-                                            </button>
-                                            <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1"
-                                                data-popper-placement="bottom-start"
-                                                style="position: absolute; inset: 0px auto auto 0px; margin: 0px; transform: translate3d(0px, 29px, 0px);">
-                                                @can('customers-update')
-                                                    <li><a class="dropdown-item font-1"
-                                                            href="{{ route('admin.traffics.logs', ['customer_id' => $customer->id]) }}"><span
-                                                                class="fal fa-boxes"></span> {{ __('admin.traffics') }} <span
-                                                                class="badge bg-danger">{{ $customer->logs_count }}</span></a>
-                                                    </li>
-                                                @endcan
-                                            </ul>
-                                        </div>
                                     </td>
                                 </tr>
                             @endforeach

@@ -10,20 +10,21 @@
                     </div>
                     <div class="col-12 col-lg-4 p-0">
                     </div>
-                    <div class="col-12 col-lg-4 p-2 text-lg-end d-flex justify-content-end">
-                        <a href="{{ route('export') }}">
-                            <span class="btn btn-success mx-1"><i class="fa-solid fa-file-csv p-1"></i>Export CSV</span>
-                        </a>
-                        <a href="{{ route('export_xml') }}">
-                            <span class="btn btn-secondary mx-1"><i class="fa-solid fa-file-xml p-1"></i>Export XML</span>
-                        </a>
-                        <h1>Upload XML File</h1>
-                        <form action="{{ route('uploadXml.file') }}" method="POST" enctype="multipart/form-data">
-                            @csrf
-                            <input type="file" name="xml_file">
-                            <button type="submit">Upload</button>
-                        </form>
-                    </div>
+                    @can('orders-update')
+                        <div class="col-12 col-lg-4 p-2 text-lg-end d-flex justify-content-end">
+                            <a href="{{ route('export') }}">
+                                <span class="btn btn-success mx-1"><i class="fa-solid fa-file-csv p-1"></i>Export CSV</span>
+                            </a>
+                            <a href="{{ route('export_xml') }}">
+                                <span class="btn btn-secondary mx-1"><i class="fa-solid fa-file-xml p-1"></i>Export XML</span>
+                            </a>
+                            <form action="{{ route('uploadXml.file') }}" method="POST" enctype="multipart/form-data">
+                                @csrf
+                                <input type="file" name="xml_file">
+                                <button type="submit">Upload</button>
+                            </form>
+                        </div>
+                    @endcan
                 </div>
                 <div class="col-12 divider" style="min-height: 2px;"></div>
             </div>
@@ -38,8 +39,6 @@
             </div>
             <div class="col-12 p-3" style="overflow:auto">
                 <div class="col-12 p-0" style="min-width:1100px;">
-
-
                     <table class="table table-bordered  table-hover">
                         <thead>
                             <tr>
@@ -48,7 +47,10 @@
                                 <th>total amount</th>
                                 <th>products</th>
                                 <th>status</th>
-                                <th>Control</th>
+                                @can('orders-update')
+                                    <th>Control</th>
+                                @endcan
+
                             </tr>
                         </thead>
 
@@ -62,7 +64,7 @@
                                         @foreach ($order->products as $productDetail)
                                             <h6>
                                                 <span
-                                                    class="badge bg-dark text-white rounded-pill">{{ Str::upper($productDetail->product->title ?? 'null') }}
+                                                    class="badge bg-dark text-white rounded-pill">{{ Str::limit(Str::upper($productDetail->product->title ?? 'null'), 45, '...') }}
                                                 </span>
                                                 <span class="badge bg-danger text-white rounded-pill">
                                                     {{ $productDetail->quantity ?? 'null' }}
@@ -71,50 +73,49 @@
                                         @endforeach
                                     </td>
                                     <td>{{ $order->status ?? 'null' }}</td>
-                                    <td>
-                                        <form method="POST" action="{{ route('admin.orders.update', $order) }}">
-                                            @csrf
-                                            @method('PUT')
-                                            <select name="status" class="form-select" required>
-                                                <option value="faild" @if ($order->status === 'faild') selected @endif>
-                                                    faild</option>
-                                                <option value="sucsses" @if ($order->status === 'sucsses') selected @endif>
-                                                    sucsses</option>
-                                                <option value="waiting" @if ($order->status === 'waiting') selected @endif>
-                                                    waiting</option>
-                                                <option value="pending" @if ($order->status === 'pending') selected @endif>
-                                                    pending</option>
-                                            </select>
-                                            <button type="submit" class="btn btn-sm btn-success ml-2">Update</button>
-                                        </form>
-                                    </td>
-                                    <td style="width: 180px;">
-                                        @can('orders-update')
-                                            <a href="{{ route('admin.orders.show', $order) }}">
-                                                <span class="btn  btn-outline-success btn-sm font-1 m-1">
-                                                    <span class="fas fa-eye "></span> show
-                                                </span>
-                                            </a>
-                                        @endcan
-
-                                        @can('orders-delete')
-                                            <form method="POST" action="{{ route('admin.orders.destroy', $order) }}"
-                                                class="d-inline-block">@csrf @method('DELETE')
-                                                <button class="btn  btn-outline-danger btn-sm font-1 mx-1"
-                                                    onclick="var result = confirm('Do you need delete it ?! ');if(result){}else{event.preventDefault()}">
-                                                    <span class="fas fa-trash "></span> delete
-                                                </button>
+                                    @can('orders_update')
+                                        <td>
+                                            <form method="POST" action="{{ route('admin.orders.update', $order) }}">
+                                                @csrf
+                                                @method('PUT')
+                                                <select name="status" class="form-select" required>
+                                                    <option value="faild" @if ($order->status === 'faild') selected @endif>
+                                                        faild</option>
+                                                    <option value="sucsses" @if ($order->status === 'sucsses') selected @endif>
+                                                        sucsses</option>
+                                                    <option value="waiting" @if ($order->status === 'waiting') selected @endif>
+                                                        waiting</option>
+                                                    <option value="pending" @if ($order->status === 'pending') selected @endif>
+                                                        pending</option>
+                                                </select>
+                                                <button type="submit" class="btn btn-sm btn-success ml-2">Update</button>
                                             </form>
-                                        @endcan
-                                    </td>
+                                        </td>
+                                        <td style="width: 180px;">
+                                            @can('orders-update')
+                                                <a href="{{ route('admin.orders.show', $order) }}">
+                                                    <span class="btn  btn-outline-success btn-sm font-1 m-1">
+                                                        <span class="fas fa-eye "></span> show
+                                                    </span>
+                                                </a>
+                                            @endcan
+
+                                            @can('orders-delete')
+                                                <form method="POST" action="{{ route('admin.orders.destroy', $order) }}"
+                                                    class="d-inline-block">@csrf @method('DELETE')
+                                                    <button class="btn  btn-outline-danger btn-sm font-1 mx-1"
+                                                        onclick="var result = confirm('Do you need delete it ?! ');if(result){}else{event.preventDefault()}">
+                                                        <span class="fas fa-trash "></span> delete
+                                                    </button>
+                                                </form>
+                                            @endcan
+                                        </td>
+                                    @endcan
                                 </tr>
                             @endforeach
                         </tbody>
                     </table>
                 </div>
-            </div>
-            <div class="col-12 p-3">
-                {{ $orders->appends(request()->query())->render() }}
             </div>
         </div>
     </div>
