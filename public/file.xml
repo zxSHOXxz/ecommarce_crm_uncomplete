@@ -1,55 +1,1628 @@
 <?xml version="1.0"?>
 <ListOrder>
- <Order1>
-  <id>12</id>
-  <customer_name>FATIMA EID ALMLAHI</customer_name>
-  <total_amount>1945</total_amount>
-  <status>pending</status>
-  <productNum1>Amr || 5</productNum1>
-  <productNum2>product || 5</productNum2>
- </Order1>
- <Order2>
-  <id>11</id>
-  <customer_name>FATIMA EID ALMLAHI</customer_name>
-  <total_amount>2135</total_amount>
-  <status>pending</status>
-  <productNum1>Amr || 6</productNum1>
-  <productNum2>product || 5</productNum2>
- </Order2>
- <Order3>
-  <id>8</id>
-  <customer_name>FATIMA EID ALMLAHI</customer_name>
-  <total_amount>2940</total_amount>
-  <status>waiting</status>
-  <productNum1>product || 10</productNum1>
-  <productNum2>Amr || 5</productNum2>
- </Order3>
- <Order4>
-  <id>14</id>
-  <customer_name>FATIMA EID ALMLAHI</customer_name>
-  <total_amount>1990</total_amount>
-  <status>pending</status>
-  <productNum1>product || 10</productNum1>
- </Order4>
- <Order5>
-  <id>20</id>
-  <customer_name>FATIMA EID ALMLAHI</customer_name>
-  <total_amount>190</total_amount>
-  <status>pending</status>
-  <productNum1>Amr || 1</productNum1>
- </Order5>
- <Order6>
-  <id>35</id>
-  <customer_name>FATIMA EID ALMLAHI</customer_name>
-  <total_amount>760</total_amount>
-  <status>pending</status>
-  <productNum1>Amr || 4</productNum1>
- </Order6>
- <Order7>
-  <id>36</id>
-  <customer_name>FATIMA EID ALMLAHI</customer_name>
-  <total_amount>190</total_amount>
-  <status>pending</status>
-  <productNum1>Amr || 1</productNum1>
- </Order7>
+ <Product1>
+  <code>QA-12DI-4DO</code>
+  <category>QA-12DI-4DO</category>
+  <description>Modulo I/O Slave Modbus per ingressi e uscite digitali, n°12 Ingressi Digitali e n°4 Uscite a relè SPDT 5A, RS485</description>
+ </Product1>
+ <Product2>
+  <code>QA-12DI-4DO-2</code>
+  <category>QA-12DI-4DO</category>
+  <description>Modulo I/O Slave Modbus per ingressi e uscite digitali, n°12 Ingressi Digitali e n°4 Uscite a relè SPDT 5A, RS485</description>
+ </Product2>
+ <Product3>
+  <code>QA-8DO</code>
+  <category>QA-8DO</category>
+  <description>Modulo I/O Slave Modbus per uscite digitali, n°8 Uscite a Relè SPDT 5A, RS485  </description>
+ </Product3>
+ <Product4>
+  <code>QA-8DO-1</code>
+  <category>QA-8DO</category>
+  <description>Modulo I/O Slave Modbus per uscite digitali, n°8 Uscite a Relè SPDT 5A, RS485   </description>
+ </Product4>
+ <Product5>
+  <code>QA-I</code>
+  <category>QA-I</category>
+  <description>Separatore/Isolatore Corrente-Corrente. Uscita in Corrente  </description>
+ </Product5>
+ <Product6>
+  <code>QA-OMNI</code>
+  <category>QA-OMNI</category>
+  <description>Convertitore universale (V, I, Frequenza, Temperatura, Potenziometro), Uscita Analogica, Relè,  RS485. Datalogging  Datalogging  </description>
+ </Product6>
+ <Product7>
+  <code>QA-OMNI-STEP</code>
+  <category>QA-OMNI</category>
+  <description>Convertitore universale (V, I, Frequenza, Temperatura, Potenziometro), Uscita Analogica, Relè,  RS485. Datalogging  Datalogging  </description>
+ </Product7>
+ <Product8>
+  <code>QA-OMNI-T-NL</code>
+  <category>QA-OMNI</category>
+  <description>Convertitore universale (V, I, Frequenza, Temperatura, Potenziometro), Uscita Analogica, Relè,  RS485. Datalogging  Datalogging  </description>
+ </Product8>
+ <Product9>
+  <code>QA-POWER-M-02</code>
+  <category>QA-POWER-M</category>
+  <description>Power meter monofase, Convertitore per V (600 AC, 1000 DC) e I (10 A AC/DC). Uscita Analogica, Digitale, RS485  </description>
+ </Product9>
+ <Product10>
+  <code>QA-POWER-M-03</code>
+  <category>QA-POWER-M</category>
+  <description>Power meter monofase, Convertitore per V (600 AC, 1000 DC) e I (10 A AC/DC). Uscita Analogica, Digitale, RS485</description>
+ </Product10>
+ <Product11>
+  <code>QA-POWER-M-03-ABP</code>
+  <category>QA-POWER-M</category>
+  <description>Power meter monofase, Convertitore per V (600 AC, 1000 DC) e I (10 A AC/DC). Uscita Analogica, Digitale, RS485</description>
+ </Product11>
+ <Product12>
+  <code>QA-POWER-M-03-CAEV</code>
+  <category>QA-POWER-M</category>
+  <description>Power meter monofase, Convertitore per V (600 AC, 1000 DC) e I (10 A AC/DC). Uscita Analogica, Digitale, RS485</description>
+ </Product12>
+ <Product13>
+  <code>QA-POWER-M-03-DNV</code>
+  <category>QA-POWER-M</category>
+  <description>Power meter monofase, Convertitore per V (600 AC, 1000 DC) e I (10 A AC/DC). Uscita Analogica, Digitale, RS485</description>
+ </Product13>
+ <Product14>
+  <code>QA-POWER-M-03-MSC</code>
+  <category>QA-POWER-M</category>
+  <description>Power meter monofase, Convertitore per V (600 AC, 1000 DC) e I (10 A AC/DC). Uscita Analogica, Digitale, RS485</description>
+ </Product14>
+ <Product15>
+  <code>QA-POWER-M-03-NDC</code>
+  <category>QA-POWER-M</category>
+  <description>Power meter monofase, Convertitore per V (600 AC, 1000 DC) e I (10 A AC/DC). Uscita Analogica, Digitale, RS485</description>
+ </Product15>
+ <Product16>
+  <code>QA-POWER-M-LV-03</code>
+  <category>QA-POWER-M</category>
+  <description>Power meter monofase</description>
+ </Product16>
+ <Product17>
+  <code>QA-POWER-M-LV-03-CAEV</code>
+  <category>QA-POWER-M</category>
+  <description>Power meter monofase</description>
+ </Product17>
+ <Product18>
+  <code>QA-POWER-M-NL-03</code>
+  <category>QA-POWER-M</category>
+  <description>Power meter monofase, Convertitore per V (600 AC, 1000 DC) e I (10 A AC/DC). Uscita Analogica, Digitale, RS485</description>
+ </Product18>
+ <Product19>
+  <code>QA-TEMP</code>
+  <category>QA-TEMP</category>
+  <description>Convertitore di Temperatura Universale (RTD, TC), Potenziometro, Uscita Analogica, RS485, Relè. Datalogging  </description>
+ </Product19>
+ <Product20>
+  <code>QA-TEMP-NL</code>
+  <category>QA-TEMP</category>
+  <description>Convertitore di Temperatura Universale (RTD, TC), Potenziometro, Uscita Analogica, RS485, Relè. Datalogging  </description>
+ </Product20>
+ <Product21>
+  <code>QA-VI</code>
+  <category>QA-VI</category>
+  <description>Convertitore di Tensione /  Corrente, Uscita analogica, RS485, Relè . Datalogging  </description>
+ </Product21>
+ <Product22>
+  <code>QC-ENERGY-3T</code>
+  <category>QC-ENERGY-3T</category>
+  <description>Power meter Trifase con display grafico, Ingresso universale per trasformatori amperometrici, 4 DIN, comunicazione RS485 Modbus RTU, wifi ed Ehernet, 2 uscite digitali (impulsiva, allarme)</description>
+ </Product22>
+ <Product23>
+  <code>QC-PM485</code>
+  <category>QC-PM485</category>
+  <description>Power meter monofase ad inserzione diretta fino a 100 A, display, RS485 Modbus</description>
+ </Product23>
+ <Product24>
+  <code>QC-POWER-3PC</code>
+  <category>QC-POWER-3PC</category>
+  <description>Analizzatore di rete Trifase per TA esterni, display, montaggio su barra din, misura energia bidirezionale, uscita RS485 Modbus</description>
+ </Product24>
+ <Product25>
+  <code>QC-POWER-P96</code>
+  <category>QC-POWER-P96</category>
+  <description>Analizzatore di rete Trifase per montaggio a pannello, 96x96mm. Utilizzo con TA esterni con secondario 1 o 5 A, Analisi Armonica fino alla 31esima, THD,  RS485 Modbus</description>
+ </Product25>
+ <Product26>
+  <code>QC-POWER-T-485</code>
+  <category>QC-POWER-T-485</category>
+  <description>ANALIZZATORE DI RETE TRIFASE, DISPLAY, MONTAGGIO SU BARRA DIN USCITA RS485 MODBUS</description>
+ </Product26>
+ <Product27>
+  <code>QC-POWER-T-RELE</code>
+  <category>QC-POWER-T-RELE</category>
+  <description>Analizzatore di rete Trifase, display, montaggio su barra din, TA integrati, uscita digitale n 2 relè</description>
+ </Product27>
+ <Product28>
+  <code>QC-POWER-T-TA</code>
+  <category>QC-POWER-T-TA</category>
+  <description>Analizzatore di rete Trifase, display, montaggio su barra din, TA integrati per correnti fino a 90A, uscita RS485  </description>
+ </Product28>
+ <Product29>
+  <code>QC-RS485-ISOLATOR</code>
+  <category>QC-RS485-ISOLATOR</category>
+  <description>QC-RS485-ISOLATOR</description>
+ </Product29>
+ <Product30>
+  <code>QE-485-WIFI</code>
+  <category>QE-485-WIFI</category>
+  <description>Convertitore seriale RS485 - WI-FI in formato din - PNAABU</description>
+ </Product30>
+ <Product31>
+  <code>QE-8DI</code>
+  <category>QE-8DI</category>
+  <description>Modulo I/O Slave Modbus per ingressi digitali, versione per quadri di distribuzione, n°8 Ingressi digitali, contatori, RS485  </description>
+ </Product31>
+ <Product32>
+  <code>QE-8DI-02</code>
+  <category>QE-8DI</category>
+  <description>Modulo I/O Slave Modbus per ingressi digitali, versione per quadri di distribuzione, n°8 Ingressi digitali, contatori, RS485  </description>
+ </Product32>
+ <Product33>
+  <code>QE-8DI-NL</code>
+  <category>QE-8DI</category>
+  <description>Modulo I/O Slave Modbus per ingressi digitali, versione per quadri di distribuzione, n°8 Ingressi digitali, contatori, RS485  </description>
+ </Product33>
+ <Product34>
+  <code>QE-BOX</code>
+  <category>QE-BOX</category>
+  <description>QE-BOX</description>
+ </Product34>
+ <Product35>
+  <code>QE-BRDL-ETH485</code>
+  <category>QE-BRDL-ETH485</category>
+  <description>Bridge Modbus RTU / TCP-IP, fino a 10 client, monataggio su barra DIN,  17,5mm. Predisposto per montaggio su TBUS.  </description>
+ </Product35>
+ <Product36>
+  <code>QE-BR-ETH485-01</code>
+  <category>QE-BR-ETH485</category>
+  <description>Bridge Modbus RTU / TCP-IP, fino a 10 client, monataggio su barra DIN,  17,5mm. Predisposto per montaggio su TBUS.  </description>
+ </Product36>
+ <Product37>
+  <code>QE-BR-ETH485-01-FND</code>
+  <category>QE-BR-ETH485</category>
+  <description>Bridge Modbus RTU / TCP-IP, fino a 10 client, monataggio su barra DIN,  17,5mm. Predisposto per montaggio su TBUS.  </description>
+ </Product37>
+ <Product38>
+  <code>QE-BR-ETH485-01-NL</code>
+  <category>QE-BR-ETH485</category>
+  <description>Bridge Modbus RTU / TCP-IP, fino a 10 client, monataggio su barra DIN,  17,5mm. Predisposto per montaggio su TBUS.  </description>
+ </Product38>
+ <Product39>
+  <code>QE-BR-ETH485-01-T-NL</code>
+  <category>QE-BR-ETH485</category>
+  <description>Bridge Modbus RTU / TCP-IP, fino a 10 client, monataggio su barra DIN,  17,5mm. Predisposto per montaggio su TBUS.  </description>
+ </Product39>
+ <Product40>
+  <code>QE-BR-ETH485-02</code>
+  <category>QE-BR-ETH485</category>
+  <description>Bridge Modbus RTU / TCP-IP, fino a 10 client, monataggio su barra DIN,  17,5mm. Predisposto per montaggio su TBUS.  </description>
+ </Product40>
+ <Product41>
+  <code>QE-BR-ETH485-02-FND</code>
+  <category>QE-BR-ETH485</category>
+  <description>Bridge Modbus RTU / TCP-IP, fino a 10 client, monataggio su barra DIN,  17,5mm. Predisposto per montaggio su TBUS.  </description>
+ </Product41>
+ <Product42>
+  <code>QE-BR-ETH485-03</code>
+  <category>QE-BR-ETH485</category>
+  <description>Bridge Modbus RTU / TCP-IP, fino a 10 client, monataggio su barra DIN,  17,5mm. Predisposto per montaggio su TBUS.  </description>
+ </Product42>
+ <Product43>
+  <code>QE-BR-ETH485-03-FND</code>
+  <category>QE-BR-ETH485</category>
+  <description>Bridge Modbus RTU / TCP-IP, fino a 10 client, monataggio su barra DIN,  17,5mm. Predisposto per montaggio su TBUS.  </description>
+ </Product43>
+ <Product44>
+  <code>QE-BR-ETH485-03-NL</code>
+  <category>QE-BR-ETH485</category>
+  <description>Bridge Modbus RTU / TCP-IP, fino a 10 client, monataggio su barra DIN,  17,5mm. Predisposto per montaggio su TBUS.  </description>
+ </Product44>
+ <Product45>
+  <code>QE-BR-ETH485-03-T-NL</code>
+  <category>QE-BR-ETH485</category>
+  <description>Bridge Modbus RTU / TCP-IP, fino a 10 client, monataggio su barra DIN,  17,5mm. Predisposto per montaggio su TBUS.  </description>
+ </Product45>
+ <Product46>
+  <code>QE-CURRENT-485</code>
+  <category>QE-CURRENT-485</category>
+  <description>Convertitore Universale di Corrente. Ingresso per qualsiasi sonda di corrente, ingresso non isolato per PT100 2,3 fili o NTC (10k o 100k ), Uscita analogica e seriale RS485</description>
+ </Product46>
+ <Product47>
+  <code>QE-CURRENT-485-04</code>
+  <category>QE-CURRENT-485</category>
+  <description>Convertitore Universale di Corrente. Ingresso per qualsiasi sonda di corrente, ingresso non isolato per PT100 2,3 fili o NTC (10k o 100k ), Uscita analogica e seriale RS485</description>
+ </Product47>
+ <Product48>
+  <code>QE-CURRENT-485-05</code>
+  <category>QE-CURRENT-485</category>
+  <description>Convertitore Universale di Corrente. Ingresso per qualsiasi sonda di corrente, ingresso non isolato per PT100 2,3 fili o NTC (10k o 100k ), Uscita analogica e seriale RS485</description>
+ </Product48>
+ <Product49>
+  <code>QE-CURRENT-485-H</code>
+  <category>QE-CURRENT-485</category>
+  <description>Convertitore e ANALIZZATORE Universale di Corrente e Tensione. Ingresso da primario di corrente o tensione isolato, ingresso non isolato per PT100 2,3 fili o NTC (10k o 100k ), Uscita analogi</description>
+ </Product49>
+ <Product50>
+  <code>QE-CURRENT-485-H-04</code>
+  <category>QE-CURRENT-485</category>
+  <description>Convertitore Universale di Corrente. Ingresso per qualsiasi sonda di corrente, ingresso non isolato per PT100 2,3 fili o NTC (10k o 100k ), Uscita analogica e seriale RS485</description>
+ </Product50>
+ <Product51>
+  <code>QE-CURRENT-485-H-05</code>
+  <category>QE-CURRENT-485</category>
+  <description>Convertitore Universale di Corrente. Ingresso per qualsiasi sonda di corrente, ingresso non isolato per PT100 2,3 fili o NTC (10k o 100k ), Uscita analogica e seriale RS485</description>
+ </Product51>
+ <Product52>
+  <code>QE-CURRENT-485-H-NL-04</code>
+  <category>QE-CURRENT-485</category>
+  <description>Convertitore Universale di Corrente. Ingresso per qualsiasi sonda di corrente, ingresso non isolato per PT100 2,3 fili o NTC (10k o 100k ), Uscita analogica e seriale RS485</description>
+ </Product52>
+ <Product53>
+  <code>QE-CURRENT-485-H-NL-05</code>
+  <category>QE-CURRENT-485</category>
+  <description>Convertitore Universale di Corrente. Ingresso per qualsiasi sonda di corrente, ingresso non isolato per PT100 2,3 fili o NTC (10k o 100k ), Uscita analogica e seriale RS485</description>
+ </Product53>
+ <Product54>
+  <code>QE-CURRENT-485-H-T-NL</code>
+  <category>QE-CURRENT-485</category>
+  <description>Convertitore e ANALIZZATORE Universale di Corrente e Tensione. Ingresso da primario di corrente o tensione isolato, ingresso non isolato per PT100 2,3 fili o NTC (10k o 100k ), Uscita analogi</description>
+ </Product54>
+ <Product55>
+  <code>QE-CURRENT-485-H-T-NL-04</code>
+  <category>QE-CURRENT-485</category>
+  <description>Convertitore Universale di Corrente. Ingresso per qualsiasi sonda di corrente, ingresso non isolato per PT100 2,3 fili o NTC (10k o 100k ), Uscita analogica e seriale RS485</description>
+ </Product55>
+ <Product56>
+  <code>QE-CURRENT-485-H-T-NL-05</code>
+  <category>QE-CURRENT-485</category>
+  <description>Convertitore Universale di Corrente. Ingresso per qualsiasi sonda di corrente, ingresso non isolato per PT100 2,3 fili o NTC (10k o 100k ), Uscita analogica e seriale RS485</description>
+ </Product56>
+ <Product57>
+  <code>QE-CURRENT-485-NL-04</code>
+  <category>QE-CURRENT-485</category>
+  <description>Convertitore Universale di Corrente. Ingresso per qualsiasi sonda di corrente, ingresso non isolato per PT100 2,3 fili o NTC (10k o 100k ), Uscita analogica e seriale RS485</description>
+ </Product57>
+ <Product58>
+  <code>QE-CURRENT-485-NL-04-TH</code>
+  <category>QE-CURRENT-485</category>
+  <description>Convertitore Universale di Corrente. Ingresso per qualsiasi sonda di corrente, ingresso non isolato per PT100 2,3 fili o NTC (10k o 100k ), Uscita analogica e seriale RS485</description>
+ </Product58>
+ <Product59>
+  <code>QE-CURRENT-485-NL-05</code>
+  <category>QE-CURRENT-485</category>
+  <description>Convertitore Universale di Corrente. Ingresso per qualsiasi sonda di corrente, ingresso non isolato per PT100 2,3 fili o NTC (10k o 100k ), Uscita analogica e seriale RS485</description>
+ </Product59>
+ <Product60>
+  <code>QE-CURRENT-485-NL-05-TH</code>
+  <category>QE-CURRENT-485</category>
+  <description>Convertitore Universale di Corrente. Ingresso per qualsiasi sonda di corrente, ingresso non isolato per PT100 2,3 fili o NTC (10k o 100k ), Uscita analogica e seriale RS485</description>
+ </Product60>
+ <Product61>
+  <code>QE-CURRENT-485-T-NL</code>
+  <category>QE-CURRENT-485</category>
+  <description>Convertitore Universale di Corrente. Ingresso per qualsiasi sonda di corrente, ingresso non isolato per PT100 2,3 fili o NTC (10k o 100k ), Uscita analogica e seriale RS485</description>
+ </Product61>
+ <Product62>
+  <code>QE-CURRENT-485-T-NL-04</code>
+  <category>QE-CURRENT-485</category>
+  <description>Convertitore Universale di Corrente. Ingresso per qualsiasi sonda di corrente, ingresso non isolato per PT100 2,3 fili o NTC (10k o 100k ), Uscita analogica e seriale RS485</description>
+ </Product62>
+ <Product63>
+  <code>QE-CURRENT-485-T-NL-04-CB</code>
+  <category>QE-CURRENT-485</category>
+  <description>Convertitore Universale di Corrente. Ingresso per qualsiasi sonda di corrente, ingresso non isolato per PT100 2,3 fili o NTC (10k o 100k ), Uscita analogica e seriale RS485</description>
+ </Product63>
+ <Product64>
+  <code>QE-CURRENT-485-T-NL-05</code>
+  <category>QE-CURRENT-485</category>
+  <description>Convertitore Universale di Corrente. Ingresso per qualsiasi sonda di corrente, ingresso non isolato per PT100 2,3 fili o NTC (10k o 100k ), Uscita analogica e seriale RS485</description>
+ </Product64>
+ <Product65>
+  <code>QE-CURRENT-485-T-NL-05-CB</code>
+  <category>QE-CURRENT-485</category>
+  <description>Convertitore Universale di Corrente. Ingresso per qualsiasi sonda di corrente, ingresso non isolato per PT100 2,3 fili o NTC (10k o 100k ), Uscita analogica e seriale RS485</description>
+ </Product65>
+ <Product66>
+  <code>QE-DL-ETH</code>
+  <category>QE-DL-ETH</category>
+  <description>Bridge Modbus RTU / TCP-IP, fino a 10 client, monataggio su barra DIN,  17,5mm. Predisposto per montaggio su TBUS.  </description>
+ </Product66>
+ <Product67>
+  <code>QE-POWER-M</code>
+  <category>QE-POWER-M</category>
+  <description>Analizzatore di rete monofase</description>
+ </Product67>
+ <Product68>
+  <code>QE-POWER-M-6-PLUS</code>
+  <category>QE-POWER-M</category>
+  <description>Analizzatore di rete monofase</description>
+ </Product68>
+ <Product69>
+  <code>QE-POWER-M-6-STD</code>
+  <category>QE-POWER-M</category>
+  <description>Analizzatore di rete monofase</description>
+ </Product69>
+ <Product70>
+  <code>QE-POWER-M-7-PLUS</code>
+  <category>QE-POWER-M</category>
+  <description>Analizzatore di rete monofase</description>
+ </Product70>
+ <Product71>
+  <code>QE-POWER-M-7-STD</code>
+  <category>QE-POWER-M</category>
+  <description>Analizzatore di rete monofase</description>
+ </Product71>
+ <Product72>
+  <code>QE-POWER-M-8-PLUS</code>
+  <category>QE-POWER-M</category>
+  <description>Analizzatore di rete monofase</description>
+ </Product72>
+ <Product73>
+  <code>QE-POWER-M-8-STD</code>
+  <category>QE-POWER-M</category>
+  <description>Analizzatore di rete monofase</description>
+ </Product73>
+ <Product74>
+  <code>QE-POWER-T</code>
+  <category>QE-POWER-T</category>
+  <description>Analizzatore di rete trifase</description>
+ </Product74>
+ <Product75>
+  <code>QE-POWER-T-3-STD</code>
+  <category>QE-POWER-T</category>
+  <description>Analizzatore di rete trifase</description>
+ </Product75>
+ <Product76>
+  <code>QE-POWER-T-3-STD-NL</code>
+  <category>QE-POWER-T</category>
+  <description>Analizzatore di rete trifase</description>
+ </Product76>
+ <Product77>
+  <code>QE-POWER-T-3-STD-T-NL</code>
+  <category>QE-POWER-T</category>
+  <description>Analizzatore di rete trifase</description>
+ </Product77>
+ <Product78>
+  <code>QE-POWER-T-4-PLUS</code>
+  <category>QE-POWER-T</category>
+  <description>Analizzatore di rete trifase</description>
+ </Product78>
+ <Product79>
+  <code>QE-POWER-T-4-PLUS-NL</code>
+  <category>QE-POWER-T</category>
+  <description>Analizzatore di rete trifase</description>
+ </Product79>
+ <Product80>
+  <code>QE-POWER-T-4-PLUS-T-NL</code>
+  <category>QE-POWER-T</category>
+  <description>Analizzatore di rete trifase</description>
+ </Product80>
+ <Product81>
+  <code>QE-POWER-T-4-PRO</code>
+  <category>QE-POWER-T</category>
+  <description>Power meter Trifase, Ingresso universale per transformatori amperometrici, larghezza 17,5mm, RS485 Modbus RTU e uscita digitale configurabile. Predisposto per montaggio su connettori T-BUS. V</description>
+ </Product81>
+ <Product82>
+  <code>QE-POWER-T-4-STD</code>
+  <category>QE-POWER-T</category>
+  <description>Analizzatore di rete trifase</description>
+ </Product82>
+ <Product83>
+  <code>QE-POWER-T-4-STD-NL</code>
+  <category>QE-POWER-T</category>
+  <description>Analizzatore di rete trifase</description>
+ </Product83>
+ <Product84>
+  <code>QE-POWER-T-4-STD-T-NL</code>
+  <category>QE-POWER-T</category>
+  <description>Analizzatore di rete trifase</description>
+ </Product84>
+ <Product85>
+  <code>QE-POWER-T-5-PLUS</code>
+  <category>QE-POWER-T</category>
+  <description>Power meter Monofase, Ingresso universale per transformatori amperometrici, larghezza 17,5mm, RS485 Modbus RTU e uscita digitale configurabile. Predisposto per montaggio su connettori T-BUS. </description>
+ </Product85>
+ <Product86>
+  <code>QE-POWER-T-5-STD</code>
+  <category>QE-POWER-T</category>
+  <description>Power meter Monofase, Ingresso universale per transformatori amperometrici, larghezza 17,5mm, RS485 Modbus RTU e uscita digitale configurabile. Predisposto per montaggio su connettori T-BUS. </description>
+ </Product86>
+ <Product87>
+  <code>QE-POWER-T-6-PLUS</code>
+  <category>QE-POWER-T</category>
+  <description>Analizzatore di rete trifase</description>
+ </Product87>
+ <Product88>
+  <code>QE-POWER-T-6-PLUS-T-NL</code>
+  <category>QE-POWER-T</category>
+  <description>Analizzatore di rete trifase</description>
+ </Product88>
+ <Product89>
+  <code>QE-POWER-T-6-PRO</code>
+  <category>QE-POWER-T</category>
+  <description>Analizzatore di rete trifase</description>
+ </Product89>
+ <Product90>
+  <code>QE-POWER-T-6-PRO-NL-TH</code>
+  <category>QE-POWER-T</category>
+  <description>Power meter Trifase, Ingresso universale per transformatori amperometrici, larghezza 17,5mm, RS485 Modbus RTU e uscita digitale configurabile. Predisposto per montaggio su connettori T-BUS. V</description>
+ </Product90>
+ <Product91>
+  <code>QE-POWER-T-6-PRO-T-NL</code>
+  <category>QE-POWER-T</category>
+  <description>Analizzatore di rete trifase</description>
+ </Product91>
+ <Product92>
+  <code>QE-POWER-T-6-STD</code>
+  <category>QE-POWER-T</category>
+  <description>Analizzatore di rete trifase</description>
+ </Product92>
+ <Product93>
+  <code>QE-POWER-T-6-STD-NL-TH</code>
+  <category>QE-POWER-T</category>
+  <description>Analizzatore di rete trifase</description>
+ </Product93>
+ <Product94>
+  <code>QE-POWER-T-6-STD-T-NL</code>
+  <category>QE-POWER-T</category>
+  <description>Analizzatore di rete trifase</description>
+ </Product94>
+ <Product95>
+  <code>QE-POWER-T-7-HPM-PLUS</code>
+  <category>QE-POWER-T</category>
+  <description>Analizzatore di rete trifase</description>
+ </Product95>
+ <Product96>
+  <code>QE-POWER-T-7-HPM-PRO</code>
+  <category>QE-POWER-T</category>
+  <description>Analizzatore di rete trifase</description>
+ </Product96>
+ <Product97>
+  <code>QE-POWER-T-7-HPM-STD</code>
+  <category>QE-POWER-T</category>
+  <description>Analizzatore di rete trifase</description>
+ </Product97>
+ <Product98>
+  <code>QE-POWER-T-7-PLUS</code>
+  <category>QE-POWER-T</category>
+  <description>Single phase Power Meter, Universal Current transformer input, 17,5mm width, RS485 Modbus RTU and Digital output. T-BUS connection ready. PLUS VERSION  </description>
+ </Product98>
+ <Product99>
+  <code>QE-POWER-T-7-PLUS-FND</code>
+  <category>QE-POWER-T</category>
+  <description>Analizzatore di rete trifase</description>
+ </Product99>
+ <Product100>
+  <code>QE-POWER-T-7-PLUS-T-NL</code>
+  <category>QE-POWER-T</category>
+  <description>Analizzatore di rete trifase</description>
+ </Product100>
+ <Product101>
+  <code>QE-POWER-T-7-PLUS-T-NL-Q</code>
+  <category>QE-POWER-T</category>
+  <description>Analizzatore di rete trifase</description>
+ </Product101>
+ <Product102>
+  <code>QE-POWER-T-7-PRO</code>
+  <category>QE-POWER-T</category>
+  <description>Power meter Trifase, Ingresso universale per transformatori amperometrici, larghezza 17,5mm, RS485 Modbus RTU e uscita digitale configurabile. Predisposto per montaggio su connettori T-BUS. V</description>
+ </Product102>
+ <Product103>
+  <code>QE-POWER-T-7-PRO-NL-TH</code>
+  <category>QE-POWER-T</category>
+  <description>Power meter Trifase, Ingresso universale per transformatori amperometrici, larghezza 17,5mm, RS485 Modbus RTU e uscita digitale configurabile. Predisposto per montaggio su connettori T-BUS. V</description>
+ </Product103>
+ <Product104>
+  <code>QE-POWER-T-7-STD</code>
+  <category>QE-POWER-T</category>
+  <description>Power meter Trifase, Ingresso universale per transformatori amperometrici, larghezza 17,5mm, RS485 Modbus RTU e uscita digitale configurabile.</description>
+ </Product104>
+ <Product105>
+  <code>QE-POWER-T-7-STD-NL</code>
+  <category>QE-POWER-T</category>
+  <description>Power meter Trifase, Ingresso universale per transformatori amperometrici, larghezza 17,5mm, RS485 Modbus RTU e uscita digitale configurabile. Predisposto per montaggio su connettori T-BUS. V</description>
+ </Product105>
+ <Product106>
+  <code>QE-POWER-T-7-STD-NL-CLV</code>
+  <category>QE-POWER-T</category>
+  <description>Power meter Trifase, Ingresso universale per transformatori amperometrici, larghezza 17,5mm, RS485 Modbus RTU e uscita digitale configurabile. Predisposto per montaggio su connettori T-BUS. V</description>
+ </Product106>
+ <Product107>
+  <code>QE-POWER-T-7-STD-NL-TH</code>
+  <category>QE-POWER-T</category>
+  <description>Analizzatore di rete trifase</description>
+ </Product107>
+ <Product108>
+  <code>QE-POWER-T-7-STD-T-NL</code>
+  <category>QE-POWER-T</category>
+  <description>Power meter Trifase, Ingresso universale per transformatori amperometrici, larghezza 17,5mm, RS485 Modbus RTU e uscita digitale configurabile. Predisposto per montaggio su connettori T-BUS. V</description>
+ </Product108>
+ <Product109>
+  <code>QE-POWER-T-8-PLUS</code>
+  <category>QE-POWER-T</category>
+  <description>Power meter Trifase, Ingresso universale per transformatori amperometrici, larghezza 17,5mm, RS485 Modbus RTU e uscita digitale configurabile.</description>
+ </Product109>
+ <Product110>
+  <code>QE-POWER-T-8-PLUS-FND</code>
+  <category>QE-POWER-T</category>
+  <description>Power meter Trifase, Ingresso universale per transformatori amperometrici, larghezza 17,5mm, RS485 Modbus RTU e uscita digitale configurabile.</description>
+ </Product110>
+ <Product111>
+  <code>QE-POWER-T-8-PLUS-T-NL</code>
+  <category>QE-POWER-T</category>
+  <description>Power meter Trifase, Ingresso universale per transformatori amperometrici, larghezza 17,5mm, RS485 Modbus RTU e uscita digitale configurabile.</description>
+ </Product111>
+ <Product112>
+  <code>QE-POWER-T-8-PLUS-T-NL-TH</code>
+  <category>QE-POWER-T</category>
+  <description>Power meter Trifase, Ingresso universale per transformatori amperometrici, larghezza 17,5mm, RS485 Modbus RTU e uscita digitale configurabile.</description>
+ </Product112>
+ <Product113>
+  <code>QE-POWER-T-8-PRO</code>
+  <category>QE-POWER-T</category>
+  <description>Power meter Trifase, Ingresso universale per transformatori amperometrici, larghezza 17,5mm, RS485 Modbus RTU e uscita digitale configurabile.</description>
+ </Product113>
+ <Product114>
+  <code>QE-POWER-T-8-PRO-NL-TH</code>
+  <category>QE-POWER-T</category>
+  <description>Power meter Trifase, Ingresso universale per transformatori amperometrici, larghezza 17,5mm, RS485 Modbus RTU e uscita digitale configurabile.</description>
+ </Product114>
+ <Product115>
+  <code>QE-POWER-T-8-PRO-T-NL-CB</code>
+  <category>QE-POWER-T</category>
+  <description>Power meter Trifase, Ingresso universale per transformatori amperometrici, larghezza 17,5mm, RS485 Modbus RTU e uscita digitale configurabile.  CAMILLE BAUER METRAWATT</description>
+ </Product115>
+ <Product116>
+  <code>QE-POWER-T-8-PRO-T-NL-CB-NOIA</code>
+  <category>QE-POWER-T</category>
+  <description>Power meter Trifase, Ingresso universale per transformatori amperometrici, larghezza 17,5mm, RS485 Modbus RTU e uscita digitale configurabile.  CAMILLE BAUER METRAWATT</description>
+ </Product116>
+ <Product117>
+  <code>QE-POWER-T-8-STD</code>
+  <category>QE-POWER-T</category>
+  <description>Power meter Trifase, Ingresso universale per transformatori amperometrici, larghezza 17,5mm, RS485 Modbus RTU e uscita digitale configurabile.</description>
+ </Product117>
+ <Product118>
+  <code>QE-POWER-T-8-STD-NL</code>
+  <category>QE-POWER-T</category>
+  <description>Power meter Trifase, Ingresso universale per transformatori amperometrici, larghezza 17,5mm, RS485 Modbus RTU e uscita digitale configurabile.</description>
+ </Product118>
+ <Product119>
+  <code>QE-POWER-T-8-STD-NL-CLV</code>
+  <category>QE-POWER-T</category>
+  <description>Power meter Trifase, Ingresso universale per transformatori amperometrici, larghezza 17,5mm, RS485 Modbus RTU e uscita digitale configurabile.</description>
+ </Product119>
+ <Product120>
+  <code>QE-POWER-T-8-STD-NL-TH</code>
+  <category>QE-POWER-T</category>
+  <description>Power meter Trifase, Ingresso universale per transformatori amperometrici, larghezza 17,5mm, RS485 Modbus RTU e uscita digitale configurabile.</description>
+ </Product120>
+ <Product121>
+  <code>QE-POWER-T-8-STD-T-NL</code>
+  <category>QE-POWER-T</category>
+  <description>Power meter Trifase, Ingresso universale per transformatori amperometrici, larghezza 17,5mm, RS485 Modbus RTU e uscita digitale configurabile.</description>
+ </Product121>
+ <Product122>
+  <code>QE-RS485-ISOLATOR</code>
+  <category>QE-RS485-ISOLATOR</category>
+  <description>PNAABF - Optoisolatore RS485, versione 1 modulo din, alimentazione 10-30Vdc</description>
+ </Product122>
+ <Product123>
+  <code>Q-HDR-15-12</code>
+  <category>Q-HDR</category>
+  <description>AC/DC Ultra Slim Step Shape DIN Rail 15W 85-264Vac 12Vdc 1.25A</description>
+ </Product123>
+ <Product124>
+  <code>Q-HDR-15-24</code>
+  <category>Q-HDR</category>
+  <description>AC/DC Ultra Slim Step Shape DIN Rail 15W 85-264Vac 24Vdc 0.63A</description>
+ </Product124>
+ <Product125>
+  <code>Q-HDR-30-12</code>
+  <category>Q-HDR</category>
+  <description>AC/DC DIN Rail 24W 85-264Vac 12Vdc 2A Ultra slim design with 35mm (2SU) width No load power consumption &lt;0.3W Class II</description>
+ </Product125>
+ <Product126>
+  <code>Q-HR100</code>
+  <category>Q-HR100</category>
+  <description>Trasformatore di grandezza misurata in un segnale 4-20mA  ambienti non aggressivi.  Temperatura di lavoor: -30°C a 80°C   Alimentazione 9-30Vcc  </description>
+ </Product126>
+ <Product127>
+  <code>QI-100/1-3</code>
+  <category>QI-(XXX)/(X)-(X)</category>
+  <description>TRASFORMATORE AMPEROMETRICO</description>
+ </Product127>
+ <Product128>
+  <code>QI-1000/5-13</code>
+  <category>QI-(XXX)/(X)-(X)</category>
+  <description>TRASFORMATORE AMPEROMETRICO QI-1000/5  Diametro foro 50mm</description>
+ </Product128>
+ <Product129>
+  <code>QI-1000/5-3</code>
+  <category>QI-(XXX)/(X)-(X)</category>
+  <description>TRASFORMATORE AMPEROMETRICO QI-1000/5  Diametro foro 30mm</description>
+ </Product129>
+ <Product130>
+  <code>QI-150/5-11</code>
+  <category>QI-(XXX)/(X)-(X)</category>
+  <description>TRASFORMATORE AMPEROMETRICO</description>
+ </Product130>
+ <Product131>
+  <code>QI-2000/1-1</code>
+  <category>QI-(XXX)/(X)-(X)</category>
+  <description>TRASFORMATORE AMPEROMETRICO QI-2000/1  Foro 178X56</description>
+ </Product131>
+ <Product132>
+  <code>QI-2000/5-2</code>
+  <category>QI-(XXX)/(X)-(X)</category>
+  <description>TRASFORMATORE AMPEROMETRICO QI-2000/5  Foro 178X56</description>
+ </Product132>
+ <Product133>
+  <code>QI-300/5-12</code>
+  <category>QI-(XXX)/(X)-(X)</category>
+  <description>TRASFORMATORE AMPEROMETRICO QI-300/5  </description>
+ </Product133>
+ <Product134>
+  <code>QI-300/5-2</code>
+  <category>QI-(XXX)/(X)-(X)</category>
+  <description>TRASFORMATORE AMPEROMETRICO QI-300/5  Diametro foro 23mm</description>
+ </Product134>
+ <Product135>
+  <code>QI-300/5-3</code>
+  <category>QI-(XXX)/(X)-(X)</category>
+  <description>TRASFORMATORE AMPEROMETRICO QI-300/5  Diametro foro 30mm</description>
+ </Product135>
+ <Product136>
+  <code>QI-400/5-12</code>
+  <category>QI-(XXX)/(X)-(X)</category>
+  <description>TRASFORMATORE AMPEROMETRICO QI-400/5  </description>
+ </Product136>
+ <Product137>
+  <code>QI-400/5-SP</code>
+  <category>QI-(XXX)/(X)-(X)</category>
+  <description>TAPR3400/5A  2,5VA  5VA</description>
+ </Product137>
+ <Product138>
+  <code>QI-500/5-3</code>
+  <category>QI-(XXX)/(X)-(X)</category>
+  <description>TRASFORMATORE AMPEROMETRICO QI-500/5  Diametro foro 30mm</description>
+ </Product138>
+ <Product139>
+  <code>QI-800/5-13</code>
+  <category>QI-(XXX)/(X)-(X)</category>
+  <description>TRASFORMATORE AMPEROMETRICO QI-800/5-13</description>
+ </Product139>
+ <Product140>
+  <code>QI-800/5-3</code>
+  <category>QI-(XXX)/(X)-(X)</category>
+  <description>TRASFORMATORE AMPEROMETRICO QI-800/5-3</description>
+ </Product140>
+ <Product141>
+  <code>QI-100/1-1</code>
+  <category>QI-(XXX)/(X)-(X)</category>
+  <description>TRASFORMATORE AMPEROMETRICO</description>
+ </Product141>
+ <Product142>
+  <code>QI-100/1-2</code>
+  <category>QI-(XXX)/(X)-(X)</category>
+  <description>TRASFORMATORE AMPEROMETRICO QI-100/5</description>
+ </Product142>
+ <Product143>
+  <code>QI-100/5-1</code>
+  <category>QI-(XXX)/(X)-(X)</category>
+  <description>TRASFORMATORE AMPEROMETRICO QI-100/5</description>
+ </Product143>
+ <Product144>
+  <code>QI-150/5-1</code>
+  <category>QI-(XXX)/(X)-(X)</category>
+  <description>TRASFORMATORE AMPEROMETRICO QI-150/5</description>
+ </Product144>
+ <Product145>
+  <code>QI-200/5-2</code>
+  <category>QI-(XXX)/(X)-(X)</category>
+  <description>TRASFORMATORE AMPEROMETRICO QI-200/5  Diametro foro 23mm</description>
+ </Product145>
+ <Product146>
+  <code>QI-40/5-1</code>
+  <category>QI-(XXX)/(X)-(X)</category>
+  <description>TRASFORMATORE AMPEROMETRICO QI-40/5</description>
+ </Product146>
+ <Product147>
+  <code>QI-50/1-1</code>
+  <category>QI-(XXX)/(X)-(X)</category>
+  <description>TRASFORMATORE AMPEROMETRICO</description>
+ </Product147>
+ <Product148>
+  <code>QI-50/5-1</code>
+  <category>QI-(XXX)/(X)-(X)</category>
+  <description>TRASFORMATORE AMPEROMETRICO QI-50/5  Diametro foro 20mm</description>
+ </Product148>
+ <Product149>
+  <code>QI-60/5-1</code>
+  <category>QI-(XXX)/(X)-(X)</category>
+  <description>TRASFORMATORE AMPEROMETRICO QI-60/5  Diametro foro 20mm</description>
+ </Product149>
+ <Product150>
+  <code>QI-80/5-1</code>
+  <category>QI-(XXX)/(X)-(X)</category>
+  <description>TRASFORMATORE AMPEROMETRICO QI-80/5  Diametro foro 20mm</description>
+ </Product150>
+ <Product151>
+  <code>QI-300-I-04</code>
+  <category>QI-300-I</category>
+  <description>Trasformatore Amperometrico Loop Powered TRMS AC/DC, 300A Rev.04</description>
+ </Product151>
+ <Product152>
+  <code>QI-300-I-2</code>
+  <category>QI-300-I</category>
+  <description>Trasformatore Amperometrico Loop Powered TRMS AC/DC, 300A</description>
+ </Product152>
+ <Product153>
+  <code>QI-300-I-2-NL</code>
+  <category>QI-300-I</category>
+  <description>Trasformatore Amperometrico Loop Powered TRMS AC/DC, 300A</description>
+ </Product153>
+ <Product154>
+  <code>QI-300-I-2-NL-TH</code>
+  <category>QI-300-I</category>
+  <description>Trasformatore Amperometrico Loop Powered TRMS AC/DC, 300A</description>
+ </Product154>
+ <Product155>
+  <code>QI-300-I-2-T-NL</code>
+  <category>QI-300-I</category>
+  <description>Trasformatore Amperometrico Loop Powered TRMS AC/DC, 300A</description>
+ </Product155>
+ <Product156>
+  <code>QI-300-V-485-2</code>
+  <category>QI-300-V-485</category>
+  <description>Trasformatore Amperometrico RMS, 300A AC/400A DC, 0-10V e RS485 Modbus</description>
+ </Product156>
+ <Product157>
+  <code>QI-300-V-485-2-G</code>
+  <category>QI-300-V-485</category>
+  <description>Trasfomatore Amperometrico RMS, 300A AC/400A DC, 0-10V e RS485 Modbus</description>
+ </Product157>
+ <Product158>
+  <code>QI-300-V-485-2-NL</code>
+  <category>QI-300-V-485</category>
+  <description>Trasfomatore Amperometrico RMS, 300A AC/400A DC, 0-10V e RS485 Modbus</description>
+ </Product158>
+ <Product159>
+  <code>QI-300-V-485-3</code>
+  <category>QI-300-V-485</category>
+  <description>Trasfomatore Amperometrico RMS, 300A AC/400A DC, 0-10V e RS485 Modbus</description>
+ </Product159>
+ <Product160>
+  <code>QI-300-V-485-3-G</code>
+  <category>QI-300-V-485</category>
+  <description>Trasfomatore Amperometrico RMS, 300A AC/400A DC, 0-10V e RS485 Modbus</description>
+ </Product160>
+ <Product161>
+  <code>QI-300-V-485-3-NL</code>
+  <category>QI-300-V-485</category>
+  <description>Trasfomatore Amperometrico RMS, 300A AC/400A DC, 0-10V e RS485 Modbus</description>
+ </Product161>
+ <Product162>
+  <code>QI-300-V-485-3-T-NL</code>
+  <category>QI-300-V-485</category>
+  <description>Trasfomatore Amperometrico RMS, 300A AC/400A DC, 0-10V e RS485 Modbus</description>
+ </Product162>
+ <Product163>
+  <code>QI-300-V-485-4</code>
+  <category>QI-300-V-485</category>
+  <description>Trasfomatore Amperometrico RMS, 300A AC/400A DC, 0-10V e RS485 Modbus</description>
+ </Product163>
+ <Product164>
+  <code>QI-300-V-485-4-G</code>
+  <category>QI-300-V-485</category>
+  <description>Trasfomatore Amperometrico RMS, 300A AC/400A DC, 0-10V e RS485 Modbus</description>
+ </Product164>
+ <Product165>
+  <code>QI-300-V-485-4-NL</code>
+  <category>QI-300-V-485</category>
+  <description>Trasfomatore Amperometrico RMS, 300A AC/400A DC, 0-10V e RS485 Modbus</description>
+ </Product165>
+ <Product166>
+  <code>QI-300-V-485-4-T-NL</code>
+  <category>QI-300-V-485</category>
+  <description>Trasfomatore Amperometrico RMS, 300A AC/400A DC, 0-10V e RS485 Modbus</description>
+ </Product166>
+ <Product167>
+  <code>QI-400DC-I</code>
+  <category>QI-400DC-I</category>
+  <description>Trasformatore Amperometrico Loop Powered TRMS AC/DC, 400A dc e 300 A ac</description>
+ </Product167>
+ <Product168>
+  <code>QI-400DC-I-NL</code>
+  <category>QI-400DC-I</category>
+  <description>Trasformatore Amperometrico Loop Powered TRMS AC/DC, 400A dc e 300 A ac</description>
+ </Product168>
+ <Product169>
+  <code>QI-400DC-T-NL</code>
+  <category>QI-400DC-I</category>
+  <description>Trasformatore Amperometrico Loop Powered TRMS AC/DC, 400A dc e 300 A ac</description>
+ </Product169>
+ <Product170>
+  <code>QI-50-I</code>
+  <category>QI-50-I</category>
+  <description>Trasformatore Amperometrico Loop Powered TRMS AC/DC, 50A</description>
+ </Product170>
+ <Product171>
+  <code>QI-50-I-04</code>
+  <category>QI-50-I</category>
+  <description>Trasformatore Amperometrico Loop Powered TRMS AC/DC, 50A Rev.04</description>
+ </Product171>
+ <Product172>
+  <code>QI-50-I-2</code>
+  <category>QI-50-I</category>
+  <description>Trasformatore Amperometrico Loop Powered TRMS AC/DC, 50A</description>
+ </Product172>
+ <Product173>
+  <code>QI-50-I-2 T-NL</code>
+  <category>QI-50-I</category>
+  <description>Trasformatore Amperometrico Loop Powered TRMS AC/DC, 50A</description>
+ </Product173>
+ <Product174>
+  <code>QI-50-I-2 T-NL-CB</code>
+  <category>QI-50-I</category>
+  <description>Trasformatore Amperometrico Loop Powered TRMS AC/DC, 50A CAMILLE BAUER METRAWATT</description>
+ </Product174>
+ <Product175>
+  <code>QI-50-I-2-NL</code>
+  <category>QI-50-I</category>
+  <description>Trasformatore Amperometrico Loop Powered TRMS AC/DC, 50A</description>
+ </Product175>
+ <Product176>
+  <code>QI-50-I-NL</code>
+  <category>QI-50-I</category>
+  <description>Trasformatore Amperometrico Loop Powered TRMS AC/DC, 50A</description>
+ </Product176>
+ <Product177>
+  <code>QI-50-V-485</code>
+  <category>QI-50-V-485</category>
+  <description>Trasformatore Amperometrico TRMS AC/DC 50A 0-10V e RS485 Modbus</description>
+ </Product177>
+ <Product178>
+  <code>QI-50-V-485-2</code>
+  <category>QI-50-V-485</category>
+  <description>Trasformatore Amperometrico TRMS AC/DC 50A 0-10V e RS485 Modbus</description>
+ </Product178>
+ <Product179>
+  <code>QI-50-V-485-2-NL</code>
+  <category>QI-50-V-485</category>
+  <description>Trasformatore Amperometrico TRMS AC/DC 50A 0-10V e RS485 Modbus</description>
+ </Product179>
+ <Product180>
+  <code>QI-50-V-485-3</code>
+  <category>QI-50-V-485</category>
+  <description>Trasformatore Amperometrico TRMS AC/DC 50A 0-10V e RS485 Modbus</description>
+ </Product180>
+ <Product181>
+  <code>QI-50-V-485-3-NL</code>
+  <category>QI-50-V-485</category>
+  <description>Trasformatore Amperometrico TRMS AC/DC 50A 0-10V e RS485 Modbus</description>
+ </Product181>
+ <Product182>
+  <code>QI-50-V-485-3-T-NL</code>
+  <category>QI-50-V-485</category>
+  <description>Trasformatore Amperometrico TRMS AC/DC 50A 0-10V e RS485 Modbus</description>
+ </Product182>
+ <Product183>
+  <code>QI-50-V-485-4</code>
+  <category>QI-50-V-485</category>
+  <description>Trasformatore Amperometrico TRMS AC/DC 50A 0-10V e RS485 Modbus</description>
+ </Product183>
+ <Product184>
+  <code>QI-50-V-485-4-NL</code>
+  <category>QI-50-V-485</category>
+  <description>Trasformatore Amperometrico TRMS AC/DC 50A 0-10V e RS485 Modbus</description>
+ </Product184>
+ <Product185>
+  <code>QI-50-V-485-4-T-NL</code>
+  <category>QI-50-V-485</category>
+  <description>Trasformatore Amperometrico TRMS AC/DC 50A 0-10V e RS485 Modbus</description>
+ </Product185>
+ <Product186>
+  <code>QI-50-V-485-CONTREL</code>
+  <category>QI-50-V-485</category>
+  <description>Trasformatore Amperometrico TRMS AC/DC 50A 0-10V e RS485 Modbus CONTREL</description>
+ </Product186>
+ <Product187>
+  <code>QI-50-V-485-NL</code>
+  <category>QI-50-V-485</category>
+  <description>Trasformatore Amperometrico TRMS AC/DC 50A 0-10V e RS485 Modbus</description>
+ </Product187>
+ <Product188>
+  <code>QI-DP-816-2000/5A</code>
+  <category>QI-DP</category>
+  <description>Trasformatore Amperometrico Split Core 80x160mm, primario da 2000A, secondario 5 A</description>
+ </Product188>
+ <Product189>
+  <code>QI-HSC-100</code>
+  <category>QI-HSC</category>
+  <description>Trasformatore Amperometrico Split Core ad effetto di Hall per correnti AC/DC fino a 100 A, uscita +/- 4 V, Alimentazione +/- 15V. Diametro 20mm</description>
+ </Product189>
+ <Product190>
+  <code>QI-HSC-104-2000-I</code>
+  <category>QI-HSC</category>
+  <description>Trasformatore Amperometrico Split Core ad Effetto di Hall, primario 2000 A, uscita 4-20mA</description>
+ </Product190>
+ <Product191>
+  <code>QI-HSC-500-41</code>
+  <category>QI-HSC</category>
+  <description>Trasformatore Amperometrico Split Core ad effetto di Hall per correnti AC/DC fino a 500 A, uscita +/- 4 V, Alimentazione +/- 15V. Diametro 41mm</description>
+ </Product191>
+ <Product192>
+  <code>QI-HSC-50</code>
+  <category>QI-HSC</category>
+  <description>Trasformatore Amperometrico Split Core ad effetto di Hall per correnti AC/DC fino a 50 A, uscita +/- 4 V, Alimentazione +/- 15V. Diametro 20mm</description>
+ </Product192>
+ <Product193>
+  <code>QI-KCT-06-5 A/333mV</code>
+  <category>QI-KCT</category>
+  <description>Trasformatore Amperometrico Split core, foro da 06mm, primario 5 A, secondario @ 333mV, 1mt cavo integrato</description>
+ </Product193>
+ <Product194>
+  <code>QI-KCT-10-30 A/333mV</code>
+  <category>QI-KCT</category>
+  <description>Trasformatore Amperometrico Split core, foro da 10mm, primario 30 A, secondario @ 333mV, 1mt cavo integrato</description>
+ </Product194>
+ <Product195>
+  <code>QI-KCT-10-50 A/333mV</code>
+  <category>QI-KCT</category>
+  <description>Trasformatore Amperometrico Split core, foro da 10mm, primario 50 A, secondario @ 333mV, 1mt cavo integrato</description>
+ </Product195>
+ <Product196>
+  <code>QI-KCT-10-50 A/333mV-FND</code>
+  <category>QI-KCT</category>
+  <description>Trasformatore Amperometrico Split core, foro da 10mm, primario 50 A, secondario @ 333mV, 1mt cavo integrato</description>
+ </Product196>
+ <Product197>
+  <code>QI-KCT-10-80 A/333mV</code>
+  <category>QI-KCT</category>
+  <description>Trasformatore Amperometrico Split core, foro da 10mm, primario 80 A, secondario @ 333mV, 1mt cavo integrato</description>
+ </Product197>
+ <Product198>
+  <code>QI-KCT-16-100 A/333mV</code>
+  <category>QI-KCT</category>
+  <description>Trasformatore Amperometrico Split core, foro da 16mm, primario 100 A, secondario @ 333mV, 1mt cavo integrato</description>
+ </Product198>
+ <Product199>
+  <code>QI-KCT-16-200 A/333mV</code>
+  <category>QI-KCT</category>
+  <description>Trasformatore Amperometrico Split core, foro da 16mm, primario 200 A, secondario @ 333mV, 1mt cavo integrato  </description>
+ </Product199>
+ <Product200>
+  <code>QI-KCT-16-80 A/333mV</code>
+  <category>QI-KCT</category>
+  <description>Trasformatore Amperometrico Split core, foro da 16mm, primario 80 A, secondario @ 333mV, 1mt cavo integrato</description>
+ </Product200>
+ <Product201>
+  <code>QI-KCT-24-100 A/333mV</code>
+  <category>QI-KCT</category>
+  <description>Trasformatore Amperometrico Split core, foro da 24mm, primario 100 A, secondario @ 333mV, 1mt cavo integrato  </description>
+ </Product201>
+ <Product202>
+  <code>QI-KCT-24-200 A/333mV</code>
+  <category>QI-KCT</category>
+  <description>Trasformatore Amperometrico Split core, foro da 24mm, primario 200 A, secondario @ 333mV, 1mt cavo integrato  </description>
+ </Product202>
+ <Product203>
+  <code>QI-KCT-24-300 A/333mV</code>
+  <category>QI-KCT</category>
+  <description>Trasformatore Amperometrico Split core, foro da 24mm, primario 300 A, secondario @ 333mV, 1mt cavo integrato  </description>
+ </Product203>
+ <Product204>
+  <code>QI-KCT-36-300 A/333mV</code>
+  <category>QI-KCT</category>
+  <description>Trasformatore Amperometrico Split core, foro da 35mm, primario 300 A, secondario @ 333mV, 1mt cavo integrato</description>
+ </Product204>
+ <Product205>
+  <code>QI-KCT-36-400 A/333mV</code>
+  <category>QI-KCT</category>
+  <description>Trasformatore Amperometrico Split core, foro da 35mm, primario 400 A, secondario @ 333mV, 1mt cavo integrato</description>
+ </Product205>
+ <Product206>
+  <code>QI-KCT-36-600 A/333mV</code>
+  <category>QI-KCT</category>
+  <description>Trasformatore Amperometrico Split core, foro da 35mm, primario 600 A, secondario @ 333mV, 1mt cavo integrato</description>
+ </Product206>
+ <Product207>
+  <code>QI-KCT-10-30 A/333mV-CLV</code>
+  <category>QI-KCT</category>
+  <description>Trasformatore Amperometrico Split core, foro da 10mm, primario 30 A, secondario @ 333mV, 1mt cavo integrato</description>
+ </Product207>
+ <Product208>
+  <code>QI-POWER-485</code>
+  <category>QI-POWER-485</category>
+  <description>Power meter RS485 corrente fino a 50A AC/DC tensione fino a 800Vac o 1000Vdc</description>
+ </Product208>
+ <Product209>
+  <code>QI-POWER-485-2</code>
+  <category>QI-POWER-485</category>
+  <description>Power meter RS485 corrente fino a 50A AC/DC tensione fino a 800Vac o 1000Vdc</description>
+ </Product209>
+ <Product210>
+  <code>QI-POWER-485-3</code>
+  <category>QI-POWER-485</category>
+  <description>Power meter RS485 corrente fino a 50A AC/DC tensione fino a 800Vac o 1000Vdc</description>
+ </Product210>
+ <Product211>
+  <code>QI-POWER-485-3-G</code>
+  <category>QI-POWER-485</category>
+  <description>Power meter RS485 corrente fino a 50A AC/DC tensione fino a 800Vac o 1000Vdc</description>
+ </Product211>
+ <Product212>
+  <code>QI-POWER-485-4</code>
+  <category>QI-POWER-485</category>
+  <description>Power meter RS485 corrente fino a 50A AC/DC tensione fino a 800Vac o 1000Vdc</description>
+ </Product212>
+ <Product213>
+  <code>QI-POWER-485-4-FND</code>
+  <category>QI-POWER-485</category>
+  <description>Power meter RS485 corrente fino a 50A AC/DC tensione fino a 800Vac o 1000Vdc</description>
+ </Product213>
+ <Product214>
+  <code>QI-POWER-485-4-G</code>
+  <category>QI-POWER-485</category>
+  <description>Power meter RS485 corrente fino a 50A AC/DC tensione fino a 800Vac o 1000Vdc</description>
+ </Product214>
+ <Product215>
+  <code>QI-POWER-485-4-NL</code>
+  <category>QI-POWER-485</category>
+  <description>Power meter RS485 corrente fino a 50A AC/DC tensione fino a 800Vac o 1000Vdc</description>
+ </Product215>
+ <Product216>
+  <code>QI-POWER-485-5</code>
+  <category>QI-POWER-485</category>
+  <description>Power meter RS485 corrente fino a 50A AC/DC tensione fino a 800Vac o 1000Vdc</description>
+ </Product216>
+ <Product217>
+  <code>QI-POWER-485-5-FND</code>
+  <category>QI-POWER-485</category>
+  <description>Power meter RS485 corrente fino a 50A AC/DC tensione fino a 800Vac o 1000Vdc</description>
+ </Product217>
+ <Product218>
+  <code>QI-POWER-485-5-G</code>
+  <category>QI-POWER-485</category>
+  <description>Power meter RS485 corrente fino a 50A AC/DC tensione fino a 800Vac o 1000Vdc</description>
+ </Product218>
+ <Product219>
+  <code>QI-POWER-485-5-NL</code>
+  <category>QI-POWER-485</category>
+  <description>Power meter RS485 corrente fino a 50A AC/DC tensione fino a 800Vac o 1000Vdc</description>
+ </Product219>
+ <Product220>
+  <code>QI-POWER-485-6</code>
+  <category>QI-POWER-485</category>
+  <description>Power meter RS485 corrente fino a 50A AC/DC tensione fino a 800Vac o 1000Vdc</description>
+ </Product220>
+ <Product221>
+  <code>QI-POWER-485-6-FND</code>
+  <category>QI-POWER-485</category>
+  <description>Power meter RS485 corrente fino a 50A AC/DC tensione fino a 800Vac o 1000Vdc</description>
+ </Product221>
+ <Product222>
+  <code>QI-POWER-485-6-NL</code>
+  <category>QI-POWER-485</category>
+  <description>Power meter RS485 corrente fino a 50A AC/DC tensione fino a 800Vac o 1000Vdc</description>
+ </Product222>
+ <Product223>
+  <code>QI-POWER-485-LV</code>
+  <category>QI-POWER-485</category>
+  <description>Power meter RS485 corrente fino a 50A AC/DC tensione fino a 80Vac o 100Vdc</description>
+ </Product223>
+ <Product224>
+  <code>QI-POWER-485-LV-3</code>
+  <category>QI-POWER-485</category>
+  <description>Power Meter AC/DC TRMS, ingresso in corrente 50A, ingresso in tensione 80V AC/ 100 A DC, uscita RS485 Modbus  </description>
+ </Product224>
+ <Product225>
+  <code>QI-POWER-485-LV-4</code>
+  <category>QI-POWER-485</category>
+  <description>Power meter RS485 corrente fino a 50A AC/DC tensione fino a 800Vac o 1000Vdc</description>
+ </Product225>
+ <Product226>
+  <code>QI-POWER-485-LV-6</code>
+  <category>QI-POWER-485</category>
+  <description>Power meter RS485 corrente fino a 50A AC/DC tensione fino a 800Vac o 1000Vdc</description>
+ </Product226>
+ <Product227>
+  <code>QI-POWER-485-LV-NL</code>
+  <category>QI-POWER-485</category>
+  <description>Power meter RS485 corrente fino a 50A AC/DC tensione fino a 80Vac o 100Vdc</description>
+ </Product227>
+ <Product228>
+  <code>QI-POWER-485-LV-NL-2</code>
+  <category>QI-POWER-485</category>
+  <description>Power meter RS485 corrente fino a 50A AC/DC tensione fino a 800Vac o 1000Vdc</description>
+ </Product228>
+ <Product229>
+  <code>QI-POWER-485-LV-NL-3</code>
+  <category>QI-POWER-485</category>
+  <description>Power meter RS485 corrente fino a 50A AC/DC tensione fino a 800Vac o 1000Vdc</description>
+ </Product229>
+ <Product230>
+  <code>QI-POWER-485-LV-NL-4</code>
+  <category>QI-POWER-485</category>
+  <description>Power meter RS485 corrente fino a 50A AC/DC tensione fino a 800Vac o 1000Vdc</description>
+ </Product230>
+ <Product231>
+  <code>QI-POWER-485-LV-T-NL-4</code>
+  <category>QI-POWER-485</category>
+  <description>Power meter RS485 corrente fino a 50A AC/DC tensione fino a 800Vac o 1000Vdc</description>
+ </Product231>
+ <Product232>
+  <code>QI-POWER-485-NL</code>
+  <category>QI-POWER-485</category>
+  <description>Power meter RS485 corrente fino a 50A AC/DC tensione fino a 800Vac o 1000Vdc</description>
+ </Product232>
+ <Product233>
+  <code>QI-POWER-485-NL-2</code>
+  <category>QI-POWER-485</category>
+  <description>Power meter RS485 corrente fino a 50A AC/DC tensione fino a 800Vac o 1000Vdc</description>
+ </Product233>
+ <Product234>
+  <code>QI-POWER-485-NL-3</code>
+  <category>QI-POWER-485</category>
+  <description>Power meter RS485 corrente fino a 50A AC/DC tensione fino a 800Vac o 1000Vdc</description>
+ </Product234>
+ <Product235>
+  <code>QI-POWER-485-TNL-2</code>
+  <category>QI-POWER-485</category>
+  <description>Power meter RS485 corrente fino a 50A AC/DC tensione fino a 800Vac o 1000Vdc</description>
+ </Product235>
+ <Product236>
+  <code>QI-POWER-485-T-NL-3</code>
+  <category>QI-POWER-485</category>
+  <description>Power meter RS485 corrente fino a 50A AC/DC tensione fino a 800Vac o 1000Vdc</description>
+ </Product236>
+ <Product237>
+  <code>QI-POWER-485-T-NL-4</code>
+  <category>QI-POWER-485</category>
+  <description>Power meter RS485 corrente fino a 50A AC/DC tensione fino a 800Vac o 1000Vdc</description>
+ </Product237>
+ <Product238>
+  <code>QI-POWER-485-T-NL-4-CLV</code>
+  <category>QI-POWER-485</category>
+  <description>Power meter RS485 corrente fino a 50A AC/DC tensione fino a 800Vac o 1000Vdc</description>
+ </Product238>
+ <Product239>
+  <code>QI-POWER-485-T-NL-4-CLV1</code>
+  <category>QI-POWER-485</category>
+  <description>Power meter RS485 corrente fino a 50A AC/DC tensione fino a 800Vac o 1000Vdc</description>
+ </Product239>
+ <Product240>
+  <code>QI-POWER-485-T-NL-6-CLV-C95710194</code>
+  <category>QI-POWER-485</category>
+  <description>Power meter RS485 corrente fino a 50A AC/DC tensione fino a 800Vac o 1000Vdc</description>
+ </Product240>
+ <Product241>
+  <code>QI-POWER-485-T-NL-6-CLV-PECZ10021</code>
+  <category>QI-POWER-485</category>
+  <description>Power meter RS485 corrente fino a 50A AC/DC tensione fino a 800Vac o 1000Vdc</description>
+ </Product241>
+ <Product242>
+  <code>QI-POWER-485-100-4-FND</code>
+  <category>QI-POWER-485-100</category>
+  <description>Power meter RS485 corrente fino a 100A AC/DC tensione fino a 800Vac o 1000Vdc</description>
+ </Product242>
+ <Product243>
+  <code>QI-POWER-485-100-4-NL</code>
+  <category>QI-POWER-485-100</category>
+  <description>Power meter RS485 corrente fino a 100A AC/DC tensione fino a 800Vac o 1000Vdc</description>
+ </Product243>
+ <Product244>
+  <code>QI-POWER-485-100-6-FND</code>
+  <category>QI-POWER-485-100</category>
+  <description>Power meter RS485 corrente fino a 100A AC/DC tensione fino a 800Vac o 1000Vdc</description>
+ </Product244>
+ <Product245>
+  <code>QI-POWER-485-300-3</code>
+  <category>QI-POWER-485-300</category>
+  <description>Power meter RS485 corrente fino a 300A AC/ 400 A DC tensione fino a 800Vac o 1000Vdc</description>
+ </Product245>
+ <Product246>
+  <code>QI-POWER-485-300-3-G</code>
+  <category>QI-POWER-485-300</category>
+  <description>Power meter RS485 corrente fino a 300A AC/ 400 A DC tensione fino a 800Vac o 1000Vdc</description>
+ </Product246>
+ <Product247>
+  <code>QI-POWER-485-300-4</code>
+  <category>QI-POWER-485-300</category>
+  <description>Power meter RS485 corrente fino a 300A AC/ 400 A DC tensione fino a 800Vac o 1000Vdc</description>
+ </Product247>
+ <Product248>
+  <code>QI-POWER-485-300-4-G</code>
+  <category>QI-POWER-485-300</category>
+  <description>Power meter RS485 corrente fino a 300A AC/ 400 A DC tensione fino a 800Vac o 1000Vdc</description>
+ </Product248>
+ <Product249>
+  <code>QI-POWER-485-300-5</code>
+  <category>QI-POWER-485-300</category>
+  <description>Power meter RS485 corrente fino a 300A AC/ 400 A DC tensione fino a 800Vac o 1000Vdc</description>
+ </Product249>
+ <Product250>
+  <code>QI-POWER-485-300-5-FND</code>
+  <category>QI-POWER-485-300</category>
+  <description>Power meter RS485 corrente fino a 300A AC/ 400 A DC tensione fino a 800Vac o 1000Vdc</description>
+ </Product250>
+ <Product251>
+  <code>QI-POWER-485-300-5-G</code>
+  <category>QI-POWER-485-300</category>
+  <description>Power meter RS485 corrente fino a 300A AC/ 400 A DC tensione fino a 800Vac o 1000Vdc</description>
+ </Product251>
+ <Product252>
+  <code>QI-POWER-485-300-5-NL</code>
+  <category>QI-POWER-485-300</category>
+  <description>Power meter RS485 corrente fino a 300A AC/ 400 A DC tensione fino a 800Vac o 1000Vdc</description>
+ </Product252>
+ <Product253>
+  <code>QI-POWER-485-300-5-T-NL</code>
+  <category>QI-POWER-485-300</category>
+  <description>Power meter RS485 corrente fino a 300A AC/ 400 A DC tensione fino a 800Vac o 1000Vdc</description>
+ </Product253>
+ <Product254>
+  <code>QI-POWER-485-300-6</code>
+  <category>QI-POWER-485-300</category>
+  <description>Power meter RS485 corrente fino a 300A AC/ 400 A DC tensione fino a 800Vac o 1000Vdc</description>
+ </Product254>
+ <Product255>
+  <code>QI-POWER-485-300-6-FND</code>
+  <category>QI-POWER-485-300</category>
+  <description>Power meter RS485 corrente fino a 300A AC/ 400 A DC tensione fino a 800Vac o 1000Vdc</description>
+ </Product255>
+ <Product256>
+  <code>QI-POWER-485-300-6-NL</code>
+  <category>QI-POWER-485-300</category>
+  <description>Power meter RS485 corrente fino a 300A AC/ 400 A DC tensione fino a 800Vac o 1000Vdc</description>
+ </Product256>
+ <Product257>
+  <code>QI-POWER-485-300-LV-3</code>
+  <category>QI-POWER-485-300</category>
+  <description>Power meter RS485 corrente fino a 300A AC/ 400 A DC tensione fino a 80Vac o 100Vdc</description>
+ </Product257>
+ <Product258>
+  <code>QI-POWER-485-300-LV-4</code>
+  <category>QI-POWER-485-300</category>
+  <description>Power meter RS485 corrente fino a 300A AC/ 400 A DC tensione fino a 80Vac o 100Vdc</description>
+ </Product258>
+ <Product259>
+  <code>QI-POWER-485-300-LV-6</code>
+  <category>QI-POWER-485-300</category>
+  <description>Power meter RS485 corrente fino a 300A AC/ 400 A DC tensione fino a 800Vac o 1000Vdc</description>
+ </Product259>
+ <Product260>
+  <code>QI-POWER-485-300-LV-NL-3</code>
+  <category>QI-POWER-485-300</category>
+  <description>Power meter RS485 corrente fino a 300A AC/ 400 A DC tensione fino a 80Vac o 100Vdc</description>
+ </Product260>
+ <Product261>
+  <code>QI-POWER-485-300-LV-NL-4</code>
+  <category>QI-POWER-485-300</category>
+  <description>Power meter RS485 corrente fino a 300A AC/ 400 A DC tensione fino a 80Vac o 100Vdc</description>
+ </Product261>
+ <Product262>
+  <code>QI-POWER-485-300-LV-NL-6</code>
+  <category>QI-POWER-485-300</category>
+  <description>Power meter RS485 corrente fino a 300A AC/ 400 A DC tensione fino a 800Vac o 1000Vdc</description>
+ </Product262>
+ <Product263>
+  <code>QI-POWER-485-300-LV-T-NL-4</code>
+  <category>QI-POWER-485-300</category>
+  <description>Power meter RS485 corrente fino a 300A AC/ 400 A DC tensione fino a 80Vac o 100Vdc</description>
+ </Product263>
+ <Product264>
+  <code>QI-POWER-485-300-NL-3</code>
+  <category>QI-POWER-485-300</category>
+  <description>Power meter RS485 corrente fino a 300A AC/ 400 A DC tensione fino a 800Vac o 1000Vdc</description>
+ </Product264>
+ <Product265>
+  <code>QI-POWER-485-300-NL-4</code>
+  <category>QI-POWER-485-300</category>
+  <description>Power meter RS485 corrente fino a 300A AC/ 400 A DC tensione fino a 800Vac o 1000Vdc</description>
+ </Product265>
+ <Product266>
+  <code>QI-POWER-485-300-NL-4-TH</code>
+  <category>QI-POWER-485-300</category>
+  <description>Power meter RS485 corrente fino a 300A AC/ 400 A DC tensione fino a 800Vac o 1000Vdc</description>
+ </Product266>
+ <Product267>
+  <code>QI-POWER-485-300-T-NL-4</code>
+  <category>QI-POWER-485-300</category>
+  <description>Power meter RS485 corrente fino a 300A AC/ 400 A DC tensione fino a 800Vac o 1000Vdc</description>
+ </Product267>
+ <Product268>
+  <code>QI-ROG-1000-A</code>
+  <category>QI-ROG</category>
+  <description>Sonda di Rogowski , lunghezza 300 mm, diametro 12mm , max diametro interno 84mm, classe 1%, 2mt di cavo, 100mV/1000A @50Hz ARANCIONE  </description>
+ </Product268>
+ <Product269>
+  <code>QI-ROG-300</code>
+  <category>QI-ROG</category>
+  <description>Sonda di Rogowski , lunghezza 300 mm, diametro 12mm , max diametro interno 84mm, classe 1%, 2mt di cavo, 100mV/1000A @50Hz  </description>
+ </Product269>
+ <Product270>
+  <code>QI-ROG-300-A</code>
+  <category>QI-ROG</category>
+  <description>Sonda di Rogowski , lunghezza 300 mm, diametro 12mm , max diametro interno 84mm, classe 1%, 2mt di cavo, 100mV/1000A @50Hz ARANCIONE  </description>
+ </Product270>
+ <Product271>
+  <code>QI-ROG-400</code>
+  <category>QI-ROG</category>
+  <description>Sonda di Rogowski , lunghezza 400 mm, diametro 12mm , max diametro interno 84mm, classe 1%, 2mt di cavo, 100mV/1000A @50Hz  </description>
+ </Product271>
+ <Product272>
+  <code>QI-ROG-400-A</code>
+  <category>QI-ROG</category>
+  <description>Sonda di Rogowski , lunghezza 400 mm, diametro 12mm , max diametro interno 84mm, classe 1%, 2mt di cavo, 100mV/1000A @50Hz COLORE ARANCIONE  </description>
+ </Product272>
+ <Product273>
+  <code>QI-ROG-400-B</code>
+  <category>QI-ROG</category>
+  <description>Sonda di Rogowski , lunghezza 400 mm, diametro 12mm , max diametro interno 84mm, classe 1%, 2mt di cavo, 100mV/1000A @50Hz COLORE BLU</description>
+ </Product273>
+ <Product274>
+  <code>QI-ROG-400-N</code>
+  <category>QI-ROG</category>
+  <description>Sonda di Rogowski , lunghezza 400 mm, diametro 12mm , max diametro interno 84mm, classe 1%, 2mt di cavo, 100mV/1000A @50Hz COLORE NERO</description>
+ </Product274>
+ <Product275>
+  <code>QI-ROG-400-R</code>
+  <category>QI-ROG</category>
+  <description>Sonda di Rogowski , lunghezza 400 mm, diametro 12mm , max diametro interno 84mm, classe 1%, 2mt di cavo, 100mV/1000A @50Hz COLORE ROSSO</description>
+ </Product275>
+ <Product276>
+  <code>QI-ROG-500</code>
+  <category>QI-ROG</category>
+  <description>Sonda di Rogowski , lunghezza 500 mm, diametro 12mm , max diametro interno 84mm, classe 1%, 2mt di cavo, 100mV/1000A @50Hz  </description>
+ </Product276>
+ <Product277>
+  <code>QI-ROG-600-4MT</code>
+  <category>QI-ROG</category>
+  <description>Sonda di Rogowski , lunghezza 600 mm, diametro 12mm , max diametro interno 84mm, classe 1%, 4mt di cavo, 100mV/1000A @50Hz  </description>
+ </Product277>
+ <Product278>
+  <code>QI-ROG-700-10MT</code>
+  <category>QI-ROG</category>
+  <description>Sonda di Rogowski , lunghezza 700 mm, diametro 12mm , max diametro interno 84mm, classe 1%, 10mt di cavo, 100mV/1000A @50Hz  </description>
+ </Product278>
+ <Product279>
+  <code>QI-SC-06-5/333</code>
+  <category>QI-SC</category>
+  <description>Trasformatore Amperometrico Split core, foro da 6mm, primario 5 A, secondario @ 333mV, 1mt cavo integrato</description>
+ </Product279>
+ <Product280>
+  <code>QI-SC-10-5/333</code>
+  <category>QI-SC</category>
+  <description>Trasformatore Amperometrico Split core, foro da 10mm, primario 5 A, secondario @ 333mV, 1mt cavo integrato</description>
+ </Product280>
+ <Product281>
+  <code>QI-SC-10-50/333</code>
+  <category>QI-SC</category>
+  <description>Trasformatore Amperometrico Split core, foro da 10mm, primario 50 A, secondario @ 333mV, 1mt cavo integrato  </description>
+ </Product281>
+ <Product282>
+  <code>QI-SC-10-80/333</code>
+  <category>QI-SC</category>
+  <description>Trasformatore Amperometrico Split core, foro da 10mm, primario 80 A, secondario @ 333mV, 1mt cavo integrato</description>
+ </Product282>
+ <Product283>
+  <code>QI-SC-16-100/333</code>
+  <category>QI-SC</category>
+  <description>Trasformatore Amperometrico Split core, foro da 16mm, primario 100 A, secondario @ 333mV, 1mt cavo integrato</description>
+ </Product283>
+ <Product284>
+  <code>QI-SC-24-100/5</code>
+  <category>QI-SC</category>
+  <description>Trasformatore Amperometrico Split Core con foro passante da 24mm, primario da 100 A, secondario 5 A, 1 mt di cavo integrato    </description>
+ </Product284>
+ <Product285>
+  <code>QI-SC-24-100/5-1</code>
+  <category>QI-SC</category>
+  <description>Trasformatore Amperometrico Split Core con foro passante da 24mm, primario da 100 A, secondario 5 A, 1 mt di cavo integrato SMALLER CABLE    </description>
+ </Product285>
+ <Product286>
+  <code>QI-SC-24-200/5</code>
+  <category>QI-SC</category>
+  <description>Trasformatore Amperometrico Split Core con foro passante da 24mm, primario da 200 A, secondario 5 A, 1 mt di cavo integrato    </description>
+ </Product286>
+ <Product287>
+  <code>QI-SC-24-300/5</code>
+  <category>QI-SC</category>
+  <description>Trasformatore Amperometrico Split Core con foro passante da 24mm, primario da 300 A, secondario 5 A, 1 mt di cavo integrato</description>
+ </Product287>
+ <Product288>
+  <code>QI-SC-36-300/5</code>
+  <category>QI-SC</category>
+  <description>Trasformatore Amperometrico Split Core con foro passante da 36mm, primario da 300 A, secondario 5 A, 1mt di cavo integrato    </description>
+ </Product288>
+ <Product289>
+  <code>QI-SC-36-400/5</code>
+  <category>QI-SC</category>
+  <description>Trasformatore Amperometrico Split Core con foro passante da 36mm, primario da 400 A, secondario 5 A, 1mt di cavo integrato</description>
+ </Product289>
+ <Product290>
+  <code>QI-SC-36-500/5</code>
+  <category>QI-SC</category>
+  <description>Trasformatore Amperometrico Split Core con foro passante da 36mm, primario da 500 A, secondario 5 A, 1mt di cavo integrato</description>
+ </Product290>
+ <Product291>
+  <code>QI-SC-36-600/5</code>
+  <category>QI-SC</category>
+  <description>Trasformatore Amperometrico Split Core con foro passante da 36mm, primario da 600 A, secondario 5 A, 1mt di cavo integrato  </description>
+ </Product291>
+ <Product292>
+  <code>QI-SC-DBP23-100/5</code>
+  <category>QI-SC</category>
+  <description>Trasformatore Amperometrico Split Core 20x30mm, primario da 100A, secondario 5 A</description>
+ </Product292>
+ <Product293>
+  <code>QI-SC-DBP23-200/5</code>
+  <category>QI-SC</category>
+  <description>Trasformatore Amperometrico Split Core 20x30mm, primario da 200A, secondario 5 A</description>
+ </Product293>
+ <Product294>
+  <code>QI-SC-DBP23-300/5</code>
+  <category>QI-SC</category>
+  <description>Trasformatore Amperometrico Split Core 20x30mm, primario da 300A, secondario 5 A</description>
+ </Product294>
+ <Product295>
+  <code>QI-SC-DBP23-400/5</code>
+  <category>QI-SC</category>
+  <description>Trasformatore Amperometrico Split Core 20x30mm, primario da 400A, secondario 5 A</description>
+ </Product295>
+ <Product296>
+  <code>QI-SC-DBP58-1000/5</code>
+  <category>QI-SC</category>
+  <description>Trasformatore Amperometrico Split Core 50x80mm, primario da 1000 A, secondario 5 A</description>
+ </Product296>
+ <Product297>
+  <code>QI-SC-DBP58-300/5</code>
+  <category>QI-SC</category>
+  <description>Trasformatore Amperometrico Split Core 50x80mm, primario da 300 A, secondario 5 A</description>
+ </Product297>
+ <Product298>
+  <code>QI-SC-DBP58-400/5</code>
+  <category>QI-SC</category>
+  <description>Trasformatore Amperometrico Split Core 50x80mm, primario da 400 A, secondario 5 A</description>
+ </Product298>
+ <Product299>
+  <code>QI-SC-DBP58-600/5</code>
+  <category>QI-SC</category>
+  <description>Trasformatore Amperometrico Split Core 50x80mm, primario da 600 A, secondario 5 A</description>
+ </Product299>
+ <Product300>
+  <code>QI-SC-DBP58-800/5</code>
+  <category>QI-SC</category>
+  <description>Trasformatore Amperometrico Split Core 50x80mm, primario da 800 A, secondario 5 A</description>
+ </Product300>
+ <Product301>
+  <code>QI-SC-DBP58-800-5</code>
+  <category>QI-SC</category>
+  <description>Trasformatore Amperometrico Split Core 50x80mm, primario da 800 A, secondario 5 A</description>
+ </Product301>
+ <Product302>
+  <code>QI-SC-DBP812-1000-5</code>
+  <category>QI-SC</category>
+  <description>CURRENT TRANSFORMER SPLIT CORE, PRIMARY CIRCUIT AT  1000A, SECONDARY AT 5A, HOLE 80X120mm</description>
+ </Product302>
+ <Product303>
+  <code>QI-SC-DBP812-1500-5</code>
+  <category>QI-SC</category>
+  <description>CURRENT TRANSFORMER SPLIT CORE, PRIMARY CIRCUIT AT  1500A, SECONDARY AT 5A, HOLE 80X120mm</description>
+ </Product303>
+ <Product304>
+  <code>QI-SC-DBP812-1600-5</code>
+  <category>QI-SC</category>
+  <description>CURRENT TRANSFORMER SPLIT CORE, PRIMARY CIRCUIT AT  1600A, SECONDARY AT 5A, HOLE 80X120mm</description>
+ </Product304>
+ <Product305>
+  <code>QI-SC-DBP812-2000-5</code>
+  <category>QI-SC</category>
+  <description>CURRENT TRANSFORMER SPLIT CORE, PRIMARY CIRCUIT AT  2000A, SECONDARY AT 5A, HOLE 80X120mm</description>
+ </Product305>
+ <Product306>
+  <code>QI-SC-DBP812-800-5</code>
+  <category>QI-SC</category>
+  <description>CURRENT TRANSFORMER SPLIT CORE, PRIMARY CIRCUIT AT  1000A, SECONDARY AT 5A, HOLE 80X120mm</description>
+ </Product306>
+ <Product307>
+  <code>QI-SC-DBP816-2000-5</code>
+  <category>QI-SC</category>
+  <description>CURRENT TRANSFORMER SPLIT CORE, PRIMARY CIRCUIT AT  2000A, SECONDARY AT 5A, HOLE 80X160mm</description>
+ </Product307>
+ <Product308>
+  <code>QI-SC-DBP816-2500-5</code>
+  <category>QI-SC</category>
+  <description>CURRENT TRANSFORMER SPLIT CORE, PRIMARY CIRCUIT AT  2500A, SECONDARY AT 5A, HOLE 80X160mm</description>
+ </Product308>
+ <Product309>
+  <code>QI-SC-DBP88-600/5</code>
+  <category>QI-SC</category>
+  <description>Trasformatore Amperometrico Split Core 80x80mm, primario da 600A, secondario 5 A</description>
+ </Product309>
+ <Product310>
+  <code>QI-SC-24-100/5-1-STEP</code>
+  <category>QI-SC</category>
+  <description>Trasformatore Amperometrico Split Core con foro passante da 24mm, primario da 100 A, secondario 5 A, SMALLER CABLE    </description>
+ </Product310>
+ <Product311>
+  <code>QI-SC-24-100/5-CLV</code>
+  <category>QI-SC</category>
+  <description>Trasformatore Amperometrico Split Core con foro passante da 24mm, primario da 100 A, secondario da 5 A, 1 mt di cavo integrato</description>
+ </Product311>
+ <Product312>
+  <code>QI-SC-24-100/5-STEP</code>
+  <category>QI-SC</category>
+  <description>Trasformatore Amperometrico Split Core con foro passante da 24mm, primario da 100 A, secondario 5 A, 1 mt di cavo integrato    </description>
+ </Product312>
+ <Product313>
+  <code>QI-SC-24-200/5-STEP</code>
+  <category>QI-SC</category>
+  <description>Trasformatore Amperometrico Split Core con foro passante da 24mm, primario da 100 A, secondario 5 A, 1 mt di cavo integrato    </description>
+ </Product313>
+ <Product314>
+  <code>QI-SC-24-300/5-STEP</code>
+  <category>QI-SC</category>
+  <description>Trasformatore Amperometrico Split Core con foro passante da 24mm, primario da 100 A, secondario 5 A, 1 mt di cavo integrato    </description>
+ </Product314>
+ <Product315>
+  <code>QI-SC-36-500/5-STEP</code>
+  <category>QI-SC</category>
+  <description>Trasformatore Amperometrico Split Core con foro passante da 36mm, primario da 500 A, secondario 5 A, 1mt di cavo integrato</description>
+ </Product315>
+ <Product316>
+  <code>QI-SC-36-300/5-STEP</code>
+  <category>QI-SC</category>
+  <description>Trasformatore Amperometrico Split Core con foro passante da 36mm, primario da 400 A, secondario 5 A, 1mt di cavo integrato</description>
+ </Product316>
+ <Product317>
+  <code>QI-SC-36-400/5-STEP</code>
+  <category>QI-SC</category>
+  <description>Trasformatore Amperometrico Split Core con foro passante da 36mm, primario da 400 A, secondario 5 A, 1mt di cavo integrato</description>
+ </Product317>
+ <Product318>
+  <code>QI-SC-36-600/5-STEP</code>
+  <category>QI-SC</category>
+  <description>Trasformatore Amperometrico Split Core con foro passante da 36mm, primario da 600 A, secondario 5 A, 1mt di cavo integrato</description>
+ </Product318>
+ <Product319>
+  <code>QMIDPRO1-Mod</code>
+  <category>QMID</category>
+  <description>PRO1-MOD (up to 45 A direct)    </description>
+ </Product319>
+ <Product320>
+  <code>QMIDPRO380-Mod</code>
+  <category>QMID</category>
+  <description>PRO380-MOD (up to 100 A direct)      </description>
+ </Product320>
+ <Product321>
+  <code>QMIDPRO380-S-CT-Mod</code>
+  <category>QMID</category>
+  <description>PRO380 MOD MID CT code INEPRO 260      </description>
+ </Product321>
+ <Product322>
+  <code>Q-RS485-ISOLATOR</code>
+  <category>Q-RS485-ISOLATOR</category>
+  <description>Q-RS485-ISOLATOR</description>
+ </Product322>
+ <Product323>
+  <code>Q-RS485-ISOLATOR-02</code>
+  <category>Q-RS485-ISOLATOR</category>
+  <description>Q-RS485-ISOLATOR Rev. 02</description>
+ </Product323>
+ <Product324>
+  <code>Q-USB485</code>
+  <category>Q-USB485</category>
+  <description>USB-RS485-ISO</description>
+ </Product324>
+ <Product325>
+  <code>Q-USB485-2</code>
+  <category>Q-USB485</category>
+  <description>USB-RS485-ISO</description>
+ </Product325>
 </ListOrder>

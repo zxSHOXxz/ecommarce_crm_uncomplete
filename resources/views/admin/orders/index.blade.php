@@ -10,7 +10,7 @@
                     </div>
                     <div class="col-12 col-lg-4 p-0">
                     </div>
-                    @can('orders-update')
+                    {{-- @can('orders-update')
                         <div class="col-12 col-lg-4 p-2 text-lg-end d-flex justify-content-end">
                             <a href="{{ route('export') }}">
                                 <span class="btn btn-success mx-1"><i class="fa-solid fa-file-csv p-1"></i>Export CSV</span>
@@ -18,13 +18,13 @@
                             <a href="{{ route('export_xml') }}">
                                 <span class="btn btn-secondary mx-1"><i class="fa-solid fa-file-xml p-1"></i>Export XML</span>
                             </a>
-                            <form action="{{ route('uploadXml.file') }}" method="POST" enctype="multipart/form-data">
+                            <form action="{{ route('importProductsFromXml') }}" method="POST" enctype="multipart/form-data">
                                 @csrf
-                                <input type="file" name="xml_file">
+                                <input type="file" name="file">
                                 <button type="submit">Upload</button>
                             </form>
                         </div>
-                    @endcan
+                    @endcan --}}
                 </div>
                 <div class="col-12 divider" style="min-height: 2px;"></div>
             </div>

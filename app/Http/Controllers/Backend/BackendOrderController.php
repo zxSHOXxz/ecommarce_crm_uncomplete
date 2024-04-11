@@ -47,74 +47,11 @@ class BackendOrderController extends Controller
         return view('admin.orders.index', compact('orders'));
     }
 
-    public function uploadFileXml(Request $request)
-    {
-        if ($request->hasFile('xml_file')) {
-            $file = $request->file('xml_file');
-            $xmlData = file_get_contents($file);
-            $xml = simplexml_load_string($xmlData);
-            foreach ($xml->children() as $order) {
-                $orderId = $order->id;
-                $customerName = $order->customer_name;
-                $totalAmount = $order->total_amount;
-                $status = $order->status;
-            }
-
-            return "File uploaded successfully!";
-        }
-        return "No file uploaded!";
-    }
 
     public function export()
     {
         return Excel::download(new OrdersExport, 'orders.csv');
     }
-
-    public function xml()
-    {
-        $sales = Order::all();
-        try {
-
-            $xml = new XMLWriter();
-
-            $xml->openURI('file.xml');
-
-            $xml->startDocument('1.0');
-            $xml->startElement('ListOrder');
-            $xml->setIndent(4);
-            $i = 1;
-            foreach ($sales as $s) {
-                $xml->startElement('Order' . $i);
-                $xml->writeElement('id', $s->id);
-                $xml->writeElement('customer_name', $s->customer->name);
-                $xml->writeElement('total_amount', $s->total_amount);
-                $xml->writeElement('status', $s->status);
-
-                $key = 1;
-                foreach ($s->products as $productDetail) {
-                    $xml->writeElement("productNum{$key}", "{$productDetail->product->title} || $productDetail->quantity");
-                    $key++;
-                }
-
-
-                $xml->endElement();
-                $i++;
-            }
-            $xml->endElement();
-
-
-            $xml->endDocument();
-
-            $xml->flush();
-            $headers = [
-                'Content-Type' => 'application/xml',
-            ];
-            return response()->download('file.xml', 'filename.xml', $headers);
-        } catch (Exception $e) {
-            echo $e;
-        }
-    }
-
 
     /**
      * Show the form for creating a new resource.

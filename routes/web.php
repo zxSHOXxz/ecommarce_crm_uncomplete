@@ -14,11 +14,13 @@ use App\Http\Controllers\Backend\BackendSettingController;
 use App\Http\Controllers\Backend\BackendCategoryController;
 use App\Http\Controllers\Backend\BackendCustomerController;
 use App\Http\Controllers\Backend\BackendUserRoleController;
+use App\Http\Controllers\ExcelExportController;
+use App\Http\Controllers\ExcelImportController;
 use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
 
 # Frontend Controllers
 
-Route::view('/', 'deleted.layouts.guest');
+Route::get('/', [BackendHelperController::class, 'guest'])->name('guest');
 
 Route::group([
     'prefix' => LaravelLocalization::setLocale(),
@@ -27,12 +29,12 @@ Route::group([
     Route::prefix('admin')->middleware(['auth:web,customer', 'ActiveAccount'])->group(function () {
         Route::get('/payments/verify/{payment?}', [BackendHelperController::class, 'payment_verify'])->name('verify-payment');
     });
-    Route::get('orders/export/', [BackendOrderController::class, 'export'])->name('export');
-    Route::get('orders/export_xml/', [BackendOrderController::class, 'xml'])->name('export_xml');
-    Route::post('/uploadXml', [BackendOrderController::class, 'uploadFileXml'])->name('uploadXml.file');
+    Route::post('products/import/', [ExcelImportController::class, 'import'])->name('import');
+    Route::get('products/export/', [ExcelExportController::class, 'export'])->name('export');
+    Route::get('products/xml_export/', [ExcelExportController::class, 'product_xml_export'])->name('xml_export');
+    Route::post('products/importFromXml', [ExcelImportController::class, 'importProductsFromXml'])->name('importProductsFromXml');
 
     Route::prefix('admin')->middleware(['auth:web,customer', 'ActiveAccount'])->name('admin.')->group(function () {
-
         Route::get('/home', [BackendAdminController::class, 'index'])->name('index');
         Route::middleware('auth')->group(function () {
             Route::resource('files', BackendFileController::class);

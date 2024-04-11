@@ -13,7 +13,13 @@
                     <div class="col-12 col-lg-4 p-2 text-lg-end d-flex justify-content-end">
                         @can('products-create')
                             <a href="{{ route('admin.products.create') }}">
-                                <span class="btn btn-primary"><span class="fas fa-plus"></span> Add Category </span>
+                                <span class="btn btn-primary"><span class="fas fa-plus"></span> Add Product </span>
+                            </a>
+                            <a href="{{ route('export') }}">
+                                <span class="btn btn-success mx-1"><i class="fa-solid fa-file-csv p-1"></i>Export CSV</span>
+                            </a>
+                            <a href="{{ route('xml_export') }}">
+                                <span class="btn btn-success mx-1"><i class="fa-solid fa-file-xml p-1"></i>Export XML</span>
                             </a>
                         @endcan
                     </div>

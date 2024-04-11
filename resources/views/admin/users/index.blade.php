@@ -46,9 +46,6 @@
                                 <th>نشط</th>
                                 <th>الاسم</th>
                                 <th>البريد</th>
-                                @if (auth()->user()->can('traffics-read'))
-                                    <th>الترافيك</th>
-                                @endif
                                 <th>الصلاحيات</th>
                                 <th>تحكم</th>
                             </tr>
@@ -61,11 +58,6 @@
                                     <td>{{ \Carbon::parse($user->last_activity)->diffForHumans() }}</td>
                                     <td>{{ $user->name }}</td>
                                     <td>{{ $user->email }}</td>
-                                    @if (auth()->user()->can('traffics-read'))
-                                        <td><a
-                                                href="{{ route('admin.traffics.logs', ['user_id' => $user->id]) }}">{{ $user->logs_count ?? null }}</a>
-                                        </td>
-                                    @endif
 
 
                                     <td>
