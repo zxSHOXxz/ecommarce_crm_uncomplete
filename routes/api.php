@@ -36,6 +36,7 @@ Route::get('/must_login', [BackendHelperController::class, 'must_login'])->name(
 
 Route::middleware(['api'])->prefix('products')->name('products.')->group(function () {
     Route::get('/get', [ApiProductsController::class, 'index'])->name('get');
+    Route::get('/get/{category}', [ApiProductsController::class, 'getProductsByCategory'])->name('getProductsByCategory');
 });
 
 Route::group([

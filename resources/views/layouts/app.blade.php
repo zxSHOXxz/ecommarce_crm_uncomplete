@@ -7,9 +7,6 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
     @include('seo.index')
 
-
-
-
     {!! $settings['header_code'] !!}
     @livewireStyles
     @if (auth()->check())

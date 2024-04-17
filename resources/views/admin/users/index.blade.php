@@ -30,7 +30,7 @@
             <div class="col-12 py-2 px-2 row">
                 <div class="col-12 col-lg-4 p-2">
                     <form method="GET">
-                        <input type="text" name="q" class="form-control" placeholder="بحث ... "
+                        <input type="text" name="q" class="form-control" placeholder="SEARCH ... "
                             value="{{ request()->get('q') }}">
                     </form>
                 </div>
@@ -43,11 +43,9 @@
                         <thead>
                             <tr>
                                 <th>#</th>
-                                <th>نشط</th>
-                                <th>الاسم</th>
-                                <th>البريد</th>
-                                <th>الصلاحيات</th>
-                                <th>تحكم</th>
+                                <th>name</th>
+                                <th>email</th>
+                                <th>control</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -55,24 +53,24 @@
                             @foreach ($users as $user)
                                 <tr>
                                     <td>{{ $user->id }}</td>
-                                    <td>{{ \Carbon::parse($user->last_activity)->diffForHumans() }}</td>
+                                    {{-- <td>{{ \Carbon::parse($user->last_activity)->diffForHumans() }}</td> --}}
                                     <td>{{ $user->name }}</td>
                                     <td>{{ $user->email }}</td>
 
 
-                                    <td>
+                                    {{-- <td>
                                         @foreach ($user->roles as $role)
                                             {{ $role->display_name }}
                                             <br>
                                         @endforeach
-                                    </td>
+                                    </td> --}}
 
 
                                     <td>
                                         @can('users-read')
                                             <a href="{{ route('admin.users.show', $user) }}">
                                                 <span class="btn  btn-outline-primary btn-sm font-small mx-1">
-                                                    <span class="fas fa-search "></span> SHOW
+                                                    <span class="fas fa-search "></span> Show
                                                 </span>
                                             </a>
                                         @endcan
@@ -93,18 +91,18 @@
                                             </a>
                                         @endcan --}}
 
-                                        @can('user-roles-update')
+                                        {{-- @can('user-roles-update')
                                             <a href="{{ route('admin.users.roles.index', $user) }}">
                                                 <span class="btn btn-outline-primary btn-sm font-small mx-1">
                                                     <span class="fal fa-key "></span> الصلاحيات
                                                 </span>
                                             </a>
-                                        @endcan
+                                        @endcan --}}
 
                                         @can('users-update')
                                             <a href="{{ route('admin.users.edit', $user) }}">
                                                 <span class="btn  btn-outline-success btn-sm font-small mx-1">
-                                                    <span class="fas fa-wrench "></span> تحكم
+                                                    <span class="fas fa-wrench "></span> Edit
                                                 </span>
                                             </a>
                                         @endcan
@@ -114,8 +112,8 @@
                                             <form method="POST" action="{{ route('admin.users.destroy', $user) }}"
                                                 class="d-inline-block">@csrf @method('DELETE')
                                                 <button class="btn  btn-outline-danger btn-sm font-small mx-1"
-                                                    onclick="var result = confirm('هل أنت متأكد من عملية الحذف ؟');if(result){}else{event.preventDefault()}">
-                                                    <span class="fas fa-trash "></span> حذف
+                                                    onclick="var result = confirm('Are u sure wanna delete this user ? ');if(result){}else{event.preventDefault()}">
+                                                    <span class="fas fa-trash "></span> Delete
                                                 </button>
                                             </form>
                                         @endcan
@@ -133,7 +131,7 @@
                                                 @can('users-update')
                                                     <li><a class="dropdown-item font-1"
                                                             href="{{ route('admin.users.access', $user) }}"><span
-                                                                class="fal fa-eye"></span> دخول</a></li>
+                                                                class="fal fa-eye"></span> access</a></li>
                                                 @endcan
                                             </ul>
                                         </div>

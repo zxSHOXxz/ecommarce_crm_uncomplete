@@ -16,7 +16,7 @@
             <div class="col-12 col-lg-9 px-3 py-5 d-flex mx-auto justify-content-center align-items-center">
                 <div class="col-12 p-0 row justify-content-center">
                     <div class="col-12 row p-0">
-                        <div class="col-12 col-sm-6 col-lg-4 col-xl-3  px-2 mb-3">
+                        {{-- <div class="col-12 col-sm-6 col-lg-4 col-xl-3  px-2 mb-3">
                             <a href="{{ route('admin.traffics.index', ['user_id' => $user->id]) }}" style="color:inherit;">
                                 <div class="col-12 px-0 py-2 d-flex rounded-3 main-box-wedit" style="background: #ffffff;">
                                     <div style="width: 80px;" class="p-2">
@@ -31,8 +31,8 @@
                                     </div>
                                 </div>
                             </a>
-                        </div>
-                        <div class="col-12 col-sm-6 col-lg-4 col-xl-3  px-2 mb-3">
+                        </div> --}}
+                        {{-- <div class="col-12 col-sm-6 col-lg-4 col-xl-3  px-2 mb-3">
                             <a href="{{ route('admin.traffics.error-reports', ['user_id' => $user->id]) }}"
                                 style="color:inherit;">
                                 <div class="col-12 px-0 py-2 d-flex rounded-3 main-box-wedit" style="background: #ffffff;">
@@ -48,9 +48,9 @@
                                     </div>
                                 </div>
                             </a>
-                        </div>
+                        </div> --}}
 
-                        <div class="col-12 col-sm-6 col-lg-4 col-xl-3  px-2 mb-3">
+                        {{-- <div class="col-12 col-sm-6 col-lg-4 col-xl-3  px-2 mb-3">
                             <a href="{{ route('admin.contacts.index', ['user_id' => $user->id]) }}" style="color:inherit;">
                                 <div class="col-12 px-0 py-2 d-flex rounded-3 main-box-wedit" style="background: #ffffff;">
                                     <div style="width: 80px;" class="p-2">
@@ -65,7 +65,7 @@
                                     </div>
                                 </div>
                             </a>
-                        </div>
+                        </div> --}}
 
                     </div>
                 </div>

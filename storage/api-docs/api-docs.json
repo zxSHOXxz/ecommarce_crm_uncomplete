@@ -1,10 +1,10 @@
 {
     "openapi": "3.0.0",
     "info": {
-        "title": "My Awesome API",
-        "description": "A brief description of your API",
+        "title": "Qeed API",
+        "description": "Qeed Project API",
         "contact": {
-            "email": "youremail@example.com"
+            "email": "khzamer81@gmail.com"
         },
         "license": {
             "name": "Apache 2.0",
@@ -391,6 +391,44 @@
                 "summary": "Get all products",
                 "description": "Retrieve all products with their details and category",
                 "operationId": "0a931b06559c9a756829ea35930912cc",
+                "responses": {
+                    "200": {
+                        "description": "Successful operation",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "products": {
+                                            "type": "arrayOfJson"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/products/get/{category}": {
+            "get": {
+                "tags": [
+                    "Products"
+                ],
+                "summary": "Get products by category",
+                "description": "Retrieve products by category with their details and category",
+                "operationId": "329b7ef3b78b46b5af3fb5b08edb6fa3",
+                "parameters": [
+                    {
+                        "name": "category",
+                        "in": "path",
+                        "description": "Category name",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
                 "responses": {
                     "200": {
                         "description": "Successful operation",
