@@ -1,10 +1,10 @@
 {
     "openapi": "3.0.0",
     "info": {
-        "title": "Qeed API",
-        "description": "Qeed Project API",
+        "title": "My Awesome API",
+        "description": "A brief description of your API",
         "contact": {
-            "email": "khzamer81@gmail.com"
+            "email": "youremail@example.com"
         },
         "license": {
             "name": "Apache 2.0",
@@ -141,6 +141,21 @@
                                         "type": "string",
                                         "example": "Country"
                                     },
+                                    "b2b_files": {
+                                        "description": "Company country (optinal only for b2b)",
+                                        "type": "string",
+                                        "example": "images and pdf files"
+                                    },
+                                    "customer_discount": {
+                                        "description": "Customer discount",
+                                        "type": "intger",
+                                        "example": "19"
+                                    },
+                                    "shiping_data": {
+                                        "description": "Customer Shiping data",
+                                        "type": "string",
+                                        "example": "London , 71-75 Sheleton street"
+                                    },
                                     "email": {
                                         "description": "Customer email",
                                         "type": "string",
@@ -161,6 +176,9 @@
                                     "company_address": "123 Street, City, Country",
                                     "vat_number": "123456789",
                                     "company_country": "Country",
+                                    "b2b_files": "images and pdf files",
+                                    "customer_discount": 19,
+                                    "shiping_data": "London , 71-75 Sheleton street",
                                     "email": "user@example.com",
                                     "password": "password"
                                 }

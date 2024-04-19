@@ -17,7 +17,11 @@ class AppServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        //
+        if ($this->app->environment('production')) {
+            $this->app->bind('path.public', function () {
+                return base_path('../');
+            });
+        }
     }
 
     /**
@@ -30,15 +34,16 @@ class AppServiceProvider extends ServiceProvider
 
         \App\Models\ContactReply::observe(\App\Observers\ContactReplyObserver::class);
         \App\Models\Contact::observe(\App\Observers\ContactObserver::class);
-        
+
         Paginator::useBootstrapFive();
         Schema::defaultStringLength(191);
-        try{
+        try {
             $settings = (new \App\Helpers\SettingsHelper)->getAllSettings();
             View::share('settings', $settings);
-        }catch(\Exception $e){}
+        } catch (\Exception $e) {
+        }
 
-        Collection::macro('paginate', function($perPage, $page = null, $pageName = 'page') {
+        Collection::macro('paginate', function ($perPage, $page = null, $pageName = 'page') {
             $page = $page ?: LengthAwarePaginator::resolveCurrentPage($pageName);
             return new LengthAwarePaginator(
                 $this->forPage($page, $perPage), // $items
@@ -51,6 +56,5 @@ class AppServiceProvider extends ServiceProvider
                 ]
             );
         });
-        
     }
 }

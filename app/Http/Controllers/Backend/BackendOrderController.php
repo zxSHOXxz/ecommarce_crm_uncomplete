@@ -2,18 +2,15 @@
 
 namespace App\Http\Controllers\Backend;
 
-use Exception;
 use App\Models\Order;
 use App\Models\Product;
 use App\Models\Customer;
-use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use App\Exports\OrdersExport;
 use App\Models\OrderProductDetails;
 use App\Http\Controllers\Controller;
 use Maatwebsite\Excel\Facades\Excel;
 use Nafezly\Payments\Classes\PayPalPayment;
-use PhpOffice\PhpSpreadsheet\Shared\XMLWriter;
 
 class BackendOrderController extends Controller
 {
@@ -27,18 +24,24 @@ class BackendOrderController extends Controller
     {
         $this->middleware('can:orders-create', ['only' => ['create', 'store', 'uploadFileXml']]);
         $this->middleware('can:orders-read',   ['only' => ['show', 'index', 'export', 'xml']]);
-        $this->middleware('can:orders-update',   ['only' => ['edit', 'update']]);
+        $this->middleware('can:orders-update',   ['only' => ['edit', 'update', 'show_customer_order']]);
         $this->middleware('can:orders-delete',   ['only' => ['delete']]);
     }
 
     public function customer_orders()
     {
         if (auth('customer')->user() != null) {
-            $orders = Order::where('id', auth('customer')->id())->get();
+            $orders = Order::where('customer_id', auth('customer')->id())->get();
         } else {
             $orders = Order::all();
         }
         return view('admin.orders.index', compact('orders'));
+    }
+
+    public function show_customer_order($id)
+    {
+        $orders = Order::where('customer_id', $id)->get();
+        return view('admin.orders.customer_orders', compact('orders'));
     }
 
     public function index()
@@ -118,6 +121,8 @@ class BackendOrderController extends Controller
             'status' => $validatedData['status'] ?? 'pending',
         ]);
 
+        $customer = Customer::findOrFail($validatedData['customer_id']);
+
         // Calculate total_amount and create order details
         $total_amount = 0;
         foreach ($productQuantities as $productId => $quantity) {
@@ -125,12 +130,18 @@ class BackendOrderController extends Controller
 
             // Update product quantity (locking is recommended in high-traffic environment)
             $product_model->decrement('quantity', $quantity);
+            $product_model->increment('reserved', $quantity);
+
+
+            $discount = $customer->customer_discount ? $customer->customer_discount : $product_model->discount;
+            $productPrice = $product_model->price;
+            $discountValue = ($discount / 100) * $productPrice;
 
             $orderDetails = OrderProductDetails::create([
                 'product_id' => $productId,
                 'order_id' => $order->id,
-                'total_price' => ($product_model->price - $product_model->discount) * $quantity,
-                'unit_price' => ($product_model->price - $product_model->discount),
+                'total_price' => ($product_model->price - $discountValue) * $quantity,
+                'unit_price' => ($product_model->price - $discountValue),
                 'quantity' => $quantity,
             ]);
 
@@ -188,9 +199,28 @@ class BackendOrderController extends Controller
         $validatedData = $request->validate([
             'status' => 'required',
         ]);
-        $order->update([
-            'status' => $validatedData['status']
-        ]);
+
+
+        if ($validatedData['status'] == 'waiting' && $order->status == 'pending') {
+
+            // Get order details
+            $orderDetails = OrderProductDetails::where('order_id', $order->id)->get();
+
+            // Restore product quantities
+            foreach ($orderDetails as $detail) {
+                $product = Product::findOrFail($detail->product_id);
+                $product->decrement('quantity', $detail->quantity);
+                $product->decrement('reserved', $detail->quantity);
+            }
+
+            $order->update([
+                'status' => 'waiting',
+            ]);
+        } elseif ($order->status == 'faild') {
+            toastr()->success('Order status is faild you cant changing it', 'Faild');
+            return redirect()->route('admin.orders.index');
+        }
+
         toastr()->success('Order updated successfully.', 'successfully');
         return redirect()->route('admin.orders.index');
     }
@@ -218,6 +248,7 @@ class BackendOrderController extends Controller
         foreach ($orderDetails as $detail) {
             $product = Product::findOrFail($detail->product_id);
             $product->increment('quantity', $detail->quantity);
+            $product->decrement('reserved', $detail->quantity);
         }
 
         // Delete order details

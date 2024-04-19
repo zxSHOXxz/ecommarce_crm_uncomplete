@@ -71,7 +71,18 @@
                                     value="{{ old('phone') }}">
                             </div>
                         </div>
-                        @if (auth()->user()->can('user-roles-update'))
+
+                        <div class="col-12 col-lg-6 p-2">
+                            <div class="col-12">
+                                {{ __('admin.customer_discount') }}
+                            </div>
+                            <div class="col-12 pt-3">
+                                <input type="number" name="customer_discount" class="form-control"
+                                    value="{{ old('customer_discount') }}">
+                            </div>
+                        </div>
+
+                        {{-- @if (auth()->user()->can('user-roles-update'))
                             <div class="col-12 col-lg-6 p-2">
                                 <div class="col-12">
                                     {{ __('admin.permission') }}
@@ -84,7 +95,8 @@
                                     </select>
                                 </div>
                             </div>
-                        @endif
+                        @endif --}}
+
                         <div class="col-12 col-lg-6 p-2">
                             <div class="col-12">
                                 {{ __('admin.customerType') }}
@@ -98,6 +110,18 @@
                                 </select>
                             </div>
                         </div>
+
+                        <div class="col-12 col-lg-6 p-2 b2b d-none">
+                            <div class="col-12">
+                                {{-- {{ __('admin.image') }} --}}
+                                Files
+                            </div>
+                            <div class="col-12 pt-3">
+                                <input type="file" name="b2b_files[]" class="form-control" multiple
+                                    accept=".pdf,.jpg,.jpeg,.png">
+                            </div>
+                        </div>
+
                         <div class="col-12 col-lg-6 p-2 b2b d-none">
                             <div class="col-12">
                                 {{ __('admin.companyName') }}
@@ -134,7 +158,7 @@
                                     value="{{ old('vat_number') }}">
                             </div>
                         </div>
-                        <div class="col-12 col-lg-6 p-2">
+                        {{-- <div class="col-12 col-lg-6 p-2">
                             <div class="col-12">
                                 {{ __('admin.blocked') }}
                             </div>
@@ -146,13 +170,22 @@
                                         {{ __('admin.yes') }}</option>
                                 </select>
                             </div>
-                        </div>
+                        </div> --}}
                         <div class="col-12 col-lg-6 p-2">
                             <div class="col-12">
                                 {{ __('admin.description') }}
                             </div>
                             <div class="col-12 pt-3">
                                 <textarea name="bio" maxlength="5000" class="form-control" style="min-height:150px">{{ old('bio') }}</textarea>
+                            </div>
+                        </div>
+
+                        <div class="col-12 col-lg-6 p-2">
+                            <div class="col-12">
+                                {{ __('admin.shiping_data') }}
+                            </div>
+                            <div class="col-12 pt-3">
+                                <textarea name="shiping_data" maxlength="5000" class="form-control" style="min-height:150px">{{ old('shiping_data') }}</textarea>
                             </div>
                         </div>
                     </div>
@@ -186,5 +219,4 @@
             }
         });
     </script>
-
 @endsection

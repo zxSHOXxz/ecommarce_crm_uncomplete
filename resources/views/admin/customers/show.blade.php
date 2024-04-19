@@ -1,79 +1,204 @@
 @extends('layouts.admin')
 @section('content')
-    <div class="col-12 py-5 rounded-2" style="text-align: center;background: var(--background-1);margin-top: -5px;">
-        <div class="col-12" style="display:flex;justify-content: center;">
-            <img src="{{ $customer->getUserAvatar() }}" style="width:130px;height: 130px;border-radius: 50%;">
-        </div>
-        <div class="col-12 p-2 text-center" style="overflow:auto;">
-            {{ $customer->id }} <br>
-            {{ $customer->name }} <br>
-            {{ $customer->email }}<br>
-            {{ $customer->phone }}<br>
-        </div>
-    </div>
-    <div class="col-12 py-0 px-3 row">
-        <div class="col-12  pt-2" style="min-height: 80vh">
-            <div class="col-12 col-lg-9 px-3 py-5 d-flex mx-auto justify-content-center align-items-center">
-                <div class="col-12 p-0 row justify-content-center">
-                    <div class="col-12 row p-0">
-                        {{-- <div class="col-12 col-sm-6 col-lg-4 col-xl-3  px-2 mb-3">
-                            <a href="{{ route('admin.traffics.index', ['customer_id' => $customer->id]) }}"
-                                style="color:inherit;">
-                                <div class="col-12 px-0 py-2 d-flex rounded-3 main-box-wedit" style="background: #ffffff;">
-                                    <div style="width: 80px;" class="p-2">
-                                        <div class="col-12 px-0 text-center d-flex align-items-center justify-content-center"
-                                            style="background-image: linear-gradient(rgba(0,0,0,.04),rgba(0,0,0,.04))!important;height: 64px;border-radius: 50%;">
-                                            <span class="fal fa-traffic-light font-5"></span>
-                                        </div>
-                                    </div>
-                                    <div style="width: calc(100% - 80px)" class="px-2 py-2">
-                                        <h6 class="font-1">{{ __('admin.traffic') }}</h6>
-                                        <h6 class="font-3">{{ $customer->traffics->count() }}</h6>
-                                    </div>
-                                </div>
-                            </a>
-                        </div> --}}
-                        {{-- <div class="col-12 col-sm-6 col-lg-4 col-xl-3  px-2 mb-3">
-                            <a href="{{ route('admin.traffics.error-reports', ['customer_id' => $customer->id]) }}"
-                                style="color:inherit;">
-                                <div class="col-12 px-0 py-2 d-flex rounded-3 main-box-wedit" style="background: #ffffff;">
-                                    <div style="width: 80px;" class="p-2">
-                                        <div class="col-12 px-0 text-center d-flex align-items-center justify-content-center"
-                                            style="background-image: linear-gradient(rgba(0,0,0,.04),rgba(0,0,0,.04))!important;height: 64px;border-radius: 50%;">
-                                            <span class="fal fa-bug font-5"></span>
-                                        </div>
-                                    </div>
-                                    <div style="width: calc(100% - 80px)" class="px-2 py-2">
-                                        <h6 class="font-1">{{ __('admin.error_reports') }}</h6>
-                                        <h6 class="font-3">{{ $customer->report_errors->count() }}</h6>
-                                    </div>
-                                </div>
-                            </a>
-                        </div> --}}
+    <div class="col-12 p-3">
+        <!-- breadcrumb -->
+        <x-bread-crumb :breads="[
+            ['url' => url('/admin'), 'title' => __('admin.dashboard'), 'isactive' => false],
+            ['url' => route('admin.customers.index'), 'title' => __('admin.customers'), 'isactive' => false],
+            ['url' => '#', 'title' => __('admin.editCustomers'), 'isactive' => true],
+        ]">
+        </x-bread-crumb>
+        <!-- /breadcrumb -->
+        <div class="col-12 col-lg-12 p-0 ">
 
-                        {{-- <div class="col-12 col-sm-6 col-lg-4 col-xl-3  px-2 mb-3">
-                            <a href="{{ route('admin.contacts.index', ['customer_id' => $customer->id]) }}"
-                                style="color:inherit;">
-                                <div class="col-12 px-0 py-2 d-flex rounded-3 main-box-wedit" style="background: #ffffff;">
-                                    <div style="width: 80px;" class="p-2">
-                                        <div class="col-12 px-0 text-center d-flex align-items-center justify-content-center"
-                                            style="background-image: linear-gradient(rgba(0,0,0,.04),rgba(0,0,0,.04))!important;height: 64px;border-radius: 50%;">
-                                            <span class="fal fa-phone font-5"></span>
-                                        </div>
-                                    </div>
-                                    <div style="width: calc(100% - 80px)" class="px-2 py-2">
-                                        <h6 class="font-1">{{ __('admin.contact_requests') }}</h6>
-                                        <h6 class="font-3">{{ $customer->contacts->count() }}</h6>
-                                    </div>
-                                </div>
-                            </a>
-                        </div> --}}
+            <form id="validate-form" class="row" enctype="multipart/form-data" method="POST">
+                <div class="col-12 col-lg-8 p-0 main-box">
+                    <div class="col-12 px-0">
+                        <div class="col-12 px-3 py-3">
+                            <span class="fas fa-info-circle"></span> {{ __('admin.editCustomer') }}
+                        </div>
+                        <div class="col-12 divider" style="min-height: 2px;"></div>
+                    </div>
+                    <div class="col-12 p-3 row">
+
+                        <div class="col-12 col-lg-6 p-2">
+                            <div class="col-12">
+                                {{ __('admin.name') }}
+                            </div>
+                            <div class="col-12 pt-3">
+                                <input type="text" name="name" minlength="3" maxlength="190" class="form-control"
+                                    value="{{ $customer->name }}">
+                            </div>
+                        </div>
+
+                        <div class="col-12 col-lg-6 p-2">
+                            <div class="col-12">
+                                {{ __('admin.email') }}
+                            </div>
+                            <div class="col-12 pt-3">
+                                <input type="email" name="email" class="form-control" value="{{ $customer->email }}">
+                            </div>
+                        </div>
+
+                        <div class="col-12 col-lg-6 p-2">
+                            <div class="col-12">
+                                {{ __('admin.password') }}
+                            </div>
+                            <div class="col-12 pt-3">
+                                <input type="password" name="password" class="form-control" minlength="8">
+                            </div>
+                        </div>
+
+                        <div class="col-12 col-lg-6 p-2">
+                            <div class="col-12">
+                                {{ __('admin.image') }}
+                            </div>
+                            <div class="col-12 pt-3">
+                                <input type="file" name="avatar" class="form-control" accept="image/*">
+                            </div>
+                        </div>
+
+                        <div class="col-12 col-lg-6 p-2">
+                            <div class="col-12">
+                                {{ __('admin.phone') }}
+                            </div>
+                            <div class="col-12 pt-3">
+                                <input type="text" name="phone" maxlength="190" class="form-control"
+                                    value="{{ $customer->phone }}">
+                            </div>
+                        </div>
+
+                        <div class="col-12 col-lg-6 p-2">
+                            <div class="col-12">
+                                {{ __('admin.customerType') }}
+                            </div>
+                            <div class="col-12 pt-3">
+                                <select class="form-control" name="customer_type">
+                                    <option @if ($customer->customer_type == 'b2c') selected @endif value="b2c">
+                                        {{ __('admin.b2c') }}</option>
+                                    <option @if ($customer->customer_type == 'b2b') selected @endif value="b2b">
+                                        {{ __('admin.b2b') }}</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="col-12 col-lg-6 p-2 b2b @if ($customer->customer_type == 'b2c') return d-none ; @endif">
+                            <div class="col-12">
+                                Files
+                            </div>
+                            <div class="col-12 pt-3">
+                                <input type="file" name="b2b_files[]" class="form-control" multiple
+                                    accept=".pdf,.jpg,.jpeg,.png">
+                            </div>
+                            <div class="col-12 pt-3">
+                                @if ($customer->b2b_files)
+                                    <ul>
+                                        @foreach (json_decode($customer->b2b_files) as $filePath)
+                                            <li>
+                                                <a href="{{ asset('storage/' . $filePath) }}" target="_blank"><span
+                                                        class="badge bg-danger">
+                                                        {{ basename($filePath) }}</span></a>
+
+                                            </li>
+                                        @endforeach
+                                    </ul>
+                                @endif
+
+                            </div>
+                        </div>
+
+                        <div class="col-12 col-lg-6 p-2 b2b @if ($customer->customer_type == 'b2c') return d-none ; @endif">
+                            <div class="col-12">
+                                {{ __('admin.companyName') }}
+                            </div>
+                            <div class="col-12 pt-3">
+                                <input type="text" name="company_name" maxlength="190" class="form-control"
+                                    value="{{ $customer->company_name }}">
+                            </div>
+                        </div>
+
+                        <div class="col-12 col-lg-6 p-2 b2b @if ($customer->customer_type == 'b2c') return d-none ; @endif">
+                            <div class="col-12">
+                                {{ __('admin.companyAddress') }}
+                            </div>
+                            <div class="col-12 pt-3">
+                                <input type="text" name="company_address" maxlength="190" class="form-control"
+                                    value="{{ $customer->company_address }}">
+                            </div>
+                        </div>
+
+                        <div class="col-12 col-lg-6 p-2 b2b @if ($customer->customer_type == 'b2c') return d-none ; @endif">
+                            <div class="col-12">
+                                {{ __('admin.companyCountry') }}
+                            </div>
+                            <div class="col-12 pt-3">
+                                <input type="text" name="company_country" maxlength="190" class="form-control"
+                                    value="{{ $customer->company_country }}">
+                            </div>
+                        </div>
+
+                        <div class="col-12 col-lg-6 p-2 b2b @if ($customer->customer_type == 'b2c') return d-none ; @endif">
+                            <div class="col-12">
+                                {{ __('admin.vatNumber') }}
+                            </div>
+                            <div class="col-12 pt-3">
+                                <input type="text" name="vat_number" maxlength="190" class="form-control"
+                                    value="{{ $customer->vat_number }}">
+                            </div>
+                        </div>
+
+                        <div class="col-12 col-lg-6 p-2">
+                            <div class="col-12">
+                                {{ __('admin.blocked') }}
+                            </div>
+                            <div class="col-12 pt-3">
+                                <select class="form-control" name="blocked">
+                                    <option @if ($customer->blocked == '0') selected @endif value="0">
+                                        {{ __('admin.no') }}</option>
+                                    <option @if ($customer->blocked == '1') selected @endif value="1">
+                                        {{ __('admin.yes') }}</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="col-12 col-lg-6 p-2">
+                            <div class="col-12">
+                                {{ __('admin.description') }}
+                            </div>
+                            <div class="col-12 pt-3">
+                                <textarea name="bio" maxlength="5000" class="form-control" style="min-height:150px">{{ $customer->bio }}</textarea>
+                            </div>
+                        </div>
 
                     </div>
-                </div>
-            </div>
+            </form>
         </div>
     </div>
-@endsection
-@section('scripts')
+
+    <script>
+        let select = document.querySelector("select[name=customer_type]");
+        select.addEventListener("change", function() {
+            if (this.value === "b2b") {
+                console.log("b2b");
+                var inputs_b2b = document.querySelectorAll(".b2b")
+                inputs_b2b.forEach(element => {
+                    element.classList.remove('d-none');
+                });
+            }
+            if (this.value === "b2c") {
+                console.log("b2c");
+                var inputs_b2b = document.querySelectorAll(".b2b")
+                inputs_b2b.forEach(element => {
+                    element.classList.add('d-none');
+                });
+
+            }
+        });
+        window.onload = function() {
+            var inputs = document.querySelectorAll('input, select, textarea');
+            inputs.forEach(function(input) {
+                input.setAttribute('disabled', 'true');
+            });
+        }
+    </script>
 @endsection

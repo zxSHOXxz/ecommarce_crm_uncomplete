@@ -32,7 +32,8 @@
                         <a class="font-1" href="{{ route('admin.users.index') }}" style="color: #212529">
                             {{ __('admin.orders') }}
                             @if (auth('customer')->user() != null)
-                                <h6 class="font-3">{{ \App\Models\Order::where('id', auth('customer')->id())->count() }}</h6>
+                                <h6 class="font-3">
+                                    {{ \App\Models\Order::where('customer_id', auth('customer')->id())->count() }}</h6>
                             @else
                                 <h6 class="font-3">{{ \App\Models\Order::count() }}</h6>
                             @endif

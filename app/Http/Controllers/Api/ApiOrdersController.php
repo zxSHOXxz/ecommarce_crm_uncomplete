@@ -70,7 +70,7 @@ class ApiOrdersController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('auth:api');
+        $this->middleware('auth:api', ['except' => ['payment_verify']]);
         // $this->middleware('can:orders-create', ['only' => ['store']]);
     }
 
@@ -128,8 +128,6 @@ class ApiOrdersController extends Controller
      *
      */
 
-
-
     public function payment_verify(Request $request)
     {
         $payment = new PayPalPayment();
@@ -140,7 +138,18 @@ class ApiOrdersController extends Controller
             $order->update([
                 'status' => 'pending'
             ]);
+            $paypal_email = $response['process_data']['result']['payment_source']['paypal']['email_address'];
+            $customer = Customer::findOrFail($order->customer_id);
+            $customer->update([
+                'billing_data' => 'paypal email :' . $paypal_email,
+            ]);
         } else {
+            foreach ($order->products as $product) {
+                $product_model = Product::findOrFail($product->product_id);
+
+                $product_model->decrement('quantity', $product->quantity);
+                $product_model->decrementincrement('reserved', $product->quantity);
+            }
             return response()->json([
                 'translate_message' => 'An error occurred while executing the operation',
                 'order' => $order,
@@ -153,6 +162,7 @@ class ApiOrdersController extends Controller
             'response' => $response
         ]);
     }
+
     public function store(Request $request)
     {
         $validator = Validator::make($request->all(), [
@@ -209,18 +219,27 @@ class ApiOrdersController extends Controller
             'status' => $validatedData['status'] ?? 'faild',
         ]);
 
+        $customer = Customer::findOrFail($validatedData['customer_id']);
+
         // Calculate total_amount and create order details
         $total_amount = 0;
         foreach ($productQuantities as $productId => $quantity) {
             $product_model = Product::findOrFail($productId);
 
+            // Update product quantity (locking is recommended in high-traffic environment)
             $product_model->decrement('quantity', $quantity);
+            $product_model->increment('reserved', $quantity);
+
+
+            $discount = $customer->customer_discount ? $customer->customer_discount : $product_model->discount;
+            $productPrice = $product_model->price;
+            $discountValue = ($discount / 100) * $productPrice;
 
             $orderDetails = OrderProductDetails::create([
                 'product_id' => $productId,
                 'order_id' => $order->id,
-                'total_price' => ($product_model->price - $product_model->discount) * $quantity,
-                'unit_price' => ($product_model->price - $product_model->discount),
+                'total_price' => ($product_model->price - $discountValue) * $quantity,
+                'unit_price' => ($product_model->price - $discountValue),
                 'quantity' => $quantity,
             ]);
 
@@ -239,7 +258,7 @@ class ApiOrdersController extends Controller
             ->setUserPhone($customer->phone)
             ->setSource($order->id)
             ->pay();
-        Cache::add('payment_source', $order->id);
+        Cache::put('payment_source', $order->id);
         return response()->json($response['redirect_url']);
     }
 }

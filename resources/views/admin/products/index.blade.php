@@ -45,6 +45,7 @@
                                 <th>#</th>
                                 <th>title</th>
                                 <th>quantity</th>
+                                <th>reserved</th>
                                 <th>discount</th>
                                 <th>price</th>
                                 <th>code</th>
@@ -61,7 +62,8 @@
                                     <td>{{ $product->id }}</td>
                                     <td>{{ $product->title }}</td>
                                     <td>{{ $product->quantity }}</td>
-                                    <td>{{ $product->discount }}</td>
+                                    <td>{{ $product->reserved }}</td>
+                                    <td>{{ $product->discount != null ? $product->discount : 0 }} % </td>
                                     <td>{{ $product->price }}</td>
                                     <td>{{ $product->code }}</td>
                                     <td>{{ $product->status }}</td>

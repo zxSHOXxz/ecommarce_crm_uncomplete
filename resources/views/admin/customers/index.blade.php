@@ -42,7 +42,13 @@
                                 <th>#</th>
                                 <th>{{ __('admin.name') }}</th>
                                 <th>{{ __('admin.email') }}</th>
-                                <th>{{ __('admin.permissions') }}</th>
+                                <th>{{ __('admin.customer_type') }}</th>
+
+                                <th>{{ __('admin.billing_data') }}</th>
+
+                                <th>{{ __('admin.orders') }}</th>
+
+                                <th>{{ __('admin.files') }}</th>
                                 <th>{{ __('admin.control') }}</th>
                             </tr>
                         </thead>
@@ -52,11 +58,24 @@
                                     <td>{{ $customer->id }}</td>
                                     <td>{{ $customer->name }}</td>
                                     <td>{{ $customer->email }}</td>
+                                    <td>{{ $customer->customer_type }}</td>
                                     <td>
-                                        @foreach ($customer->roles as $role)
-                                            {{ $role->display_name }}
-                                            <br>
-                                        @endforeach
+                                        <p class="text-center">
+                                            {{ $customer->billing_data ?? ' This customer dont have billing data ' }}</p>
+                                    </td>
+                                    <td> <a href="{{ route('admin.show_customer_order', $customer->id) }}"
+                                            class="btn btn-primary text-white" style="width: 120px;">
+                                            ({{ count($customer->orders) }})
+                                            orders
+                                        </a> </td>
+                                    <td>
+                                        @if ($customer->b2b_files)
+                                            @foreach (json_decode($customer->b2b_files) as $filePath)
+                                                <a href="{{ asset('storage/' . $filePath) }}" target="_blank"><span
+                                                        class="badge bg-danger">
+                                                        {{ basename($filePath) }}</span></a>
+                                            @endforeach
+                                        @endif
                                     </td>
                                     <td>
                                         @can('customers-read')

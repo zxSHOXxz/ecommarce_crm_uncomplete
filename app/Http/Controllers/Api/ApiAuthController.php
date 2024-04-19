@@ -226,6 +226,24 @@ class ApiAuthController extends Controller
      *                     example="Country",
      *                 ),
      *                 @OA\Property(
+     *                     property="b2b_files",
+     *                     type="string",
+     *                     description="Company country (optinal only for b2b)",
+     *                     example="images and pdf files",
+     *                 ),
+     *                 @OA\Property(
+     *                     property="customer_discount",
+     *                     type="intger",
+     *                     description="Customer discount",
+     *                     example="19",
+     *                 ),
+     *                 @OA\Property(
+     *                     property="shiping_data",
+     *                     type="string",
+     *                     description="Customer Shiping data",
+     *                     example="London , 71-75 Sheleton street",
+     *                 ),
+     *                 @OA\Property(
      *                     property="email",
      *                     type="string",
      *                     format="email",
@@ -236,8 +254,8 @@ class ApiAuthController extends Controller
      *                     type="string",
      *                     description="Customer password"
      *                 ),
-     *                 example={"name": "John Doe", "phone": "1234567890", "bio": "Some bio", "customer_type": "b2b", "company_name": "ABC Company", "company_address": "123 Street, City, Country", "vat_number": "123456789", "company_country": "Country", "email": "user@example.com", "password": "password"}
-     *             )
+     *              example={"name": "John Doe","phone": "1234567890","bio": "Some bio","customer_type": "b2b","company_name": "ABC Company","company_address": "123 Street, City, Country","vat_number": "123456789","company_country": "Country","b2b_files": "images and pdf files","customer_discount": 19,"shiping_data": "London , 71-75 Sheleton street","email": "user@example.com","password": "password"}
+     *              )
      *         )
      *     ),
      *     @OA\Response(
@@ -275,12 +293,15 @@ class ApiAuthController extends Controller
             'name' => "nullable|max:190",
             'phone' => "nullable|max:190",
             'bio' => "nullable|max:5000",
+            'shiping_data' => "nullable|max:5000",
+            'customer_discount' => "nullable",
             'customer_type' => "required|in:b2b,b2c",
             'company_name' => $request->input('customer_type') == 'b2b' ? 'required|max:190' : 'nullable',
             'company_address' => $request->input('customer_type') == 'b2b' ? 'required|max:190' : 'nullable',
             'vat_number' => $request->input('customer_type') == 'b2b' ? 'required|max:190' : 'nullable',
-            'company_country' => $request->input('company_country') == 'b2b' ? 'required|max:190' : 'nullable',
-            'email' => "required|unique:customers",
+            'company_country' => $request->input('customer_type') == 'b2b' ? 'required|max:190' : 'nullable',
+            'b2b_files' => $request->input('customer_type') == 'b2b' ? 'nullable' : 'nullable',
+            'email' => "required|unique:customers,email",
             'password' => "required|min:8|max:190"
         ], [
             'name.max' => 'The name field must not exceed 190 characters.',
@@ -300,34 +321,74 @@ class ApiAuthController extends Controller
             'email.unique' => 'The email has already been taken.',
             'password.required' => 'The password field is required.',
             'password.min' => 'The password must be at least 8 characters.',
-            'password.max' => 'The password must not exceed 190 characters.'
+            'password.max' => 'The password must not exceed 190 characters.',
+            'shiping_data.max' => 'The shipping data field must not exceed 5000 characters.',
+            'customer_discount.nullable' => 'The customer discount field is optional.',
+            'b2b_files.array' => 'The B2B files field must be an array if provided.',
+            'b2b_files.nullable' => 'The B2B files field is optional.',
         ]);
 
         if ($validator->fails()) {
             return response()->json($validator->getMessageBag(), 400);
         }
-        $customer = Customer::create([
-            "name" => $request->name,
-            "phone" => $request->phone,
-            "bio" => $request->bio,
-            "customer_type" => $request->customer_type,
-            "vat_number" => $request->vat_number,
-            "company_address" => $request->company_address,
-            "company_name" => $request->company_name,
-            "company_country" => $request->company_country,
-            "blocked" => $request->input('customer_type') == 'b2b' ? 1 : 0,
-            "email" => $request->email,
-            // ...
-            "password" => Hash::make($request->password),
-        ]);
+
+        if ($request->input('customer_type') == 'b2c') {
+            $customer = Customer::create([
+                "name" => $request->name,
+                "phone" => $request->phone,
+                "bio" => $request->bio,
+                "customer_type" => $request->customer_type,
+                "blocked" => false,
+                "email" => $request->email,
+                "shiping_data" => $request->shiping_data,
+                "customer_discount" => $request->customer_discount,
+                "password" => Hash::make($request->password),
+            ]);
+        } else {
+            $customer = Customer::create([
+                "shiping_data" => $request->shiping_data,
+                "customer_discount" => $request->customer_discount,
+                "name" => $request->name,
+                "phone" => $request->phone,
+                "bio" => $request->bio,
+                "customer_type" => $request->customer_type,
+                "vat_number" => $request->vat_number,
+                "company_address" => $request->company_address,
+                "company_name" => $request->company_name,
+                "company_country" => $request->company_country,
+                "blocked" => true,
+                "email" => $request->email,
+                "password" => Hash::make($request->password),
+            ]);
+        }
+
+        $customer->syncRoles([7]);
+
+
+        if ($request->hasFile('b2b_files')) {
+            $uploadedFiles = $request->file('b2b_files');
+            $filePaths = [];
+
+            foreach ($uploadedFiles as $file) {
+                $filePath = $file->store('public/customer_files/' . $customer->id); // Adjust path as needed
+                $filePaths[] = $filePath;
+            }
+
+            $customer->b2b_files = json_encode($filePaths); // Encode file paths as JSON
+            $customer->save();
+        }
+
+        if ($request->hasFile('avatar')) {
+            $avatar = $customer->addMedia($request->avatar)->toMediaCollection('avatar');
+            $customer->update(['avatar' => $avatar->id . '/' . $avatar->file_name]);
+        }
+
 
         return response()->json([
             'message' => 'Customer successfully registered',
             'customer' => $customer
         ], 201);
     }
-
-
     /**
      * @OA\Post(
      *     path="/api/auth/logout",

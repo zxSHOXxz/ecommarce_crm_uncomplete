@@ -26,15 +26,17 @@ Route::group([
     'prefix' => LaravelLocalization::setLocale(),
     'middleware' => ['localeSessionRedirect', 'localizationRedirect', 'localeViewPath']
 ], function () {
+
     Route::prefix('admin')->middleware(['auth:web,customer', 'ActiveAccount'])->group(function () {
         Route::get('/payments/verify/{payment?}', [BackendHelperController::class, 'payment_verify'])->name('verify-payment');
     });
+
     Route::post('products/import/', [ExcelImportController::class, 'import'])->name('import');
     Route::get('products/export/', [ExcelExportController::class, 'export'])->name('export');
     Route::get('products/xml_export/', [ExcelExportController::class, 'product_xml_export'])->name('xml_export');
     Route::post('products/importFromXml', [ExcelImportController::class, 'importProductsFromXml'])->name('importProductsFromXml');
 
-    Route::prefix('admin')->middleware(['auth:web,customer', 'ActiveAccount'])->name('admin.')->group(function () {
+    Route::prefix('admin')->middleware(['auth:web,customer', 'ActiveAccount', 'verified'])->name('admin.')->group(function () {
         Route::get('/home', [BackendAdminController::class, 'index'])->name('index');
         Route::middleware('auth')->group(function () {
             Route::resource('files', BackendFileController::class);
@@ -45,6 +47,7 @@ Route::group([
             Route::resource('products', BackendProductController::class);
             Route::resource('orders', BackendOrderController::class);
             Route::get('customer_orders', [BackendOrderController::class, 'customer_orders'])->name('customer_orders');
+            Route::get('show_customer_order/{id}', [BackendOrderController::class, 'show_customer_order'])->name('show_customer_order');
             Route::resource('roles', BackendRoleController::class);
             Route::get('user-roles/{user}', [BackendUserRoleController::class, 'index'])->name('users.roles.index');
             Route::put('user-roles/{user}', [BackendUserRoleController::class, 'update'])->name('users.roles.update');

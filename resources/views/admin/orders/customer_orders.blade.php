@@ -10,21 +10,6 @@
                     </div>
                     <div class="col-12 col-lg-4 p-0">
                     </div>
-                    {{-- @can('orders-update')
-                        <div class="col-12 col-lg-4 p-2 text-lg-end d-flex justify-content-end">
-                            <a href="{{ route('export') }}">
-                                <span class="btn btn-success mx-1"><i class="fa-solid fa-file-csv p-1"></i>Export CSV</span>
-                            </a>
-                            <a href="{{ route('export_xml') }}">
-                                <span class="btn btn-secondary mx-1"><i class="fa-solid fa-file-xml p-1"></i>Export XML</span>
-                            </a>
-                            <form action="{{ route('importProductsFromXml') }}" method="POST" enctype="multipart/form-data">
-                                @csrf
-                                <input type="file" name="file">
-                                <button type="submit">Upload</button>
-                            </form>
-                        </div>
-                    @endcan --}}
                 </div>
                 <div class="col-12 divider" style="min-height: 2px;"></div>
             </div>
@@ -64,12 +49,11 @@
                                     <td>
                                         @foreach ($order->products as $productDetail)
                                             <h6>
-                                                <span class="badge bg-dark text-white rounded-pill">
-                                                    name :
-                                                    {{ Str::limit(Str::upper($productDetail->product->title ?? 'null'), 45, '...') }}
+                                                <span
+                                                    class="badge bg-dark text-white rounded-pill">{{ Str::limit(Str::upper($productDetail->product->title ?? 'null'), 45, '...') }}
                                                 </span>
                                                 <span class="badge bg-danger text-white rounded-pill">
-                                                    quantity : {{ $productDetail->quantity ?? 'null' }}
+                                                    {{ $productDetail->quantity ?? 'null' }}
                                                 </span>
                                             </h6>
                                         @endforeach

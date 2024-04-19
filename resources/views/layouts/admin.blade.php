@@ -168,7 +168,7 @@
             box-shadow: unset!important;
             border: 1px solid var(--border-color)!important;
             background: var(--background-form-control-focus)!important;
-        }*/
+        } */
 
             .form-control,
             .form-control:focus {
@@ -205,12 +205,14 @@
                 {!! implode(
                     '',
                     $errors->all(
-                        '<div class="alert-click-hide alert alert-danger alert alert-danger col-9 col-xl-3 rounded-0 mb-1" style="position: fixed!important;z-index: 11;opacity:.9;left:25px;cursor:pointer;" onclick="$(this).fadeOut();">:message</div>',
+                        '<div class="alert-click-hide alert alert-danger alert alert-danger col-9 col-xl-3 rounded-0 mb-1" style="position: fixed!important;z-index: 901;opacity:.9;right:25px;top:120px;cursor:pointer;" onclick="$(this).fadeOut();">:message</div>',
                     ),
                 ) !!}
             </div>
         @endif
     </div>
+
+
     <form method="POST" action="{{ route('logout') }}" id="logout-form" class="d-none">@csrf</form>
     <div class="col-12 d-flex">
         <div style="width: 260px;background: #ddeaea;min-height: 100vh;position: fixed;z-index: 900"
@@ -248,9 +250,6 @@
                 </div>
             </div>
             <div class="col-12 px-0">
-
-
-
                 <div class="col-12 px-3 aside-menu" style="height: calc(100vh - 260px);overflow: auto;">
 
                     <a href="{{ route('admin.index') }}" class="col-12 px-0">
@@ -264,21 +263,21 @@
                         </div>
                     </a>
                     @if (Auth::guard('customer')->user() != null)
-                        @can('orders-read', 'App\\Models\Customer')
-                            <a href="{{ route('admin.customer_orders') }}" class="col-12 px-0">
-                                <div class="col-12 item-container px-0 d-flex ">
-                                    <div style="width: 50px" class="px-3 text-center">
-                                        <span class="fa-solid fa-cart-arrow-down"></span>
-                                    </div>
-                                    <div style="width: calc(100% - 50px)" class="px-2 item-container-title">
-                                        {{ __('admin.orders') }}
-                                    </div>
+                        {{-- @can('orders-read', 'App\\Models\Customer') --}}
+                        <a href="{{ route('admin.customer_orders') }}" class="col-12 px-0">
+                            <div class="col-12 item-container px-0 d-flex ">
+                                <div style="width: 50px" class="px-3 text-center">
+                                    <span class="fa-solid fa-cart-arrow-down"></span>
                                 </div>
-                            </a>
-                        @endcan
+                                <div style="width: calc(100% - 50px)" class="px-2 item-container-title">
+                                    {{ __('admin.orders') }}
+                                </div>
+                            </div>
+                        </a>
+                        {{-- @endcan --}}
                     @endif
                     @if (Auth::guard('web')->user() != null)
-                        {{--    @can('roles-read')
+                        @can('roles-read')
                             <a href="{{ route('admin.roles.index') }}" class="col-12 px-0">
                                 <div class="col-12 item-container px-0 d-flex ">
                                     <div style="width: 50px" class="px-3 text-center">
@@ -289,7 +288,7 @@
                                     </div>
                                 </div>
                             </a>
-                        @endcan --}}
+                        @endcan
 
                         @can('users-read')
                             <a href="{{ route('admin.users.index') }}" class="col-12 px-0">
@@ -426,11 +425,6 @@
                                                     style="font-size: 16px;"><span class="fal fa-eye px-2"
                                                         style="width: 28px;font-size: 15px;"></span>
                                                     {{ __('admin.showOrders') }}
-                                                </a></li>
-                                            <li><a href="{{ route('admin.orders.create') }}"
-                                                    style="font-size: 16px;"><span class="fal fa-plus px-2"
-                                                        style="width: 28px;font-size: 15px;"></span>
-                                                    {{ __('admin.createOfflineOrders') }}
                                                 </a></li>
                                         </ul>
                                     </div>
@@ -574,8 +568,6 @@
                     <img src="/images/loading.gif"
                         style="position:fixed;width: 120px;max-width: 80%;margin-top: -60px;" id="loading-image">
                 </div>
-
-
                 @yield('content')
             </div>
         </div>
