@@ -6,7 +6,7 @@
             <div class="col-12 px-0">
                 <div class="col-12 p-0 row">
                     <div class="col-12 col-lg-4 py-3 px-3">
-                        <span class="fas fa-tags"></span> orders
+                        <span class="fas fa-tags"></span> {{ __('messages.orders') }}
                     </div>
                     <div class="col-12 col-lg-4 p-0">
                     </div>
@@ -17,7 +17,7 @@
             <div class="col-12 py-2 px-2 row">
                 <div class="col-12 col-lg-4 p-2">
                     <form method="GET">
-                        <input type="text" name="q" class="form-control" placeholder="search ... "
+                        <input type="text" name="q" class="form-control" placeholder="{{ __('messages.search') }}"
                             value="{{ request()->get('q') }}">
                     </form>
                 </div>
@@ -28,15 +28,14 @@
                         <thead>
                             <tr>
                                 <th>#</th>
-                                <th>customer</th>
-                                <th>total amount</th>
-                                <th>products</th>
-                                <th>status</th>
+                                <th>{{ __('messages.customer') }}</th>
+                                <th>{{ __('messages.total_amount') }}</th>
+                                <th>{{ __('messages.products') }}</th>
+                                <th>{{ __('messages.status') }}</th>
                                 @can('orders-update')
-                                    <th>Update Status</th>
-                                    <th>Control</th>
+                                    <th>{{ __('messages.update_status') }}</th>
+                                    <th>{{ __('messages.control') }}</th>
                                 @endcan
-
                             </tr>
                         </thead>
 
@@ -66,22 +65,23 @@
                                                 @method('PUT')
                                                 <select name="status" class="form-select" required>
                                                     <option value="faild" @if ($order->status === 'faild') selected @endif>
-                                                        faild</option>
+                                                        {{ __('messages.failed') }}</option>
                                                     <option value="sucsses" @if ($order->status === 'sucsses') selected @endif>
-                                                        sucsses</option>
+                                                        {{ __('messages.success') }}</option>
                                                     <option value="waiting" @if ($order->status === 'waiting') selected @endif>
-                                                        waiting</option>
+                                                        {{ __('messages.waiting') }}</option>
                                                     <option value="pending" @if ($order->status === 'pending') selected @endif>
-                                                        pending</option>
+                                                        {{ __('messages.pending') }}</option>
                                                 </select>
-                                                <button type="submit" class="btn btn-sm btn-success ml-2">Update</button>
+                                                <button type="submit"
+                                                    class="btn btn-sm btn-success ml-2">{{ __('messages.update') }}</button>
                                             </form>
                                         </td>
                                         <td style="width: 180px;">
                                             @can('orders-update')
                                                 <a href="{{ route('admin.orders.show', $order) }}">
                                                     <span class="btn  btn-outline-success btn-sm font-1 m-1">
-                                                        <span class="fas fa-eye "></span> show
+                                                        <span class="fas fa-eye "></span> {{ __('messages.show') }}
                                                     </span>
                                                 </a>
                                             @endcan
@@ -91,7 +91,7 @@
                                                     class="d-inline-block">@csrf @method('DELETE')
                                                     <button class="btn  btn-outline-danger btn-sm font-1 mx-1"
                                                         onclick="var result = confirm('Do you need delete it ?! ');if(result){}else{event.preventDefault()}">
-                                                        <span class="fas fa-trash "></span> delete
+                                                        <span class="fas fa-trash "></span> {{ __('messages.delete') }}
                                                     </button>
                                                 </form>
                                             @endcan

@@ -6,22 +6,22 @@
             <div class="col-12 px-0">
                 <div class="col-12 p-0 row">
                     <div class="col-12 col-lg-4 py-3 px-3">
-                        <span class="fas fa-tags"></span> orders
+                        <span class="fas fa-tags"></span> {{ __('messages.orders') }}
                     </div>
                     <div class="col-12 col-lg-4 p-0">
                     </div>
                     {{-- @can('orders-update')
                         <div class="col-12 col-lg-4 p-2 text-lg-end d-flex justify-content-end">
                             <a href="{{ route('export') }}">
-                                <span class="btn btn-success mx-1"><i class="fa-solid fa-file-csv p-1"></i>Export CSV</span>
+                                <span class="btn btn-success mx-1"><i class="fa-solid fa-file-csv p-1"></i>{{ __('messages.export_csv') }}</span>
                             </a>
                             <a href="{{ route('export_xml') }}">
-                                <span class="btn btn-secondary mx-1"><i class="fa-solid fa-file-xml p-1"></i>Export XML</span>
+                                <span class="btn btn-secondary mx-1"><i class="fa-solid fa-file-xml p-1"></i>{{ __('messages.export_xml') }}</span>
                             </a>
                             <form action="{{ route('importProductsFromXml') }}" method="POST" enctype="multipart/form-data">
                                 @csrf
                                 <input type="file" name="file">
-                                <button type="submit">Upload</button>
+                                <button type="submit">{{ __('messages.upload') }}</button>
                             </form>
                         </div>
                     @endcan --}}
@@ -32,8 +32,8 @@
             <div class="col-12 py-2 px-2 row">
                 <div class="col-12 col-lg-4 p-2">
                     <form method="GET">
-                        <input type="text" name="q" class="form-control" placeholder="search ... "
-                            value="{{ request()->get('q') }}">
+                        <input type="text" name="q" class="form-control"
+                            placeholder="{{ __('messages.search') }} ... " value="{{ request()->get('q') }}">
                     </form>
                 </div>
             </div>
@@ -43,13 +43,13 @@
                         <thead>
                             <tr>
                                 <th>#</th>
-                                <th>customer</th>
-                                <th>total amount</th>
-                                <th>products</th>
-                                <th>status</th>
+                                <th>{{ __('messages.customer') }}</th>
+                                <th>{{ __('messages.total_amount') }}</th>
+                                <th>{{ __('messages.products') }}</th>
+                                <th>{{ __('messages.status') }}</th>
                                 @can('orders-update')
-                                    <th>Update Status</th>
-                                    <th>Control</th>
+                                    <th>{{ __('messages.update_status') }}</th>
+                                    <th>{{ __('messages.control') }}</th>
                                 @endcan
 
                             </tr>
@@ -65,11 +65,12 @@
                                         @foreach ($order->products as $productDetail)
                                             <h6>
                                                 <span class="badge bg-dark text-white rounded-pill">
-                                                    name :
+                                                    {{ __('messages.name') }} :
                                                     {{ Str::limit(Str::upper($productDetail->product->title ?? 'null'), 45, '...') }}
                                                 </span>
                                                 <span class="badge bg-danger text-white rounded-pill">
-                                                    quantity : {{ $productDetail->quantity ?? 'null' }}
+                                                    {{ __('messages.quantity') }} :
+                                                    {{ $productDetail->quantity ?? 'null' }}
                                                 </span>
                                             </h6>
                                         @endforeach
@@ -82,22 +83,23 @@
                                                 @method('PUT')
                                                 <select name="status" class="form-select" required>
                                                     <option value="faild" @if ($order->status === 'faild') selected @endif>
-                                                        faild</option>
+                                                        {{ __('messages.failed') }}</option>
                                                     <option value="sucsses" @if ($order->status === 'sucsses') selected @endif>
-                                                        sucsses</option>
+                                                        {{ __('messages.success') }}</option>
                                                     <option value="waiting" @if ($order->status === 'waiting') selected @endif>
-                                                        waiting</option>
+                                                        {{ __('messages.waiting') }}</option>
                                                     <option value="pending" @if ($order->status === 'pending') selected @endif>
-                                                        pending</option>
+                                                        {{ __('messages.pending') }}</option>
                                                 </select>
-                                                <button type="submit" class="btn btn-sm btn-success ml-2">Update</button>
+                                                <button type="submit"
+                                                    class="btn btn-sm btn-success ml-2">{{ __('messages.update') }}</button>
                                             </form>
                                         </td>
                                         <td style="width: 180px;">
                                             @can('orders-update')
                                                 <a href="{{ route('admin.orders.show', $order) }}">
                                                     <span class="btn  btn-outline-success btn-sm font-1 m-1">
-                                                        <span class="fas fa-eye "></span> show
+                                                        <span class="fas fa-eye "></span> {{ __('messages.show') }}
                                                     </span>
                                                 </a>
                                             @endcan
@@ -107,7 +109,7 @@
                                                     class="d-inline-block">@csrf @method('DELETE')
                                                     <button class="btn  btn-outline-danger btn-sm font-1 mx-1"
                                                         onclick="var result = confirm('Do you need delete it ?! ');if(result){}else{event.preventDefault()}">
-                                                        <span class="fas fa-trash "></span> delete
+                                                        <span class="fas fa-trash "></span> {{ __('messages.delete') }}
                                                     </button>
                                                 </form>
                                             @endcan

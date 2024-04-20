@@ -91,10 +91,21 @@ class BackendProductController extends Controller
             'video' => $request->video,
         ]);
 
-        if ($request->hasFile('photo')) {
-            $photo = $product_details->addMedia($request->photo)->toMediaCollection('photo');
-            $product_details->update(['photo' => $photo->id . '/' . $photo->file_name]);
+        if ($request->hasFile('main_photo')) {
+            $photo = $product_details->addMedia($request->main_photo)->toMediaCollection('main_photo');
+            $product_details->update(['main_photo' => $photo->id . '/' . $photo->file_name]);
         }
+
+
+        if ($request->hasfile('photo')) {
+            $photos = [];
+            foreach ($request->file('photo') as $photo) {
+                $photo = $product_details->addMedia($photo)->toMediaCollection('photo');
+                $photos[] = $photo->id . '/' . $photo->file_name;
+            }
+            $product_details->update(['photo' => json_encode($photos)]);
+        }
+
 
         toastr()->success('Done Added Product', 'Succesfully');
         return redirect()->route('admin.products.index');

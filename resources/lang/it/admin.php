@@ -74,4 +74,18 @@ return [
     'contacts' => 'Contatti',
     'settings' => 'Impostazioni',
     'logout' => 'Esci',
+
+    'DASHBOARD' => 'CRUSCOTTO',
+    'Admin' => 'Amministratore',
+    'Add' => 'Aggiungi',
+    'SEARCH ... ' => 'RICERCA ... ',
+    '#' => '#',
+    'name' => 'nome',
+    'email' => 'email',
+    'control' => 'controllo',
+    'Show' => 'Mostra',
+    'Edit' => 'Modifica',
+    'Delete' => 'Elimina',
+    'access' => 'accesso',
+
 ];

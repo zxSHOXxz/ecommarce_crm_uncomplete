@@ -20,11 +20,11 @@
                     <table class="table table-bordered table-striped rounded table-hover">
                         <tbody>
                             <tr>
-                                <td> {{ trans('admin.email') }} </td>
+                                <td> {{ __('messages.email') }} </td>
                                 <td>{{ auth()->user()->email }}</td>
                             </tr>
                             <tr>
-                                <td>{{ trans('admin.phone') }}</td>
+                                <td>{{ __('messages.phone') }}</td>
                                 <td>
                                     @if (auth()->user()->phone == null)
                                         null
@@ -34,11 +34,11 @@
                                 </td>
                             </tr>
                             <tr>
-                                <td>account type</td>
+                                <td>{{ __('messages.account_type') }}</td>
                                 <td>{{ auth()->user()->customer_type ?? null }}</td>
                             </tr>
                             <tr>
-                                <td>Active</td>
+                                <td>{{ __('messages.active') }}</td>
                                 <td>
                                     @if (!auth()->user()->blocked)
                                         <span class="fas fa-check-circle text-success"></span>
@@ -48,20 +48,18 @@
 
                                 </td>
                             <tr>
-                                <td>bio</td>
+                                <td>{{ __('messages.bio') }}</td>
                                 <td>
                                     {{ auth()->user()->bio }}
                                 </td>
                             </tr>
 
                             <tr>
-                                <td>control</td>
+                                <td>{{ __('messages.control') }}</td>
                                 <td><a href="{{ route('admin.profile.edit') }}"
                                         class="rounded-0 btn btn-success btn-sm border"><span class="fal fa-wrench"></span>
-                                        edit</a></td>
+                                        {{ __('messages.edit') }}</a></td>
                             </tr>
-
-
                         </tbody>
                     </table>
                 </div>

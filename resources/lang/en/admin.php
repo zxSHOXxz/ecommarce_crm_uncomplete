@@ -75,5 +75,16 @@ return [
     'contacts' => 'Contacts',
     'settings' => 'Settings',
     'logout' => 'Logout',
-
+    'DASHBOARD' => 'DASHBOARD',
+    'Admin' => 'Admin',
+    'Add' => 'Add',
+    'SEARCH ... ' => 'SEARCH ... ',
+    '#' => '#',
+    'name' => 'name',
+    'email' => 'email',
+    'control' => 'control',
+    'Show' => 'Show',
+    'Edit' => 'Edit',
+    'Delete' => 'Delete',
+    'access' => 'access',
 ];

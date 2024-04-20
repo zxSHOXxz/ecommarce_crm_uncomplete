@@ -2,8 +2,6 @@
 @section('content')
     <div class="col-12 p-3">
         <div class="col-12 col-lg-12 p-0 ">
-
-
             <form id="validate-form" class="row" enctype="multipart/form-data" method="POST"
                 action="{{ route('admin.products.update', $product) }}">
                 @csrf
@@ -11,15 +9,14 @@
                 <div class="col-12 col-lg-8 p-0 main-box">
                     <div class="col-12 px-0">
                         <div class="col-12 px-3 py-3">
-                            <span class="fas fa-info-circle"></span> UPDATE PRODUCT
+                            <span class="fas fa-info-circle"></span> {{ __('messages.UPDATE_PRODUCT') }}
                         </div>
                         <div class="col-12 divider" style="min-height: 2px;"></div>
                     </div>
                     <div class="col-12 p-3 row">
-
                         <div class="col-12 col-lg-6 p-2">
                             <div class="col-12">
-                                title
+                                {{ __('messages.TITLE') }}
                             </div>
                             <div class="col-12 pt-3">
                                 <input type="text" name="title" required minlength="3" maxlength="190"
@@ -28,7 +25,7 @@
                         </div>
                         <div class="col-12 col-lg-6 p-2">
                             <div class="col-12">
-                                code
+                                {{ __('messages.CODE') }}
                             </div>
                             <div class="col-12 pt-3">
                                 <input type="text" name="code" required minlength="3" maxlength="190"
@@ -37,7 +34,7 @@
                         </div>
                         <div class="col-12 col-lg-6 p-2">
                             <div class="col-12">
-                                quantity
+                                {{ __('messages.QUANTITY') }}
                             </div>
                             <div class="col-12 pt-3">
                                 <input type="number" name="quantity" required class="form-control"
@@ -46,7 +43,7 @@
                         </div>
                         <div class="col-12 col-lg-6 p-2">
                             <div class="col-12">
-                                price
+                                {{ __('messages.PRICE') }}
                             </div>
                             <div class="col-12 pt-3">
                                 <input type="number" name="price" required class="form-control"
@@ -55,7 +52,7 @@
                         </div>
                         <div class="col-12 col-lg-6 p-2">
                             <div class="col-12">
-                                discount
+                                {{ __('messages.DISCOUNT') }}
                             </div>
                             <div class="col-12 pt-3">
                                 <input type="number" name="discount" required class="form-control"
@@ -64,21 +61,19 @@
                         </div>
                         <div class="col-12 col-lg-6 p-2">
                             <div class="col-12">
-                                status
+                                {{ __('messages.STATUS') }}
                             </div>
                             <div class="col-12 pt-3">
                                 <select class="form-control" name="status">
-                                    <option @if (old('status') == 'draft') selected @endif value="draft">draft</option>
-                                    <option @if (old('status') == 'published') selected @endif value="published">published
-                                    </option>
-                                    <option @if (old('status') == 'deleted') selected @endif value="deleted">deleted
-                                    </option>
+                                    <option @if (old('status') == 'draft') selected @endif value="draft">{{ __('messages.DRAFT') }}</option>
+                                    <option @if (old('status') == 'published') selected @endif value="published">{{ __('messages.PUBLISHED') }}</option>
+                                    <option @if (old('status') == 'deleted') selected @endif value="deleted">{{ __('messages.DELETED') }}</option>
                                 </select>
                             </div>
                         </div>
                         <div class="col-12 col-lg-6 p-2">
                             <div class="col-12">
-                                category
+                                {{ __('messages.CATEGORY') }}
                             </div>
                             <div class="col-12 pt-3">
                                 <select class="form-control" name="category_id">
@@ -92,7 +87,7 @@
                         </div>
                         <div class="col-12 col-lg-6 p-2">
                             <div class="col-12">
-                                description
+                                {{ __('messages.DESCRIPTION') }}
                             </div>
                             <div class="col-12 pt-3">
                                 <textarea name="description" maxlength="5000" class="form-control" style="min-height:150px">{{ $product->description }}</textarea>
@@ -100,9 +95,8 @@
                         </div>
                     </div>
                 </div>
-
                 <div class="col-12 p-3">
-                    <button class="btn btn-success" id="submitEvaluation">حفظ</button>
+                    <button class="btn btn-success" id="submitEvaluation">{{ __('messages.SAVE') }}</button>
                 </div>
             </form>
         </div>

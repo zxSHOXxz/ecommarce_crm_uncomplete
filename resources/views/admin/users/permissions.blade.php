@@ -10,20 +10,19 @@
 
                     <div class="col-12 px-0">
                         <div class="col-12 px-3 py-3">
-                            <span class="fas fa-info-circle"></span> صلاحيات المستخدم
+                            <span class="fas fa-info-circle"></span> {{ __('messages.USER_PERMISSIONS') }}
                         </div>
                         <div class="col-12 divider" style="min-height: 2px;"></div>
                     </div>
                     <div class="col-12 p-3 row">
-                        {{-- {{dd($permissions)}} --}}
                         <table class="table table-hover" style="width:400px">
                             <thead>
-                                <tr style="">
-                                    <th>الجدول</th>
-                                    <th style="width: 56px;">اضافة</th>
-                                    <th style="width: 56px;">عرض</th>
-                                    <th style="width: 56px;">تعديل</th>
-                                    <th style="width: 56px;">حذف</th>
+                                <tr>
+                                    <th>{{ __('messages.TABLE') }}</th>
+                                    <th style="width: 56px;">{{ __('messages.ADD') }}</th>
+                                    <th style="width: 56px;">{{ __('messages.VIEW') }}</th>
+                                    <th style="width: 56px;">{{ __('messages.EDIT') }}</th>
+                                    <th style="width: 56px;">{{ __('messages.DELETE') }}</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -35,14 +34,9 @@
                                         )->get();
                                     @endphp
                                     <tr>
-
-
-
                                         <td>{{ $permission->table }}</td>
-
                                         @if ($sub_permissions->where('name', $permission->table . '-create')->first())
                                             <td style="width: 56px;">
-
                                                 <div class="form-check form-switch">
                                                     <input class="form-check-input" type="checkbox"
                                                         id="{{ $permission->table . '-create' }}"
@@ -52,12 +46,10 @@
                                                 </div>
                                             </td>
                                         @else
-                                            <td style="width: 56px;">
-                                            </td>
+                                            <td style="width: 56px;"></td>
                                         @endif
                                         @if ($sub_permissions->where('name', $permission->table . '-read')->first())
                                             <td style="width: 56px;">
-
                                                 <div class="form-check form-switch">
                                                     <input class="form-check-input" type="checkbox"
                                                         id="{{ $permission->table . '-read' }}"
@@ -67,12 +59,10 @@
                                                 </div>
                                             </td>
                                         @else
-                                            <td style="width: 56px;">
-                                            </td>
+                                            <td style="width: 56px;"></td>
                                         @endif
                                         @if ($sub_permissions->where('name', $permission->table . '-update')->first())
                                             <td style="width: 56px;">
-
                                                 <div class="form-check form-switch">
                                                     <input class="form-check-input" type="checkbox"
                                                         id="{{ $permission->table . '-update' }}"
@@ -82,12 +72,10 @@
                                                 </div>
                                             </td>
                                         @else
-                                            <td style="width: 56px;">
-                                            </td>
+                                            <td style="width: 56px;"></td>
                                         @endif
                                         @if ($sub_permissions->where('name', $permission->table . '-delete')->first())
                                             <td style="width: 56px;">
-
                                                 <div class="form-check form-switch">
                                                     <input class="form-check-input" type="checkbox"
                                                         id="{{ $permission->table . '-delete' }}"
@@ -97,20 +85,16 @@
                                                 </div>
                                             </td>
                                         @else
-                                            <td style="width: 56px;">
-                                            </td>
+                                            <td style="width: 56px;"></td>
                                         @endif
                                     </tr>
                                 @endforeach
                             </tbody>
                         </table>
-
                     </div>
-
                 </div>
-
                 <div class="col-12 p-3">
-                    <button class="btn btn-success" id="submitEvaluation">حفظ</button>
+                    <button class="btn btn-success" id="submitEvaluation">{{ __('messages.SAVE') }}</button>
                 </div>
             </form>
         </div>

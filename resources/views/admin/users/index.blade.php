@@ -3,23 +3,25 @@
     <div class="col-12 p-3">
         <!-- breadcrumb -->
         <x-bread-crumb :breads="[
-            ['url' => url('/admin'), 'title' => 'DASHBOARD', 'isactive' => false],
-            ['url' => route('admin.users.index'), 'title' => 'Admin', 'isactive' => true],
+            ['url' => url('/admin'), 'title' => __('messages.DASHBOARD'), 'isactive' => false],
+            ['url' => route('admin.users.index'), 'title' => __('messages.Admin'), 'isactive' => true],
         ]">
         </x-bread-crumb>
         <!-- /breadcrumb -->
+
+
         <div class="col-12 col-lg-12 p-0 main-box">
             <div class="col-12 px-0">
                 <div class="col-12 p-0 row">
                     <div class="col-12 col-lg-4 py-3 px-3">
-                        <span class="fas fa-users"></span> Admin
+                        <span class="fas fa-users"></span> {{ __('messages.Admin') }}
                     </div>
                     <div class="col-12 col-lg-4 p-0">
                     </div>
                     <div class="col-12 col-lg-4 p-2 text-lg-end" style="display: flex;justify-content: flex-end">
                         @can('users-create')
                             <a href="{{ route('admin.users.create') }}">
-                                <span class="btn btn-primary"><span class="fas fa-plus"></span> Add</span>
+                                <span class="btn btn-primary"><span class="fas fa-plus"></span> {{ __('messages.Add') }}</span>
                             </a>
                         @endcan
                     </div>
@@ -30,8 +32,8 @@
             <div class="col-12 py-2 px-2 row">
                 <div class="col-12 col-lg-4 p-2">
                     <form method="GET">
-                        <input type="text" name="q" class="form-control" placeholder="SEARCH ... "
-                            value="{{ request()->get('q') }}">
+                        <input type="text" name="q" class="form-control"
+                            placeholder="{{ __('messages.SEARCH ... ') }}" value="{{ request()->get('q') }}">
                     </form>
                 </div>
             </div>
@@ -42,10 +44,10 @@
                     <table class="table table-bordered  table-hover">
                         <thead>
                             <tr>
-                                <th>#</th>
-                                <th>name</th>
-                                <th>email</th>
-                                <th>control</th>
+                                <th>{{ __('messages.#') }}</th>
+                                <th>{{ __('messages.name') }}</th>
+                                <th>{{ __('messages.email') }}</th>
+                                <th>{{ __('messages.control') }}</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -70,39 +72,15 @@
                                         @can('users-read')
                                             <a href="{{ route('admin.users.show', $user) }}">
                                                 <span class="btn  btn-outline-primary btn-sm font-small mx-1">
-                                                    <span class="fas fa-search "></span> Show
+                                                    <span class="fas fa-search "></span> {{ __('messages.Show') }}
                                                 </span>
                                             </a>
                                         @endcan
 
-
-
-
-                                        {{-- @can('notifications-create')
-                                            <a href="{{ route('admin.notifications.index', ['user_id' => $user->id]) }}">
-                                                <span class="btn  btn-outline-primary btn-sm font-small mx-1">
-                                                    <span class="far fa-bells"></span> الاشعارات
-                                                </span>
-                                            </a>
-                                            <a href="{{ route('admin.notifications.create', ['user_id' => $user->id]) }}">
-                                                <span class="btn  btn-outline-primary btn-sm font-small mx-1">
-                                                    <span class="far fa-bell"></span>
-                                                </span>
-                                            </a>
-                                        @endcan --}}
-
-                                        {{-- @can('user-roles-update')
-                                            <a href="{{ route('admin.users.roles.index', $user) }}">
-                                                <span class="btn btn-outline-primary btn-sm font-small mx-1">
-                                                    <span class="fal fa-key "></span> الصلاحيات
-                                                </span>
-                                            </a>
-                                        @endcan --}}
-
                                         @can('users-update')
                                             <a href="{{ route('admin.users.edit', $user) }}">
                                                 <span class="btn  btn-outline-success btn-sm font-small mx-1">
-                                                    <span class="fas fa-wrench "></span> Edit
+                                                    <span class="fas fa-wrench "></span> {{ __('messages.Edit') }}
                                                 </span>
                                             </a>
                                         @endcan
@@ -113,7 +91,7 @@
                                                 class="d-inline-block">@csrf @method('DELETE')
                                                 <button class="btn  btn-outline-danger btn-sm font-small mx-1"
                                                     onclick="var result = confirm('Are u sure wanna delete this user ? ');if(result){}else{event.preventDefault()}">
-                                                    <span class="fas fa-trash "></span> Delete
+                                                    <span class="fas fa-trash "></span> {{ __('messages.Delete') }}
                                                 </button>
                                             </form>
                                         @endcan
@@ -131,7 +109,7 @@
                                                 @can('users-update')
                                                     <li><a class="dropdown-item font-1"
                                                             href="{{ route('admin.users.access', $user) }}"><span
-                                                                class="fal fa-eye"></span> access</a></li>
+                                                                class="fal fa-eye"></span> {{ __('messages.access') }}</a></li>
                                                 @endcan
                                             </ul>
                                         </div>

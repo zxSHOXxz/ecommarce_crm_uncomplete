@@ -24,8 +24,8 @@
         <div class="modal-dialog" style="width:394px;max-width: 100%">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="changeAvatarLabel">Change profile picture</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    <h5 class="modal-title" id="changeAvatarLabel">{{ __('messages.change_profile_picture') }}</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="{{ __('messages.close') }}"></button>
                 </div>
                 <div class="modal-body">
 
@@ -36,8 +36,8 @@
                         </div>
                         <div class="col-12 text-left mt-3">
                             <button class="btn btn-secondary mx-1 font-1" data-bs-dismiss="modal"
-                                aria-label="Close">إلغاء</button>
-                            <button class="btn btn-primary mx-1 font-1 save-image">Change picture</button>
+                                aria-label="{{ __('messages.close') }}">{{ __('messages.cancel') }}</button>
+                            <button class="btn btn-primary mx-1 font-1 save-image">{{ __('messages.change_picture') }}</button>
                         </div>
                     </div>
 
@@ -46,6 +46,7 @@
         </div>
     </div>
 @endsection
+
 
 @section('content')
     <div class="col-12 py-3">
@@ -58,7 +59,7 @@
                         <div class="col-12 p-0 main-box shadow">
                             <div class="col-12 px-0">
                                 <div class="col-12 px-3 py-3">
-                                    <span class="fal fa-info-circle"></span> Basic data
+                                    <span class="fal fa-info-circle"></span> {{ __('messages.basic_data') }}
                                 </div>
                                 <div class="col-12 divider" style="min-height: 2px;"></div>
                             </div>
@@ -70,50 +71,41 @@
                                 </div>
                                 <div class="col-12 p-2">
                                     <div class="col-12">
-                                        Profile picture
+                                        {{ __('messages.profile_picture') }}
                                     </div>
                                     <div class="col-12 pt-3">
                                         <input type="file" name="" class="form-control"
                                             value="{{ auth()->user()->name }}" id="avatar-image">
 
                                         <input type="hidden" name="avatar" id="encoded_image">
-                                        {{-- <input type="file" name="avatar" value="{{ auth()->user()->name }}"
-                                            class="form-control" accept="image/*"> --}}
-
                                     </div>
                                 </div>
                                 <div class="col-12 p-2">
                                     <div class="col-12">
-                                        Username
+                                        {{ __('messages.username') }}
                                     </div>
                                     <div class="col-12 pt-3">
                                         <input type="text" name="name" required min="3" max="190"
-                                            class="form-control" value="{{ auth()->user()->name }}" accept="image/*">
+                                            class="form-control" value="{{ auth()->user()->name }}">
                                     </div>
                                 </div>
                                 <div class="col-12 p-2">
                                     <div class="col-12">
-                                        Bio
+                                        {{ __('messages.bio') }}
                                     </div>
                                     <div class="col-12 pt-3">
                                         <textarea class="form-control" name="bio" style="min-height:150px">{{ auth()->user()->bio }}</textarea>
                                     </div>
                                 </div>
-
-
                                 <div class="col-12 p-2">
                                     <div class="col-12 pt-3">
-                                        <button class="btn btn-primary">save data</button>
-
+                                        <button class="btn btn-primary">{{ __('messages.save_data') }}</button>
                                     </div>
                                 </div>
-
-
                             </div>
                         </div>
                     </form>
                 </div>
-
                 <div class="col-12 col-lg-6 my-2">
                     <form method="POST" action="{{ route('admin.profile.update-email') }}">
                         @csrf
@@ -121,14 +113,14 @@
                         <div class="col-12 p-0 main-box shadow">
                             <div class="col-12 px-0">
                                 <div class="col-12 px-3 py-3">
-                                    <span class="fal fa-envelope"></span> change email
+                                    <span class="fal fa-envelope"></span> {{ __('messages.change_email') }}
                                 </div>
                                 <div class="col-12 divider" style="min-height: 2px;"></div>
                             </div>
                             <div class="col-12 p-3">
                                 <div class="col-12 p-2">
                                     <div class="col-12">
-                                        current email
+                                        {{ __('messages.current_email') }}
                                     </div>
                                     <div class="col-12 pt-3">
                                         <input type="email" name="old_email" class="form-control" required
@@ -138,7 +130,7 @@
 
                                 <div class="col-12 p-2">
                                     <div class="col-12">
-                                        new email
+                                        {{ __('messages.new_email') }}
                                     </div>
                                     <div class="col-12 pt-3">
                                         <input type="email" name="email" class="form-control" required>
@@ -146,7 +138,7 @@
                                 </div>
                                 <div class="col-12 p-2">
                                     <div class="col-12">
-                                        confirm new email
+                                        {{ __('messages.confirm_new_email') }}
                                     </div>
                                     <div class="col-12 pt-3">
                                         <input type="email" name="email_confirmation" class="form-control" required>
@@ -155,12 +147,9 @@
 
                                 <div class="col-12 p-2">
                                     <div class="col-12 pt-3">
-                                        <button class="btn btn-primary">save</button>
-
+                                        <button class="btn btn-primary">{{ __('messages.save') }}</button>
                                     </div>
                                 </div>
-
-
                             </div>
                         </div>
                     </form>
@@ -173,7 +162,7 @@
                         <div class="col-12 p-0 main-box shadow">
                             <div class="col-12 px-0">
                                 <div class="col-12 px-3 py-3">
-                                    <span class="fal fa-key"></span> Change Password
+                                    <span class="fal fa-key"></span> {{ __('messages.change_password') }}
                                 </div>
                                 <div class="col-12 divider" style="min-height: 2px;"></div>
                             </div>
@@ -181,13 +170,13 @@
                                 <div class="col-12 p-2">
                                     <div class="col-12 pt-3">
                                         <div class="alert alert-warning">
-                                            Your password must be at least 8 characters long and contain a mix of letters,
-                                            numbers, and special symbols. </div>
+                                            {{ __('messages.password_requirements') }}
+                                        </div>
                                     </div>
                                 </div>
                                 <div class="col-12 p-2">
                                     <div class="col-12">
-                                        Current Password
+                                        {{ __('messages.current_password') }}
                                     </div>
                                     <div class="col-12 pt-3">
                                         <input type="password" name="old_password" class="form-control" required
@@ -197,7 +186,7 @@
 
                                 <div class="col-12 p-2">
                                     <div class="col-12">
-                                        New Password
+                                        {{ __('messages.new_password') }}
                                     </div>
                                     <div class="col-12 pt-3">
                                         <input type="password" name="password" class="form-control" required
@@ -206,7 +195,7 @@
                                 </div>
                                 <div class="col-12 p-2">
                                     <div class="col-12">
-                                        Confirm New Password
+                                        {{ __('messages.confirm_new_password') }}
                                     </div>
                                     <div class="col-12 pt-3">
                                         <input type="password" name="password_confirmation" class="form-control" required
@@ -216,11 +205,9 @@
 
                                 <div class="col-12 p-2">
                                     <div class="col-12 pt-3">
-                                        <button class="btn btn-primary">Change Password</button>
+                                        <button class="btn btn-primary">{{ __('messages.change_password') }}</button>
                                     </div>
                                 </div>
-
-
                             </div>
                         </div>
                     </form>

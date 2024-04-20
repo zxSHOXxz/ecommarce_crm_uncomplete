@@ -1,6 +1,6 @@
 <nav aria-label="breadcrumb">
     <ol class="breadcrumb mb-4 no-print">
-        @foreach ($breads as $index=>$bread)
+        @foreach ($breads as $index => $bread)
             @if ($bread['isactive'])
                 <li class="breadcrumb-item">{{ $bread['title'] }}</li>
             @else

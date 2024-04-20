@@ -6,14 +6,14 @@
             <div class="col-12 px-0">
                 <div class="col-12 p-0 row">
                     <div class="col-12 col-lg-4 py-3 px-3">
-                        <span class="fas fa-tags"></span> Order Details
+                        <span class="fas fa-tags"></span> {{ __('messages.ORDER_DETAILS') }}
                     </div>
                     <div class="col-12 col-lg-4 p-0">
                     </div>
                     <div class="col-12 col-lg-4 p-2 text-lg-end d-flex justify-content-end">
                         {{-- @can('orders-create')
                             <a href="{{ route('admin.orders.create') }}">
-                                <span class="btn btn-primary"><span class="fas fa-plus"></span> Add Order </span>
+                                <span class="btn btn-primary"><span class="fas fa-plus"></span> {{ __('messages.ADD_ORDER') }} </span>
                             </a>
                         @endcan --}}
                     </div>
@@ -24,7 +24,7 @@
             <div class="col-12 py-2 px-2 row">
                 <div class="col-12 col-lg-4 p-2">
                     <form method="GET">
-                        <input type="text" name="q" class="form-control" placeholder="search ... "
+                        <input type="text" name="q" class="form-control" placeholder="{{ __('messages.SEARCH') }} ... "
                             value="{{ request()->get('q') }}">
                     </form>
                 </div>
@@ -36,10 +36,10 @@
                     <table class="table table-bordered  table-hover">
                         <thead>
                             <tr>
-                                <th>product</th>
-                                <th>total price</th>
-                                <th>unit price</th>
-                                <th>quantity</th>
+                                <th>{{ __('messages.PRODUCT') }}</th>
+                                <th>{{ __('messages.TOTAL_PRICE') }}</th>
+                                <th>{{ __('messages.UNIT_PRICE') }}</th>
+                                <th>{{ __('messages.QUANTITY') }}</th>
                             </tr>
                         </thead>
 

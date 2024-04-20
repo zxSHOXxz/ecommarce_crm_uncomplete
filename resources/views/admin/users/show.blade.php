@@ -5,10 +5,10 @@
             <img src="{{ $user->getUserAvatar() }}" style="width:130px;height: 130px;border-radius: 50%;">
         </div>
         <div class="col-12 p-2 text-center" style="overflow:auto;">
-            {{ $user->id }} <br>
-            {{ $user->name }} <br>
-            {{ $user->email }}<br>
-            {{ $user->phone }}<br>
+            {{ __('messages.USER_ID') }}: {{ $user->id }} <br>
+            {{ __('messages.USER_NAME') }}: {{ $user->name }} <br>
+            {{ __('messages.USER_EMAIL') }}: {{ $user->email }}<br>
+            {{ __('messages.USER_PHONE') }}: {{ $user->phone }}<br>
         </div>
     </div>
     <div class="col-12 py-0 px-3 row">
@@ -26,7 +26,7 @@
                                         </div>
                                     </div>
                                     <div style="width: calc(100% - 80px)" class="px-2 py-2">
-                                        <h6 class="font-1">الترافيك</h6>
+                                        <h6 class="font-1">{{ __('messages.TRAFFIC') }}</h6>
                                         <h6 class="font-3">{{ $user->traffics->count() }}</h6>
                                     </div>
                                 </div>
@@ -43,30 +43,12 @@
                                         </div>
                                     </div>
                                     <div style="width: calc(100% - 80px)" class="px-2 py-2">
-                                        <h6 class="font-1">تقارير الأخطاء</h6>
+                                        <h6 class="font-1">{{ __('messages.ERROR_REPORTS') }}</h6>
                                         <h6 class="font-3">{{ $user->report_errors->count() }}</h6>
                                     </div>
                                 </div>
                             </a>
                         </div> --}}
-
-                        {{-- <div class="col-12 col-sm-6 col-lg-4 col-xl-3  px-2 mb-3">
-                            <a href="{{ route('admin.contacts.index', ['user_id' => $user->id]) }}" style="color:inherit;">
-                                <div class="col-12 px-0 py-2 d-flex rounded-3 main-box-wedit" style="background: #ffffff;">
-                                    <div style="width: 80px;" class="p-2">
-                                        <div class="col-12 px-0 text-center d-flex align-items-center justify-content-center"
-                                            style="background-image: linear-gradient(rgba(0,0,0,.04),rgba(0,0,0,.04))!important;height: 64px;border-radius: 50%;">
-                                            <span class="fal fa-phone font-5"></span>
-                                        </div>
-                                    </div>
-                                    <div style="width: calc(100% - 80px)" class="px-2 py-2">
-                                        <h6 class="font-1">طلبات الاتصال</h6>
-                                        <h6 class="font-3">{{ $user->contacts->count() }}</h6>
-                                    </div>
-                                </div>
-                            </a>
-                        </div> --}}
-
                     </div>
                 </div>
             </div>
