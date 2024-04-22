@@ -186,6 +186,12 @@
         </style>
     @endif
 
+    <style>
+        table.table th {
+            font-family: kufi-arabic, sans-serif !important;
+            text-transform: uppercase;
+        }
+    </style>
 </head>
 
 <body style="background: #eef4f5" class="dash">

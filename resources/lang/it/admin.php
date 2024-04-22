@@ -86,6 +86,11 @@ return [
     'Show' => 'Mostra',
     'Edit' => 'Modifica',
     'Delete' => 'Elimina',
-    'access' => 'accesso',
+    'access' => 'Accesso',
+
+    'viewWebsite' => 'Visita il sito',
+    'myProfile' => 'Profilo',
+    'editMyProfile' => 'Modifica profilo',
+    'files' => 'Files',
 
 ];

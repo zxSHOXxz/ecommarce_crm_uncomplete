@@ -1,14 +1,7 @@
 @extends('layouts.admin')
 @section('content')
     <div class="col-12 p-3">
-        <!-- breadcrumb -->
-        <x-bread-crumb :breads="[
-            ['url' => url('/admin'), 'title' => __('admin.dashboard'), 'isactive' => false],
-            ['url' => route('admin.customers.index'), 'title' => __('admin.customers'), 'isactive' => false],
-            ['url' => '#', 'title' => __('admin.editCustomers'), 'isactive' => true],
-        ]">
-        </x-bread-crumb>
-        <!-- /breadcrumb -->
+  
         <div class="col-12 col-lg-12 p-0 ">
 
             <form id="validate-form" class="row" enctype="multipart/form-data" method="POST"

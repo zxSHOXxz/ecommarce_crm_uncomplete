@@ -87,4 +87,8 @@ return [
     'Edit' => 'Edit',
     'Delete' => 'Delete',
     'access' => 'access',
+    'viewWebsite' => 'View Website',
+    'myProfile' => 'My Profile',
+    'editMyProfile' => 'Edit My Profile',
+    'files' => 'Files',
 ];

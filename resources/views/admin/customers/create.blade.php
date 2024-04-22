@@ -1,14 +1,6 @@
 @extends('layouts.admin')
 @section('content')
     <div class="col-12 p-3">
-        <!-- breadcrumb -->
-        <x-bread-crumb :breads="[
-            ['url' => url('/admin'), 'title' => __('admin.dashboard'), 'isactive' => false],
-            ['url' => route('admin.customers.index'), 'title' => __('admin.customers'), 'isactive' => false],
-            ['url' => '#', 'title' => __('admin.addCustomers'), 'isactive' => true],
-        ]">
-        </x-bread-crumb>
-        <!-- /breadcrumb -->
         <div class="col-12 col-lg-12 p-0 ">
 
 
