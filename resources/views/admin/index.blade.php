@@ -55,19 +55,6 @@
                         <div class="col-12 " style="min-height: 1px;background: var(--border-color);"></div>
                     </div>
                     <div class="col-12 p-3 row d-flex">
-                        @can('settings-update')
-                            <div class="col-4 d-flex justify-content-center align-items-center mb-3 py-2">
-                                <a href="{{ route('admin.settings.index') }}" style="color:inherit;">
-                                    <div class="col-12 p-0 text-center">
-                                        <img src="/images/icons/settings.png" style="width:30px;height: 30px">
-                                        {{-- <span class="fal fa-wrench font-5" ></span> --}}
-                                        <div class="col-12 p-0 text-center">
-                                            Settings
-                                        </div>
-                                    </div>
-                                </a>
-                            </div>
-                        @endcan
                         <div class="col-4 d-flex justify-content-center align-items-center mb-3 py-2">
                             <a href="{{ route('admin.profile.index') }}" style="color:inherit;">
                                 <div class="col-12 p-0 text-center">

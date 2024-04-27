@@ -16,6 +16,7 @@ use App\Http\Controllers\Backend\BackendCustomerController;
 use App\Http\Controllers\Backend\BackendUserRoleController;
 use App\Http\Controllers\ExcelExportController;
 use App\Http\Controllers\ExcelImportController;
+use App\Http\Controllers\InvoiceController;
 use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
 
 # Frontend Controllers
@@ -27,9 +28,9 @@ Route::group([
     'middleware' => ['localeSessionRedirect', 'localizationRedirect', 'localeViewPath']
 ], function () {
 
-    Route::prefix('admin')->middleware(['auth:web,customer', 'ActiveAccount'])->group(function () {
-        Route::get('/payments/verify/{payment?}', [BackendHelperController::class, 'payment_verify'])->name('verify-payment');
-    });
+    // Route::prefix('admin')->middleware(['auth:web,customer', 'ActiveAccount'])->group(function () {
+    //     Route::get('/payments/verify/{payment?}', [BackendHelperController::class, 'payment_verify'])->name('verify-payment');
+    // });
 
     Route::post('products/import/', [ExcelImportController::class, 'import'])->name('import');
     Route::get('products/export/', [ExcelExportController::class, 'export'])->name('export');
@@ -46,6 +47,8 @@ Route::group([
             Route::resource('categories', BackendCategoryController::class);
             Route::resource('products', BackendProductController::class);
             Route::resource('orders', BackendOrderController::class);
+            Route::resource('invoices', InvoiceController::class);
+            Route::get('invoice/{id}', [InvoiceController::class, 'createPdfInvoice'])->name('invoice.pdf');
             Route::get('customer_orders', [BackendOrderController::class, 'customer_orders'])->name('customer_orders');
             Route::get('show_customer_order/{id}', [BackendOrderController::class, 'show_customer_order'])->name('show_customer_order');
             Route::resource('roles', BackendRoleController::class);

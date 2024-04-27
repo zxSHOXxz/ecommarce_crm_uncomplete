@@ -432,6 +432,11 @@
                                                         style="width: 28px;font-size: 15px;"></span>
                                                     {{ __('admin.showOrders') }}
                                                 </a></li>
+                                            <li><a href="{{ route('admin.orders.create') }}"
+                                                    style="font-size: 16px;"><span class="fal fa-eye px-2"
+                                                        style="width: 28px;font-size: 15px;"></span>
+                                                    {{ __('admin.createOrder') }}
+                                                </a></li>
                                         </ul>
                                     </div>
                                 </div>
@@ -584,11 +589,11 @@
     @include('layouts.scripts')
     @yield('scripts')
     @stack('scripts')
-    <link href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css" rel="stylesheet">
+    {{-- <link href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css" rel="stylesheet">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/toastify-js/1.12.0/toastify.js"
         integrity="sha512-ZHzbWDQKpcZxIT9l5KhcnwQTidZFzwK/c7gpUUsFvGjEsxPusdUCyFxjjpc7e/Wj7vLhfMujNx7COwOmzbn+2w=="
-        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-    <script src="https://js.pusher.com/8.2.0/pusher.min.js"></script>
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script> --}}
+    {{-- <script src="https://js.pusher.com/8.2.0/pusher.min.js"></script>
     <script>
         // Enable pusher logging - don't include this in production
         Pusher.logToConsole = true;
@@ -615,7 +620,7 @@
                 escapeMarkup: false,
             }).showToast();
         });
-    </script>
+    </script> --}}
 </body>
 
 </html>

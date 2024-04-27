@@ -8,6 +8,7 @@ use App\Models\Customer;
 use Illuminate\Http\Request;
 use App\Models\OrderProductDetails;
 use App\Http\Controllers\Controller;
+use App\Models\Invoice;
 use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\Validator;
 use Nafezly\Payments\Classes\PayPalPayment;
@@ -70,7 +71,7 @@ class ApiOrdersController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('auth:api', ['except' => ['payment_verify']]);
+        $this->middleware('auth:api', ['except' => ['payment_verify', 'payment_verifyy']]);
         // $this->middleware('can:orders-create', ['only' => ['store']]);
     }
 
@@ -138,6 +139,10 @@ class ApiOrdersController extends Controller
             $order->update([
                 'status' => 'pending'
             ]);
+            $invoice = Invoice::findOrFail($order->id);
+            $invoice->update([
+                'status' => 'paid',
+            ]);
             $paypal_email = $response['process_data']['result']['payment_source']['paypal']['email_address'];
             $customer = Customer::findOrFail($order->customer_id);
             $customer->update([
@@ -150,6 +155,10 @@ class ApiOrdersController extends Controller
                 $product_model->decrement('quantity', $product->quantity);
                 $product_model->decrementincrement('reserved', $product->quantity);
             }
+            $invoice = Invoice::findOrFail($order->id);
+            $invoice->update([
+                'status' => 'canceled',
+            ]);
             return response()->json([
                 'translate_message' => 'An error occurred while executing the operation',
                 'order' => $order,
@@ -212,11 +221,18 @@ class ApiOrdersController extends Controller
             return response()->json(['error' => $errorMessage], 422);
         }
 
+        $invoice = Invoice::create([
+            'customer_id' => $validatedData['customer_id'],
+            'status' => 'pending',
+        ]);
+
+
         // Create order with validated data (assuming pending status)
         $order = Order::create([
             'customer_id' => $validatedData['customer_id'],
             'total_amount' => 0,
             'status' => $validatedData['status'] ?? 'faild',
+            'invoice_id' => $invoice->id,
         ]);
 
         $customer = Customer::findOrFail($validatedData['customer_id']);

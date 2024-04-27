@@ -40,7 +40,7 @@ Route::middleware(['api'])->prefix('products')->name('products.')->group(functio
 });
 
 
-Route::get('/payments/verify/{payment?}', [ApiOrdersController::class, 'payment_verify'])->prefix('orders')->name('orders.verify-payment');
+Route::get('/payments/verify/{payment?}', [ApiOrdersController::class, 'payment_verify'])->name('orders-verify-payment');
 
 Route::group([
     'middleware' => ['api', 'ApiActiveAccount'],

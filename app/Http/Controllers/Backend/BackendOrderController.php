@@ -9,6 +9,8 @@ use Illuminate\Http\Request;
 use App\Exports\OrdersExport;
 use App\Models\OrderProductDetails;
 use App\Http\Controllers\Controller;
+use App\Models\Invoice;
+use Illuminate\Support\Facades\Cache;
 use Maatwebsite\Excel\Facades\Excel;
 use Nafezly\Payments\Classes\PayPalPayment;
 
@@ -114,11 +116,17 @@ class BackendOrderController extends Controller
             return response()->json(['error' => $errorMessage], 422); // Unprocessable Entity
         }
 
+        $invoice = Invoice::create([
+            'customer_id' => $validatedData['customer_id'],
+            'status' => 'pending',
+        ]);
+
         // Create order with validated data (assuming pending status)
         $order = Order::create([
             'customer_id' => $validatedData['customer_id'],
             'total_amount' => 0, // Calculate total_amount later
             'status' => $validatedData['status'] ?? 'pending',
+            'invoice_id' => $invoice->id,
         ]);
 
         $customer = Customer::findOrFail($validatedData['customer_id']);
@@ -162,6 +170,7 @@ class BackendOrderController extends Controller
             ->setSource($order->id)
             ->pay();
 
+        Cache::put('payment_source', $order->id);
         return redirect($response['redirect_url']);
     }
 

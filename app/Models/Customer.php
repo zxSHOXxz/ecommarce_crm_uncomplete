@@ -92,6 +92,11 @@ class Customer extends Authenticatable implements HasMedia, JWTSubject, MustVeri
         return $this->hasMany(Order::class);
     }
 
+    public function invoces()
+    {
+        return $this->hasMany(Invoice::class);
+    }
+
     public function registerMediaConversions(Media $media = null): void
     {
         $this

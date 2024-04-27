@@ -51,7 +51,7 @@
                                     <th>{{ __('messages.update_status') }}</th>
                                     <th>{{ __('messages.control') }}</th>
                                 @endcan
-
+                                <th>invoice</th>
                             </tr>
                         </thead>
 
@@ -115,6 +115,13 @@
                                             @endcan
                                         </td>
                                     @endcan
+                                    <td>
+                                        <a href="{{ route('admin.invoice.pdf', ['id' => $order->id]) }}">
+                                            <span class="btn  btn-outline-success btn-sm font-1 m-1">
+                                                <span class="fas fa-eye "></span> {{ __('messages.invoice') }}
+                                            </span>
+                                        </a>
+                                    </td>
                                 </tr>
                             @endforeach
                         </tbody>

@@ -115,5 +115,7 @@ return [
     'new_password' => 'New Password',
     'confirm_new_password' => 'Confirm New Password',
 
+
+    
 ];
 
