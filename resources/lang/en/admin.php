@@ -94,4 +94,9 @@ return [
 
     'create_order' => 'Create Order',
     'createOrder' => 'Create Order',
+
+    'customer_type' => 'TIPO CLIENTE',
+    'billing_data' => 'DATI DI FATTURAZIONE',
+
+
 ];

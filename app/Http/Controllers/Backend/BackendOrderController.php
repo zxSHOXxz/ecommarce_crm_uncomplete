@@ -228,10 +228,48 @@ class BackendOrderController extends Controller
                 'status' => 'waiting',
             ]);
         } elseif ($order->status == 'faild') {
-            toastr()->success('Order status is faild you cant changing it', 'Faild');
+            toastr()->error('Order status is faild you cant changing it', 'Faild');
             return redirect()->route('admin.orders.index');
-        }
+        } elseif ($validatedData['status'] == 'faild' && $order->status == 'pending') {
+            // Get order details
+            $orderDetails = OrderProductDetails::where('order_id', $order->id)->get();
 
+            // Restore product quantities
+            foreach ($orderDetails as $detail) {
+                $product = Product::findOrFail($detail->product_id);
+                $product->increment('quantity', $detail->quantity);
+                $product->decrement('reserved', $detail->quantity);
+            }
+
+
+            $order->update([
+                'status' => 'faild',
+            ]);
+
+            toastr()->success('Now you should refund the mony for customer ', 'Success');
+            return redirect()->route('admin.orders.index');
+        } elseif ($validatedData['status'] == 'sucsses') {
+            if ($order->status == 'pending') {
+                // Get order details
+                $orderDetails = OrderProductDetails::where('order_id', $order->id)->get();
+
+                // Restore product quantities
+                foreach ($orderDetails as $detail) {
+                    $product = Product::findOrFail($detail->product_id);
+                    $product->decrement('quantity', $detail->quantity);
+                    $product->decrement('reserved', $detail->quantity);
+                }
+
+                $order->update([
+                    'status' => 'sucsses',
+                ]);
+            } else {
+                $order->update([
+                    'status' => 'sucsses',
+                ]);
+            }
+        }
+        
         toastr()->success('Order updated successfully.', 'successfully');
         return redirect()->route('admin.orders.index');
     }

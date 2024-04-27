@@ -96,4 +96,9 @@ return [
     'create_order' => 'Crea ordine',
     'createOrder' => 'Crea ordine',
 
+    'customer_type' => 'CUSTOMER TYPE',
+    'billing_data' => 'BILLING DATA',
+
+
 ];
+

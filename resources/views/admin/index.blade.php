@@ -11,9 +11,9 @@
                         </div>
                     </div>
                     <div style="width: calc(100% - 80px)" class="px-2 py-2">
-                        <a class="font-1" href="{{ route('admin.users.index') }}" style="color: #212529">
-                            Users
-                            <h6 class="font-3">{{ \App\Models\User::count() }}</h6>
+                        <a class="font-1" href="{{ route('admin.customers.index') }}" style="color: #212529">
+                            Customers
+                            <h6 class="font-3">{{ \App\Models\Customer::count() }}</h6>
                         </a>
                     </div>
                 </div>
@@ -29,7 +29,7 @@
                         </div>
                     </div>
                     <div style="width: calc(100% - 80px)" class="px-2 py-2">
-                        <a class="font-1" href="{{ route('admin.users.index') }}" style="color: #212529">
+                        <a class="font-1" href="{{ route('admin.orders.index') }}" style="color: #212529">
                             {{ __('admin.orders') }}
                             @if (auth('customer')->user() != null)
                                 <h6 class="font-3">
