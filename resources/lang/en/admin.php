@@ -91,4 +91,7 @@ return [
     'myProfile' => 'My Profile',
     'editMyProfile' => 'Edit My Profile',
     'files' => 'Files',
+
+    'create_order' => 'Create Order',
+    'createOrder' => 'Create Order',
 ];

@@ -31,10 +31,9 @@ class InvoiceController extends Controller
         ]);
         $items = [];
         foreach ($invoice_original->order->products as $product) {
-            $product_item = Product::findOrFail($product->id);
+            $product_item = Product::findOrFail($product->product_id);
             $product__discount = $invoice_original->customer->customer_discount > 0 ? $invoice_original->customer->customer_discount : $product_item->discount;
             // $discountValue = ($product__discount / 100) * $product->unit_price;
-
             $item = InvoiceItem::make($product_item->title)
                 ->description($product_item->description)
                 ->pricePerUnit($product->unit_price)

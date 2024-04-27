@@ -124,6 +124,18 @@ return [
     'new_password' => 'Nuova password',
     'confirm_new_password' => 'Conferma nuova password',
 
+    'RESERVED' => 'Riservato',
+    'STATUS' => 'Stato',
 
+    'ADD_PRODUCT' => 'Aggiungi prodotto',
+
+    'SEARCH' => 'Cerca',
+
+    'CONTROL' => 'CONTROLLO',
+    'SHOW' => 'Mostra',
+    'DELETE' => 'Elimina',
+
+    'create_order' => 'Crea ordine',
+    'createOrder' => 'Crea ordine',
 
 ];

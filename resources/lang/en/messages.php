@@ -115,7 +115,19 @@ return [
     'new_password' => 'New Password',
     'confirm_new_password' => 'Confirm New Password',
 
+    'RESERVED' => 'Reserved',
+    'STATUS' => 'Status',
 
+    'ADD_PRODUCT' => 'Add Product',
+
+    'SEARCH' => 'Search',
+
+    'CONTROL' => 'Control',
+    'SHOW' => 'Show',
+    'DELETE' => 'Delete',
+    'create_order' => 'Create Order',
+    'createOrder' => 'Create Order',
     
-];
 
+
+];

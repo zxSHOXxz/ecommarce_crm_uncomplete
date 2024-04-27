@@ -93,4 +93,7 @@ return [
     'editMyProfile' => 'Modifica profilo',
     'files' => 'Files',
 
+    'create_order' => 'Crea ordine',
+    'createOrder' => 'Crea ordine',
+
 ];

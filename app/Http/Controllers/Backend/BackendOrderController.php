@@ -113,7 +113,9 @@ class BackendOrderController extends Controller
         if ($insufficientStock) {
             // Handle insufficient stock case
             $errorMessage = "Insufficient stock for products: " . implode(', ', $productsWithInsufficientStock);
-            return response()->json(['error' => $errorMessage], 422); // Unprocessable Entity
+            // return response()->json(['error' => $errorMessage], 422); // Unprocessable Entity
+            toastr()->error('errorMessage', 'Failed');
+            return redirect()->route('admin.orders.create');
         }
 
         $invoice = Invoice::create([
