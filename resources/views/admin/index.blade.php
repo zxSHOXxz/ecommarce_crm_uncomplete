@@ -176,7 +176,7 @@
                     <div style="width: 65px;" class="p-2">
                         <div class="col-12 px-0 text-center d-flex align-items-center justify-content-center"
                             style="background: #07a8ff;color: #fff;border-radius: 50%;width: 55px;height:55px">
-                            <span class="fa-solid fa-boombox font-4"></span>
+                            <span class="fa-solid fa-box font-4"></span>
                         </div>
                     </div>
                     <div style="width: calc(100% - 80px)" class="px-2 py-2">
