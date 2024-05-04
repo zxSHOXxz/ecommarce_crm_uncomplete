@@ -7,6 +7,7 @@ use App\Models\Customer;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Hash;
+use Spatie\Permission\Models\Role;
 
 /**
  * @OA\Schema(
@@ -362,8 +363,7 @@ class ApiAuthController extends Controller
             ]);
         }
 
-        $customer->syncRoles([7]);
-
+        $customer->assignRole(Role::findByName('normal_customer', 'customer'));
 
         if ($request->hasFile('b2b_files')) {
             $uploadedFiles = $request->file('b2b_files');

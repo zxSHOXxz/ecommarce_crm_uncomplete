@@ -67,6 +67,7 @@ return [
     'PRODUCT' => 'Prodotto',
     'TOTAL_PRICE' => 'Prezzo totale',
     'UNIT_PRICE' => 'Prezzo unitario',
+    'invoice' => 'Fattura',
     'IMPORT_PRODUCTS' => 'Importa Prodotti',
     'XML_FILE' => 'File XML',
     'IMPORT' => 'Importa',
@@ -99,6 +100,12 @@ return [
     'bio' => 'Bio',
     'control' => 'Controllo',
     'edit' => 'Modifica',
+
+    'basic_data' => 'Dati di base',
+    'profile_picture' => 'Foto del profilo',
+    'username' => 'Nome utente',
+    'save_data' => 'Salva dati',
+
 
 
     'change_profile_picture' => 'Cambia foto del profilo',

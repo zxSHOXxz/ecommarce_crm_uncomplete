@@ -63,12 +63,17 @@ return [
     'PUBLISHED' => 'Published',
     'DELETED' => 'Deleted',
     'CATEGORY' => 'Category',
+    'invoice' => 'Invoice',
     'DESCRIPTION' => 'Description',
     'PRODUCT_DETAILS' => 'Product Details',
     'BROCHURE' => 'Brochure',
     'DRIVER' => 'Driver',
     'CATALOG' => 'Catalog',
     'MAP' => 'Map',
+    'IMPORT_PRODUCTS' => 'Import Products',
+    'XML_FILE' => 'File XML',
+    'IMPORT' => 'Import',
+    'EXCEL_FILE' => 'File Excel',
     'VIDEO' => 'Video',
     'MAIN_PHOTO' => 'Main Photo',
     'PHOTOS' => 'Photos',
@@ -100,6 +105,11 @@ return [
     'control' => 'Control',
     'edit' => 'Edit',
 
+
+    'basic_data' => 'Basic Data',
+    'profile_picture' => 'Profile Picture',
+    'username' => 'Username',
+    'save_data' => 'Save Data',
     'change_profile_picture' => 'Change profile picture',
     'close' => 'Close',
     'cancel' => 'Cancel',
@@ -127,7 +137,7 @@ return [
     'DELETE' => 'Delete',
     'create_order' => 'Create Order',
     'createOrder' => 'Create Order',
-    
+
 
 
 ];

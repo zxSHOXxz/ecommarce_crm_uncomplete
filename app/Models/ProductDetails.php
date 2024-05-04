@@ -25,10 +25,23 @@ class ProductDetails extends Model implements HasMedia
 
     public function getProductPhoto($type = "thumb")
     {
-        if ($this->photo == null)
+        if ($this->main_photo == null)
             return env('DEFAULT_IMAGE_AVATAR');
         else
-            return env("STORAGE_URL") . '/' . \MainHelper::get_conversion($this->photo, $type);
+            return env("STORAGE_URL") . '/' . \MainHelper::get_conversion($this->main_photo, $type);
+    }
+
+    public function getProductJsonPhotos($type = "thumb")
+    {
+        if ($this->photo == null) {
+            return env('DEFAULT_IMAGE_AVATAR');
+        } else {
+            foreach (json_decode($this->photo) as $photojSON) {
+                $link = env("STORAGE_URL") . '/' . \MainHelper::get_conversion($photojSON, $type);
+                $photos[] = $link;
+            }
+            return $photos;
+        }
     }
 
     public function registerMediaConversions(Media $media = null): void

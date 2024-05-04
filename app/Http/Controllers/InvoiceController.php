@@ -36,7 +36,7 @@ class InvoiceController extends Controller
             // $discountValue = ($product__discount / 100) * $product->unit_price;
             $item = InvoiceItem::make($product_item->title)
                 ->description($product_item->description)
-                ->pricePerUnit($product->unit_price)
+                ->pricePerUnit($product_item->price)
                 ->quantity($product->quantity)
                 ->discountByPercent($product__discount);
             array_push($items, $item);
@@ -53,7 +53,7 @@ class InvoiceController extends Controller
             // ->series('BIG')
             // ability to include translated invoice status
             // in case it was paid
-            ->status($status == 'failed' ? __('invoices::invoice.due') : __('invoices::invoice.paid'))
+            ->status($status == 'faild' ? __('invoices::invoice.due') : __('invoices::invoice.paid'))
             ->sequence($invoice_original->id)
             ->serialNumberFormat('{SEQUENCE}')
             ->seller($client)

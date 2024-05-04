@@ -1,12 +1,12 @@
 <?xml version="1.0"?>
 <ListOrder>
  <Product1>
-  <code>QA-12DI-4DO</code>
+  <code>blank</code>
   <category>QA-12DI-4DO</category>
   <description>Modulo I/O Slave Modbus per ingressi e uscite digitali, n°12 Ingressi Digitali e n°4 Uscite a relè SPDT 5A, RS485</description>
  </Product1>
  <Product2>
-  <code>QA-12DI-4DO-2</code>
+  <code>QA-12DI-4D</code>
   <category>QA-12DI-4DO</category>
   <description>Modulo I/O Slave Modbus per ingressi e uscite digitali, n°12 Ingressi Digitali e n°4 Uscite a relè SPDT 5A, RS485</description>
  </Product2>
@@ -1625,4 +1625,24 @@
   <category>Q-USB485</category>
   <description>USB-RS485-ISO</description>
  </Product325>
+ <Product326>
+  <code>QREF58</code>
+  <category>QE-BR-ETH485</category>
+  <description>Anim quo sit eiusmod aut tenetur natus aliquid obcaecati quis qui esse</description>
+ </Product326>
+ <Product327>
+  <code>Quae98</code>
+  <category>QA-12DI-4DO</category>
+  <description>Anim obcaecati et deserunt quis pariatur Cillum ipsum asperiores reiciendis nostrum exercitation sunt quisquam tempor illo omnis</description>
+ </Product327>
+ <Product328>
+  <code>Quae98</code>
+  <category>QA-12DI-4DO</category>
+  <description>Anim obcaecati et deserunt quis pariatur Cillum ipsum asperiores reiciendis nostrum exercitation sunt quisquam tempor illo omnis</description>
+ </Product328>
+ <Product329>
+  <code>Quo789</code>
+  <category>QI-400DC-I</category>
+  <description>Nihil quidem provident sunt ut eiusmod nesciunt voluptatem</description>
+ </Product329>
 </ListOrder>

@@ -147,4 +147,8 @@ class Customer extends Authenticatable implements HasMedia, JWTSubject, MustVeri
     {
         return [];
     }
+    // public function guardName()
+    // {
+    //     return 'api';
+    // }
 }

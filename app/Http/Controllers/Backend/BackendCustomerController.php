@@ -91,7 +91,7 @@ class BackendCustomerController extends Controller
             ]);
         }
 
-        $customer->syncRoles([7]);
+        $customer->assignRole(Role::findByName('normal_customer', 'customer'));
 
         if ($request->hasFile('b2b_files')) {
             $uploadedFiles = $request->file('b2b_files');
@@ -169,7 +169,7 @@ class BackendCustomerController extends Controller
                 "phone" => $request->phone,
                 "bio" => $request->bio,
                 "customer_type" => $request->customer_type,
-                "blocked" => false,
+                "blocked" => $request->blocked,
                 "email" => $request->email,
                 "shiping_data" => $request->shiping_data,
                 "customer_discount" => $request->customer_discount,
@@ -187,7 +187,7 @@ class BackendCustomerController extends Controller
                 "company_address" => $request->company_address,
                 "company_name" => $request->company_name,
                 "company_country" => $request->company_country,
-                "blocked" => true,
+                "blocked" => $request->blocked,
                 "email" => $request->email,
                 "password" => Hash::make($request->password),
             ]);

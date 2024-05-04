@@ -252,6 +252,7 @@ class MainHelper
         }
         return $file_name;
     }
+    
     public static function move_media_to_model_by_id($id, $model, $collection = "default")
     {
         $temp_files = \App\Models\TempFile::where('name', $id)->with(['media'])->get();

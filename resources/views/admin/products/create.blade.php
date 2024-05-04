@@ -133,7 +133,7 @@
                             </div>
                             <div class="col-12 col-lg-6 p-2">
                                 <div class="col-12">
-                                    {{ __('messages.STATUS') }}
+                                    {{ __('messages.status') }}
                                 </div>
                                 <div class="col-12 pt-3">
                                     <select class="form-control" name="status">

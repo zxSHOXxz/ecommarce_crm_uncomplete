@@ -66,9 +66,12 @@
                             </div>
                             <div class="col-12 pt-3">
                                 <select class="form-control" name="status">
-                                    <option @if (old('status') == 'draft') selected @endif value="draft">{{ __('messages.draft') }}</option>
-                                    <option @if (old('status') == 'published') selected @endif value="published">{{ __('messages.published') }}</option>
-                                    <option @if (old('status') == 'deleted') selected @endif value="deleted">{{ __('messages.deleted') }}</option>
+                                    <option @if ($product->status == 'draft') selected @endif value="draft">
+                                        {{ __('messages.DRAFT') }}</option>
+                                    <option @if ($product->status == 'published') selected @endif value="published">
+                                        {{ __('messages.PUBLISHED') }}</option>
+                                    <option @if ($product->status == 'deleted') selected @endif value="deleted">
+                                        {{ __('messages.DELETED') }}</option>
                                 </select>
                             </div>
                         </div>
@@ -148,15 +151,36 @@
                             </div>
                         </div>
 
+
                         <div class="col-12 col-lg-6 p-2">
                             <div class="col-12">
-                                {{ __('messages.photo') }}
+                                {{ __('messages.MAIN_PHOTO') }}
                             </div>
                             <div class="col-12 pt-3">
-                                <input type="file" name="photo" class="form-control" accept="image/*">
+                                <input type="file" name="main_photo" class="form-control" accept="image/*">
                             </div>
-                            <div class="col-12 p-0">
-                                <img src="{{ $product->product_details->getProductPhoto() }}" alt="">
+                            <div class="col-12 pt-4">
+                                <img src="{{ $product->product_details->getProductPhoto() }}" class="img-fluid"
+                                    alt="">
+                            </div>
+                        </div>
+                        <div class="col-12 col-lg-6 p-2">
+                            <div class="col-12">
+                                {{ __('messages.PHOTOS') }}
+                            </div>
+                            <div class="col-12 pt-3">
+                                <input type="file" name="photo[]" class="form-control" multiple accept="image/*">
+                            </div>
+                            <div class="col-12 p-5">
+                                <div class="row row-cols-2">
+                                    @foreach ($product->product_details->getProductJsonPhotos() as $photo)
+                                        <div class="col-6 pt-3">
+                                            <div class="img-container">
+                                                <img src="{{ $photo }}" class="img-fluid" alt="">
+                                            </div>
+                                        </div>
+                                    @endforeach
+                                </div>
                             </div>
                         </div>
                     </div>

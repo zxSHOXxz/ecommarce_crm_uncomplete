@@ -145,17 +145,17 @@ class BackendOrderController extends Controller
 
             $discount = $customer->customer_discount ? $customer->customer_discount : $product_model->discount;
             $productPrice = $product_model->price;
-            $discountValue = ($discount / 100) * $productPrice;
+            $discountValue = bcdiv(bcmul($discount, $productPrice, 2), 100, 2);
 
             $orderDetails = OrderProductDetails::create([
                 'product_id' => $productId,
                 'order_id' => $order->id,
-                'total_price' => ($product_model->price - $discountValue) * $quantity,
-                'unit_price' => ($product_model->price - $discountValue),
+                'total_price' => bcmul(bcsub($product_model->price, $discountValue, 2), $quantity, 2),
+                'unit_price' => bcsub($product_model->price, $discountValue, 2),
                 'quantity' => $quantity,
             ]);
 
-            $total_amount += $orderDetails->total_price;
+            $total_amount = bcadd($total_amount, $orderDetails->total_price, 2);
         }
 
         // Update order with calculated total_amount
@@ -173,6 +173,13 @@ class BackendOrderController extends Controller
             ->pay();
 
         Cache::put('payment_source', $order->id);
+        Cache::put('payment_api', 'web');
+        if (!$response['redirect_url']) {
+            $order->update(['status' => 'faild']);
+            toastr()->error('An error in creating the order', 'Faild');
+            return redirect()->route('admin.orders.create');
+        }
+
         return redirect($response['redirect_url']);
     }
 
@@ -269,7 +276,7 @@ class BackendOrderController extends Controller
                 ]);
             }
         }
-        
+
         toastr()->success('Order updated successfully.', 'successfully');
         return redirect()->route('admin.orders.index');
     }

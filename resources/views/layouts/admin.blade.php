@@ -283,7 +283,7 @@
                         {{-- @endcan --}}
                     @endif
                     @if (Auth::guard('web')->user() != null)
-                        @can('roles-read')
+                        {{-- @can('roles-read')
                             <a href="{{ route('admin.roles.index') }}" class="col-12 px-0">
                                 <div class="col-12 item-container px-0 d-flex ">
                                     <div style="width: 50px" class="px-3 text-center">
@@ -294,7 +294,7 @@
                                     </div>
                                 </div>
                             </a>
-                        @endcan
+                        @endcan --}}
 
                         @can('users-read')
                             <a href="{{ route('admin.users.index') }}" class="col-12 px-0">

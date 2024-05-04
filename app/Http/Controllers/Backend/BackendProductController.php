@@ -196,10 +196,19 @@ class BackendProductController extends Controller
             ]);
         }
 
-        // Handle product photo update (if applicable)
-        if ($request->hasFile('photo')) {
-            $photo = $productDetails->addMedia($request->photo)->toMediaCollection('photo');
-            $productDetails->update(['photo' => $photo->id . '/' . $photo->file_name]);
+        if ($request->hasFile('main_photo')) {
+            $photo = $productDetails->addMedia($request->main_photo)->toMediaCollection('main_photo');
+            $productDetails->update(['main_photo' => $photo->id . '/' . $photo->file_name]);
+        }
+
+
+        if ($request->hasfile('photo')) {
+            $photos = [];
+            foreach ($request->file('photo') as $photo) {
+                $photo = $productDetails->addMedia($photo)->toMediaCollection('photo');
+                $photos[] = $photo->id . '/' . $photo->file_name;
+            }
+            $productDetails->update(['photo' => json_encode($photos)]);
         }
 
         toastr()->success('Product Updated Successfully!', 'Success');

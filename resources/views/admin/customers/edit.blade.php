@@ -1,7 +1,7 @@
 @extends('layouts.admin')
 @section('content')
     <div class="col-12 p-3">
-  
+
         <div class="col-12 col-lg-12 p-0 ">
 
             <form id="validate-form" class="row" enctype="multipart/form-data" method="POST"
@@ -42,7 +42,7 @@
                                 {{ __('admin.password') }}
                             </div>
                             <div class="col-12 pt-3">
-                                <input type="password" name="password" class="form-control" minlength="8">
+                                <input type="password" name="password" class="form-control" minlength="8" value="">
                             </div>
                         </div>
 

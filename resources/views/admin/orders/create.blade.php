@@ -50,7 +50,9 @@
 
                     <div id="productsContainer" class="col-12 col-lg-6 p-2">
                     </div>
-                    <button type="button" id="AddProduct">Add another product</button>
+                    <div class="add-new-prouduct d-flex justify-content-end p-3">
+                        <button type="button" class="btn btn-primary" id="AddProduct">Add another product</button>
+                    </div>
                 </div>
                 <div class="col-12 p-3">
                     <button class="btn btn-success" id="submitEvaluation">{{ __('messages.SAVE') }}</button>

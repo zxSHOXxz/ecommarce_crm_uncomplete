@@ -17,8 +17,8 @@ return new class extends Migration
             $table->id();
             $table->foreignId('customer_id');
             $table->foreign('customer_id')->on('customers')->references('id')->cascadeOnDelete();
-            $table->integer('total_amount');
-            $table->enum('status',['faild','sucsses','waiting','pending'])->default('pending');
+            $table->decimal('total_amount', 8, 2);
+            $table->enum('status', ['faild', 'sucsses', 'waiting', 'pending'])->default('pending');
             $table->timestamps();
         });
     }

@@ -131,6 +131,8 @@ class ApiOrdersController extends Controller
 
     public function payment_verify(Request $request)
     {
+        $payment_api = Cache::get('payment_api');
+
         $payment = new PayPalPayment();
         $response = $payment->verify($request);
         $order_id = Cache::get('payment_source');
@@ -139,7 +141,9 @@ class ApiOrdersController extends Controller
             $order->update([
                 'status' => 'pending'
             ]);
+
             $invoice = Invoice::findOrFail($order->id);
+
             $invoice->update([
                 'status' => 'paid',
             ]);
@@ -149,27 +153,42 @@ class ApiOrdersController extends Controller
                 'billing_data' => 'paypal email :' . $paypal_email,
             ]);
         } else {
+
             foreach ($order->products as $product) {
                 $product_model = Product::findOrFail($product->product_id);
 
                 $product_model->decrement('quantity', $product->quantity);
                 $product_model->decrementincrement('reserved', $product->quantity);
             }
+
             $invoice = Invoice::findOrFail($order->id);
+
             $invoice->update([
                 'status' => 'canceled',
             ]);
+
+            if ($payment_api == 'api') {
+                return response()->json([
+                    'translate_message' => 'An error occurred while executing the operation',
+                    'order' => $order,
+                    'response' => $response
+                ]);
+            } elseif ($payment_api == 'web') {
+                toastr()->error('Order Pay Failed', 'Payment Failed');
+                return redirect()->route('admin.show_customer_order', ['id' => $order->customer_id]);
+            }
+        }
+
+        if ($payment_api == 'api') {
             return response()->json([
-                'translate_message' => 'An error occurred while executing the operation',
+                'translate_message' => 'operation completed successfully',
                 'order' => $order,
                 'response' => $response
             ]);
+        } elseif ($payment_api == 'web') {
+            toastr()->success('Order Paid Successfully', 'successfully');
+            return redirect()->route('admin.show_customer_order', ['id' => $order->customer_id]);
         }
-        return response()->json([
-            'translate_message' => 'operation completed successfully',
-            'order' => $order,
-            'response' => $response
-        ]);
     }
 
     public function store(Request $request)
@@ -275,6 +294,7 @@ class ApiOrdersController extends Controller
             ->setSource($order->id)
             ->pay();
         Cache::put('payment_source', $order->id);
+        Cache::put('payment_api', 'api');
         return response()->json($response['redirect_url']);
     }
 }

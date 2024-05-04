@@ -19,9 +19,9 @@ return new class extends Migration
             $table->foreign('product_id')->on('products')->references('id')->cascadeOnDelete();
             $table->foreignId('order_id');
             $table->foreign('order_id')->on('orders')->references('id')->cascadeOnDelete();
-            $table->integer('total_price');
-            $table->integer('unit_price');
-            $table->integer('quantity');
+            $table->decimal('total_price', 8, 2);
+            $table->decimal('unit_price', 8, 2);
+            $table->decimal('quantity', 8, 2);
             $table->timestamps();
         });
     }
