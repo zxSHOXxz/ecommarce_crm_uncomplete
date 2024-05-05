@@ -9,6 +9,9 @@ use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Foundation\Bus\Dispatchable;
 use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Queue\SerializesModels;
+use App\Mail\ProductRunningOut;
+use Illuminate\Support\Facades\Mail;
+
 
 class ProductsQuantityCheck implements ShouldQueue
 {
@@ -31,11 +34,5 @@ class ProductsQuantityCheck implements ShouldQueue
      */
     public function handle()
     {
-        $products = Product::all();
-        foreach ($products as $product) {
-            if ($product->quantity <= 50) {
-                $product->update(['status' => 'draft']);
-            }
-        }
     }
 }
