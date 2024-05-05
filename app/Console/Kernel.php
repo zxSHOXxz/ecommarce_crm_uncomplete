@@ -25,10 +25,7 @@ class Kernel extends ConsoleKernel
     protected function schedule(Schedule $schedule)
     {
         $schedule->call('\App\Http\Controllers\Backend\BackendScheduleController@update_under_attack_limits')->everyFiveMinutes();
-        // $schedule->call('\App\Http\Controllers\Backend\BackendScheduleController@clean_items_seens')->daily();
-        // $schedule->call('\App\Http\Controllers\Backend\BackendScheduleController@clean_dashboard_logs')->daily();
-        $schedule->call('\App\Http\Controllers\Backend\BackendScheduleController@productCheckQuantity')->everyMinute();
-        // $schedule->job(new \App\Jobs\ProductsQuantityCheck())->daily();
+        $schedule->call('\App\Http\Controllers\Backend\BackendScheduleController@productCheckQuantity')->daily();
         // $schedule->command('inspire')->hourly();
     }
 
