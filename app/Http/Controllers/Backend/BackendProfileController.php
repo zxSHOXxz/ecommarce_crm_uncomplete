@@ -17,11 +17,11 @@ use Hash;
 class BackendProfileController extends Controller
 {
 
-    public function __construct()
-    {
-        $this->middleware('can:profile-read',   ['only' => ['show', 'index']]);
-        $this->middleware('can:profile-update',   ['only' => ['edit', 'update', 'update_password', 'update_email']]);
-    }
+    // public function __construct()
+    // {
+    //     $this->middleware('can:profile-read',   ['only' => ['show', 'index']]);
+    //     $this->middleware('can:profile-update',   ['only' => ['edit', 'update', 'update_password', 'update_email']]);
+    // }
 
 
     public function index(Request $request)

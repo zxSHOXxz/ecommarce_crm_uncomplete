@@ -91,125 +91,126 @@
                     </div>
                 </div>
             </div>
+
+            <div class="row">
+                <div class="col-12 col-sm-6 col-lg-4 col-xl-3 col-xxl-3 px-2 my-2">
+                    <div class="col-12 px-0 py-1 d-flex main-box-wedit" style="background: #ffc107;">
+                        <div style="width: 65px;" class="p-2">
+                            <div class="col-12 px-0 text-center d-flex align-items-center justify-content-center"
+                                style="background: #ffc107;color: #fff;border-radius: 50%;width: 55px;height:55px">
+                                <span class="fa-solid fa-hourglass-clock font-4"></span>
+                            </div>
+                        </div>
+                        <div style="width: calc(100% - 80px)" class="px-2 py-2">
+                            <a class="font-1 text-nowrap" href="{{ route('admin.orders.index') }}" style="color: #ffffff;">
+                                {{-- {{ __('admin.orders') }} --}}
+                                Pending Orders
+                                <h6 class="font-3">
+                                    {{ \App\Models\Order::where('status', 'pending')->count() }}</h6>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12 col-sm-6 col-lg-4 col-xl-3 col-xxl-3 px-2 my-2">
+                    <div class="col-12 px-0 py-1 d-flex main-box-wedit" style="background: #ff0707;">
+                        <div style="width: 65px;" class="p-2">
+                            <div class="col-12 px-0 text-center d-flex align-items-center justify-content-center"
+                                style="background: #ff0707;color: #fff;border-radius: 50%;width: 55px;height:55px">
+                                <span class="fa-solid fa-ban font-4"></span>
+                            </div>
+                        </div>
+                        <div style="width: calc(100% - 80px)" class="px-2 py-2">
+                            <a class="font-1 text-nowrap" href="{{ route('admin.orders.index') }}" style="color: #ffffff">
+                                {{-- {{ __('admin.orders') }} --}}
+                                Failed Orders
+                                <h6 class="font-3">
+                                    {{ \App\Models\Order::where('status', 'failed')->count() }}</h6>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12 col-sm-6 col-lg-4 col-xl-3 col-xxl-3 px-2 my-2">
+                    <div class="col-12 px-0 py-1 d-flex main-box-wedit" style="background: #6610f2;">
+                        <div style="width: 65px;" class="p-2">
+                            <div class="col-12 px-0 text-center d-flex align-items-center justify-content-center"
+                                style="background: #6610f2;color: #fff;border-radius: 50%;width: 55px;height:55px">
+                                <span class="fa-solid fa-users-gear font-4"></span>
+                            </div>
+                        </div>
+                        <div style="width: calc(100% - 80px)" class="px-2 py-2">
+                            <a class="font-1 text-nowrap" href="{{ route('admin.customers.index') }}"
+                                style="color: #ffffff">
+                                {{-- {{ __('admin.orders') }} --}}
+                                Pending Customers
+                                <h6 class="font-3">
+                                    {{ \App\Models\Customer::where('blocked', true)->count() }}</h6>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12 col-sm-6 col-lg-4 col-xl-3 col-xxl-3 px-2 my-2">
+                    <div class="col-12 px-0 py-1 d-flex main-box-wedit" style="background: #fd7e14;">
+                        <div style="width: 65px;" class="p-2">
+                            <div class="col-12 px-0 text-center d-flex align-items-center justify-content-center"
+                                style="background: #fd7e14;color: #fff;border-radius: 50%;width: 55px;height:55px">
+                                <span class="fa-solid fa-layer-minus font-4"></span>
+                            </div>
+                        </div>
+                        <div style="width: calc(100% - 80px)" class="px-2 py-2">
+                            <a class="font-1 text-nowrap" href="{{ route('admin.customers.index') }}"
+                                style="color: #ffffff">
+                                Stockout
+                                <h6 class="font-3">
+                                    {{ \App\Models\Product::where('quantity', '<', 50)->count() }}
+                                </h6>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="row">
+                <div class="col-12 col-sm-6 col-lg-4 col-xl-3 col-xxl-3 px-2 my-2">
+                    <div class="col-12 px-0 py-1 d-flex main-box-wedit" style="background: #198754;">
+                        <div style="width: 65px;" class="p-2">
+                            <div class="col-12 px-0 text-center d-flex align-items-center justify-content-center"
+                                style="background: #198754;color: #fff;border-radius: 50%;width: 55px;height:55px">
+                                <span class="fa-solid fa-dollar-sign font-4"></span>
+                            </div>
+                        </div>
+                        <div style="width: calc(100% - 80px)" class="px-2 py-2">
+                            <a class="font-1 text-nowrap" href="{{ route('admin.orders.index') }}" style="color: #ffffff">
+                                This Week Orders
+                                <h6 class="font-3">
+                                    {{ \App\Models\Order::whereBetween('created_at', [now()->startOfWeek(), now()->endOfWeek()])->count() }}
+                                </h6>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12 col-sm-6 col-lg-4 col-xl-3 col-xxl-3 px-2 my-2">
+                    <div class="col-12 px-0 py-1 d-flex main-box-wedit" style="background: #07a8ff;">
+                        <div style="width: 65px;" class="p-2">
+                            <div class="col-12 px-0 text-center d-flex align-items-center justify-content-center"
+                                style="background: #07a8ff;color: #fff;border-radius: 50%;width: 55px;height:55px">
+                                <span class="fa-solid fa-truck-ramp-box font-4"></span>
+                            </div>
+                        </div>
+                        <div style="width: calc(100% - 80px)" class="px-2 py-2">
+                            <a class="font-1 text-nowrap" href="{{ route('admin.orders.index') }}" style="color: #ffffff">
+                                {{-- {{ __('admin.orders') }} --}}
+                                Waiting Orders
+                                <h6 class="font-3">
+                                    {{ \App\Models\Order::where('status', 'waiting')->count() }}</h6>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
         @endcan
 
 
-        <div class="row">
-            <div class="col-12 col-sm-6 col-lg-4 col-xl-3 col-xxl-3 px-2 my-2">
-                <div class="col-12 px-0 py-1 d-flex main-box-wedit" style="background: #ffc107;">
-                    <div style="width: 65px;" class="p-2">
-                        <div class="col-12 px-0 text-center d-flex align-items-center justify-content-center"
-                            style="background: #ffc107;color: #fff;border-radius: 50%;width: 55px;height:55px">
-                            <span class="fa-solid fa-hourglass-clock font-4"></span>
-                        </div>
-                    </div>
-                    <div style="width: calc(100% - 80px)" class="px-2 py-2">
-                        <a class="font-1 text-nowrap" href="{{ route('admin.orders.index') }}" style="color: #ffffff;">
-                            {{-- {{ __('admin.orders') }} --}}
-                            Pending Orders
-                            <h6 class="font-3">
-                                {{ \App\Models\Order::where('status', 'pending')->count() }}</h6>
-                        </a>
-                    </div>
-                </div>
-            </div>
-            <div class="col-12 col-sm-6 col-lg-4 col-xl-3 col-xxl-3 px-2 my-2">
-                <div class="col-12 px-0 py-1 d-flex main-box-wedit" style="background: #ff0707;">
-                    <div style="width: 65px;" class="p-2">
-                        <div class="col-12 px-0 text-center d-flex align-items-center justify-content-center"
-                            style="background: #ff0707;color: #fff;border-radius: 50%;width: 55px;height:55px">
-                            <span class="fa-solid fa-ban font-4"></span>
-                        </div>
-                    </div>
-                    <div style="width: calc(100% - 80px)" class="px-2 py-2">
-                        <a class="font-1 text-nowrap" href="{{ route('admin.orders.index') }}" style="color: #ffffff">
-                            {{-- {{ __('admin.orders') }} --}}
-                            Failed Orders
-                            <h6 class="font-3">
-                                {{ \App\Models\Order::where('status', 'failed')->count() }}</h6>
-                        </a>
-                    </div>
-                </div>
-            </div>
-            <div class="col-12 col-sm-6 col-lg-4 col-xl-3 col-xxl-3 px-2 my-2">
-                <div class="col-12 px-0 py-1 d-flex main-box-wedit" style="background: #6610f2;">
-                    <div style="width: 65px;" class="p-2">
-                        <div class="col-12 px-0 text-center d-flex align-items-center justify-content-center"
-                            style="background: #6610f2;color: #fff;border-radius: 50%;width: 55px;height:55px">
-                            <span class="fa-solid fa-users-gear font-4"></span>
-                        </div>
-                    </div>
-                    <div style="width: calc(100% - 80px)" class="px-2 py-2">
-                        <a class="font-1 text-nowrap" href="{{ route('admin.customers.index') }}"
-                            style="color: #ffffff">
-                            {{-- {{ __('admin.orders') }} --}}
-                            Pending Customers
-                            <h6 class="font-3">
-                                {{ \App\Models\Customer::where('blocked', true)->count() }}</h6>
-                        </a>
-                    </div>
-                </div>
-            </div>
-            <div class="col-12 col-sm-6 col-lg-4 col-xl-3 col-xxl-3 px-2 my-2">
-                <div class="col-12 px-0 py-1 d-flex main-box-wedit" style="background: #fd7e14;">
-                    <div style="width: 65px;" class="p-2">
-                        <div class="col-12 px-0 text-center d-flex align-items-center justify-content-center"
-                            style="background: #fd7e14;color: #fff;border-radius: 50%;width: 55px;height:55px">
-                            <span class="fa-solid fa-layer-minus font-4"></span>
-                        </div>
-                    </div>
-                    <div style="width: calc(100% - 80px)" class="px-2 py-2">
-                        <a class="font-1 text-nowrap" href="{{ route('admin.customers.index') }}"
-                            style="color: #ffffff">
-                            Stockout
-                            <h6 class="font-3">
-                                {{ \App\Models\Product::where('quantity', '<', 50)->count() }}
-                            </h6>
-                        </a>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-
-        <div class="row">
-            <div class="col-12 col-sm-6 col-lg-4 col-xl-3 col-xxl-3 px-2 my-2">
-                <div class="col-12 px-0 py-1 d-flex main-box-wedit" style="background: #198754;">
-                    <div style="width: 65px;" class="p-2">
-                        <div class="col-12 px-0 text-center d-flex align-items-center justify-content-center"
-                            style="background: #198754;color: #fff;border-radius: 50%;width: 55px;height:55px">
-                            <span class="fa-solid fa-dollar-sign font-4"></span>
-                        </div>
-                    </div>
-                    <div style="width: calc(100% - 80px)" class="px-2 py-2">
-                        <a class="font-1 text-nowrap" href="{{ route('admin.orders.index') }}" style="color: #ffffff">
-                            This Week Orders
-                            <h6 class="font-3">
-                                {{ \App\Models\Order::whereBetween('created_at', [now()->startOfWeek(), now()->endOfWeek()])->count() }}
-                            </h6>
-                        </a>
-                    </div>
-                </div>
-            </div>
-            <div class="col-12 col-sm-6 col-lg-4 col-xl-3 col-xxl-3 px-2 my-2">
-                <div class="col-12 px-0 py-1 d-flex main-box-wedit" style="background: #07a8ff;">
-                    <div style="width: 65px;" class="p-2">
-                        <div class="col-12 px-0 text-center d-flex align-items-center justify-content-center"
-                            style="background: #07a8ff;color: #fff;border-radius: 50%;width: 55px;height:55px">
-                            <span class="fa-solid fa-truck-ramp-box font-4"></span>
-                        </div>
-                    </div>
-                    <div style="width: calc(100% - 80px)" class="px-2 py-2">
-                        <a class="font-1 text-nowrap" href="{{ route('admin.orders.index') }}" style="color: #ffffff">
-                            {{-- {{ __('admin.orders') }} --}}
-                            Waiting Orders
-                            <h6 class="font-3">
-                                {{ \App\Models\Order::where('status', 'waiting')->count() }}</h6>
-                        </a>
-                    </div>
-                </div>
-            </div>
-        </div>
 
 
         <div class="col-12 row p-0 d-flex">
