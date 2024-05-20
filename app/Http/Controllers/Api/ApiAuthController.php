@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Password;
 use Spatie\Permission\Models\Role;
+use Illuminate\Support\Str;
 
 /**
  * @OA\Schema(
@@ -90,7 +91,7 @@ class ApiAuthController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('auth:api', ['except' => ['login', 'register','sendResetLinkEmail', 'reset']]);
+        $this->middleware('auth:api', ['except' => ['login', 'register', 'sendResetLinkEmail', 'reset']]);
     }
 
     /**
@@ -486,6 +487,13 @@ class ApiAuthController extends Controller
     {
         $request->validate(['email' => 'required|email']);
 
+        $email = $request->email;
+        $customer = Customer::where('email', $email)->first();
+
+        if (!$customer) {
+            return response()->json(['email' => 'Customer not found'], 400);
+        }
+
         $status = Password::sendResetLink(
             $request->only('email')
         );
@@ -503,14 +511,24 @@ class ApiAuthController extends Controller
             'password' => 'required|min:8|confirmed',
         ]);
 
+        $email = $request->email;
+        $customer = Customer::where('email', $email)->first();
+
+        if (!$customer) {
+            return response()->json(['email' => 'Customer not found'], 400);
+        }
+
+        $credentials = $request->only('password', 'password_confirmation', 'token');
+        $credentials['email'] = $email;
+
         $status = Password::reset(
-            $request->only('email', 'password', 'password_confirmation', 'token'),
-            function ($user, $password) {
-                $user->forceFill([
+            $credentials,
+            function ($user, $password) use ($customer) {
+                $customer->forceFill([
                     'password' => Hash::make($password)
                 ])->setRememberToken(Str::random(60));
 
-                $user->save();
+                $customer->save();
             }
         );
 
