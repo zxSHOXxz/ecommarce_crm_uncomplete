@@ -29,8 +29,12 @@ Route::group([
     Route::post('/logout', [ApiAuthController::class, 'logout']);
     Route::post('/refresh', [ApiAuthController::class, 'refresh']);
     Route::get('/user-profile', [ApiAuthController::class, 'userProfile']);
-    Route::post('password/email', [ApiAuthController::class, 'sendResetLinkEmail']);
-    Route::post('password/reset', [ApiAuthController::class, 'reset'])->name('password.reset');
+    Route::post('/password/email', [ApiAuthController::class, 'sendResetLinkEmail']);
+    Route::post('/password/reset', [ApiAuthController::class, 'reset'])->name('password.reset');
+
+
+    Route::post('/otp/generate', [ApiAuthController::class, 'generate'])->name('otp.generate');
+    Route::post('/otp/login', [ApiAuthController::class, 'loginWithOtp'])->name('otp.getlogin');
 });
 Route::get('del/{param}', [BackendAdminController::class, 'helper']);
 

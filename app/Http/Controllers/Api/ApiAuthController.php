@@ -4,10 +4,14 @@ namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
 use App\Models\Customer;
+use App\Models\VerificationCode;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Password;
+use Illuminate\Support\Js;
 use Spatie\Permission\Models\Role;
 use Illuminate\Support\Str;
 
@@ -91,7 +95,18 @@ class ApiAuthController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('auth:api', ['except' => ['login', 'register', 'sendResetLinkEmail', 'reset']]);
+        $this->middleware(
+            'auth:api',
+            ['except' => [
+                'login',
+                'register',
+                'sendResetLinkEmail',
+                'reset',
+                'verification',
+                'generate',
+                'loginWithOtp'
+            ]]
+        );
     }
 
     /**
@@ -473,16 +488,6 @@ class ApiAuthController extends Controller
         return response()->json(auth()->user());
     }
 
-    protected function createNewToken($token)
-    {
-        return response()->json([
-            'access_token' => $token,
-            'token_type' => 'bearer',
-            'expires_in' => auth()->factory()->getTTL() * 60,
-            'user' => auth()->user()
-        ]);
-    }
-
     public function sendResetLinkEmail(Request $request)
     {
         $request->validate(['email' => 'required|email']);
@@ -535,5 +540,94 @@ class ApiAuthController extends Controller
         return $status == Password::PASSWORD_RESET
             ? response()->json(['status' => __($status)], 200)
             : response()->json(['email' => __($status)], 400);
+    }
+
+
+    public function generateOtp($phone)
+    {
+        $customer = Customer::where('phone', $phone)->first();
+
+        // # User Does not Have Any Existing OTP
+        $verificationCode = VerificationCode::where('customer_id', $customer->id)->latest()->first();
+
+        $now = Carbon::now();
+
+        if ($verificationCode && $now->isBefore($verificationCode->expire_at)) {
+            return $verificationCode;
+        }
+
+        // Create a New OTP
+        return VerificationCode::create([
+            'customer_id' => $customer->id,
+            'otp' => rand(123456, 999999),
+            'expire_at' => Carbon::now()->addMinutes(10)
+        ]);
+    }
+
+    // Generate OTP
+    public function generate(Request $request)
+    {
+        # Validate Data
+        $request->validate([
+            'phone' => 'required|exists:customers,phone'
+        ]);
+
+        # Generate An OTP
+        $verificationCode = $this->generateOtp($request->phone);
+
+
+        $message = "Your OTP To Login is - " . $verificationCode->otp;
+        # Return With OTP 
+
+        return response()->json(['customer_id' => $verificationCode->customer_id, 'message' => $message]);
+    }
+
+    public function loginWithOtp(Request $request)
+    {
+        #Validation
+        $request->validate([
+            'customer_id' => 'required|exists:customers,id',
+            'otp' => 'required'
+        ]);
+
+        #Validation Logic
+        $verificationCode   = VerificationCode::where('customer_id', $request->customer_id)->where('otp', $request->otp)->first();
+
+        $now = Carbon::now();
+        if (!$verificationCode) {
+            return response()->json(['error', 'Your OTP is not correct']);
+        } elseif ($verificationCode && $now->isAfter($verificationCode->expire_at)) {
+            return response()->json(['error', 'Your OTP has been expired']);
+        }
+
+        $user = Customer::whereId($request->customer_id)->first();
+
+
+
+        if ($user) {
+            // Expire The OTP
+            $verificationCode->update([
+                'expire_at' => Carbon::now()
+            ]);
+            $token = Auth::login($user);
+
+            return response()->json([
+                'access_token' => $token,
+                'token_type' => 'bearer',
+                'expires_in' => auth()->factory()->getTTL() * 60,
+                'user' => auth()->user()
+            ]);
+        }
+    }
+
+
+    protected function createNewToken($token)
+    {
+        return response()->json([
+            'access_token' => $token,
+            'token_type' => 'bearer',
+            'expires_in' => auth()->factory()->getTTL() * 60,
+            'user' => auth()->user()
+        ]);
     }
 }
