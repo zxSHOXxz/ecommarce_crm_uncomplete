@@ -584,9 +584,9 @@ class ApiAuthController extends Controller
 
         $client = new Client($account_sid, $auth_token);
 
-        $client->messages->create('+970598241105', ['from' => $twilio_number, 'body' => $message]);
+        $client->messages->create($request->phone, ['from' => $twilio_number, 'body' => $message]);
 
-        # Return With OTP 
+        # Return With OTP
 
         return response()->json(['customer_id' => $verificationCode->customer_id, 'message' => 'Message on their way!']);
     }
