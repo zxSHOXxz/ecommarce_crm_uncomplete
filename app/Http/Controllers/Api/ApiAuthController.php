@@ -14,6 +14,7 @@ use Illuminate\Support\Facades\Password;
 use Illuminate\Support\Js;
 use Spatie\Permission\Models\Role;
 use Illuminate\Support\Str;
+use Twilio\Rest\Client;
 
 /**
  * @OA\Schema(
@@ -575,12 +576,35 @@ class ApiAuthController extends Controller
         # Generate An OTP
         $verificationCode = $this->generateOtp($request->phone);
 
+        $account_sid = getenv("TWILIO_SID");
+        $auth_token = getenv("TWILIO_AUTH_TOKEN");
+        $twilio_number = getenv("TWILIO_NUMBER");
 
         $message = "Your OTP To Login is - " . $verificationCode->otp;
+
+        $client = new Client($account_sid, $auth_token);
+
+        $client->messages->create('+970598241105', ['from' => $twilio_number, 'body' => $message]);
+
         # Return With OTP 
 
-        return response()->json(['customer_id' => $verificationCode->customer_id, 'message' => $message]);
+        return response()->json(['customer_id' => $verificationCode->customer_id, 'message' => 'Message on their way!']);
     }
+
+
+
+    // private function sendMessage($message, $recipients)
+    // {
+    //     $account_sid = getenv("TWILIO_SID");
+    //     $auth_token = getenv("TWILIO_AUTH_TOKEN");
+    //     $twilio_number = getenv("TWILIO_NUMBER");
+
+    //     $client = new Client($account_sid, $auth_token);
+    //     $client->messages->create($recipients, ['from' => $twilio_number, 'body' => $message]);
+    // }
+
+
+
 
     public function loginWithOtp(Request $request)
     {
