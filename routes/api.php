@@ -46,6 +46,14 @@ Route::middleware(['api'])->prefix('products')->name('products.')->group(functio
 });
 
 
+Route::middleware(['api'])->prefix('categories')->name('categories.')->group(function () {
+    Route::get('/getCategories', [ApiProductsController::class, 'getCategories'])->name('getCategories');
+});
+
+
+
+
+
 Route::get('/payments/verify/{payment?}', [ApiOrdersController::class, 'payment_verify'])->name('orders-verify-payment');
 
 Route::group([

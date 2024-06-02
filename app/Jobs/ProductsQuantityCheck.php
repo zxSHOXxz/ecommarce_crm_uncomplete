@@ -34,5 +34,7 @@ class ProductsQuantityCheck implements ShouldQueue
      */
     public function handle()
     {
+        
     }
+
 }

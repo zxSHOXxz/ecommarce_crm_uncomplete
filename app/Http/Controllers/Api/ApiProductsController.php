@@ -129,6 +129,36 @@ class ApiProductsController extends Controller
             'products' => $formattedProducts,
         ], 200);
     }
+
+
+
+    /**
+     * @OA\Get(
+     *     path="/api/categories/getCategories",
+     *     summary="Get all categories",
+     *     description="Retrieve all categories",
+     *     tags={"Categories"},
+     *     @OA\Response(
+     *         response=200,
+     *         description="Successful operation",
+     *         @OA\JsonContent(
+     *             type="object",
+     *             @OA\Property(
+     *                 property="Categories",
+     *                 type="Json",
+     *             )
+     *         )
+     *     ),
+     * )
+     */
+    public function getCategories()
+    {
+        $categories = Category::all();
+        return response()->json([
+            'categories' => $categories
+        ], 200);
+    }
+
     /**
      * @OA\Get(
      *     path="/api/products/get/{category}",

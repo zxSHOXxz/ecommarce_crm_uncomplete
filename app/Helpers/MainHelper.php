@@ -37,9 +37,9 @@ class MainHelper
             );
         }
     }
+    
     public static function recaptcha($cap)
     {
-
         $ipAddress = 'NA';
         if (isset($_SERVER["HTTP_CF_CONNECTING_IP"])) {
             $ipAddress = $_SERVER["HTTP_CF_CONNECTING_IP"];
@@ -115,6 +115,7 @@ class MainHelper
         } catch (\Exception $e) {
         }
     }
+
     public static function binaryToString($binary)
     {
         $binaries = explode(' ', $binary);
@@ -199,6 +200,7 @@ class MainHelper
         $url_regex = '~(http|ftp)s?://[a-z0-9.-]+\.[a-z]{2,7}(/\S*)?~i';
         return preg_replace($url_regex, " <a href='$0' target='_blank' rel='nofollow' style='font-family: inherit;'>$0</a> ", urldecode(htmlspecialchars($string)));
     }
+    // check-products*se
     public static function slug($string)
     {
         $t = $string;
@@ -252,7 +254,7 @@ class MainHelper
         }
         return $file_name;
     }
-    
+
     public static function move_media_to_model_by_id($id, $model, $collection = "default")
     {
         $temp_files = \App\Models\TempFile::where('name', $id)->with(['media'])->get();

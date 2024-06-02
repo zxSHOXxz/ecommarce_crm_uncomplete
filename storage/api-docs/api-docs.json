@@ -428,6 +428,33 @@
                 }
             }
         },
+        "/api/categories/getCategories": {
+            "get": {
+                "tags": [
+                    "Categories"
+                ],
+                "summary": "Get all categories",
+                "description": "Retrieve all categories",
+                "operationId": "b6c0a0d59fd611a2bfbda7e2f7200ef0",
+                "responses": {
+                    "200": {
+                        "description": "Successful operation",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "Categories": {
+                                            "type": "Json"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
         "/api/products/get/{category}": {
             "get": {
                 "tags": [
